@@ -20,6 +20,7 @@
 		87BCC9472760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC9482760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9492761A1C6003BB540 /* RecordingViewController.swift */; };
+		87EA56F32761DD290062303C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA56F22761DD290062303C /* UploadViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		874F600627606B910072107F /* JamNavigatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamNavigatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		87BCC9452760921A003BB540 /* DemotapesTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemotapesTableController.swift; sourceTree = "<group>"; };
 		87BCC9492761A1C6003BB540 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
+		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				874F5FE727606B8E0072107F /* ViewController.swift */,
 				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
+				87EA56F22761DD290062303C /* UploadViewController.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				874F5FE827606B8E0072107F /* ViewController.swift in Sources */,
+				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
 				874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */,
