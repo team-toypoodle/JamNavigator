@@ -26,6 +26,7 @@ final class DemotapesTableViewClass: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
         
         cell.textLabel?.text = demotapes[indexPath.row]
+        cell.imageView?.image = UIImage(named: "PlayButton")
         
         return cell
     }
