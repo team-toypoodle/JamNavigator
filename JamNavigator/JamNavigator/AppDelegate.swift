@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        do{
-            Amplify.Logging.logLevel = .verbose
+        do {
+            //Amplify.Logging.logLevel = .verbose
             try Amplify.add(plugin: AWSCognitoAuthPlugin()) // for Cognito authentication
             try Amplify.configure()
             print("Amplify init completed successfully!")
