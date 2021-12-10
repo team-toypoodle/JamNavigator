@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026A5A802763233500C09469 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A7F2763233500C09469 /* SignupViewController.swift */; };
+		026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A8127632B6900C09469 /* ViewControllerUtils.swift */; };
 		02D1D5932762E7FB009FCAA6 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5922762E7FB009FCAA6 /* AWSAPIPlugin */; };
 		02D1D5952762E7FB009FCAA6 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5942762E7FB009FCAA6 /* AWSCognitoAuthPlugin */; };
 		02D1D5972762E7FB009FCAA6 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5962762E7FB009FCAA6 /* AWSPluginsCore */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026A5A7F2763233500C09469 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
 		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
 		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
@@ -129,11 +133,13 @@
 				874F5FE327606B8E0072107F /* AppDelegate.swift */,
 				874F5FE527606B8E0072107F /* SceneDelegate.swift */,
 				874F5FE727606B8E0072107F /* TopViewController.swift */,
+				026A5A7F2763233500C09469 /* SignupViewController.swift */,
 				02D6887027630A3C0060B471 /* MenuViewController.swift */,
 				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
 				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
+				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
@@ -311,9 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026A5A802763233500C09469 /* SignupViewController.swift in Sources */,
 				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
 				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
+				026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */,
 				02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
 				874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */,

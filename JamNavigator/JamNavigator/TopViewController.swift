@@ -14,7 +14,6 @@ class TopViewController: UIViewController {
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     
-    
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,30 +39,47 @@ class TopViewController: UIViewController {
             print("Navi: Top --> Menu")
             let menuView = segue.destination as! MenuViewController
             menuView.userSub = userSub
+            
+        case "segueTopToSignup":
+            let signupView = segue.destination as! SignupViewController
+            signupView.username = textFieldUsername.text ?? ""
+            signupView.password = textFieldPassword.text ?? ""
+            break
+            
         default:
             print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
             break
         }
     }
     
-    // ログインボタンがタップされた時に実行されるイベント
-    @IBAction func didTapLoginButton(_ sender: UIButton) {
+    func checkLoginFields() -> Bool {
         guard let username = textFieldUsername.text else {  // textFieldUsernameが入力されてなかったら return
             print("usename = nil is not accepted")
-            return
+            return false
         }
         guard let password = textFieldPassword.text else {  // textFieldPasswordが入力されてなかったら return
             print("password = nil is not accepted")
-            return
+            return false
         }
         if username.count < 2 || password.count < 2 {       // 入力文字が短すぎたら return
             print( "Expecting a little longer account information" )
-            return
+            return false
         }
         if username.count > 120 || password.count > 120 {   // 入力文字が長すぎたら return
             print( "Expecting a little shorter account information" )
+            return false
+        }
+        return true
+    }
+    
+    // ログインボタンがタップされた時に実行されるイベント
+    @IBAction func didTapLoginButton(_ sender: UIButton) {
+        if !checkLoginFields() {
             return
         }
+        let username = textFieldUsername.text!
+        let password = textFieldPassword.text!
+
         signIn(username: username, password: password) {
             (success, errMessage) in
             
