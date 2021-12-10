@@ -127,6 +127,14 @@
                                     <action selector="didTapCancelSignup:" destination="m3I-oz-9Ka" eventType="touchUpInside" id="eeK-0b-I6e"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnS-3f-nYe">
+                                <rect key="frame" x="310" y="634" width="76" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Confirm"/>
+                                <connections>
+                                    <action selector="didTapConfirm:" destination="m3I-oz-9Ka" eventType="touchUpInside" id="kcA-eG-v1C"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5Y-Hl-dAE">
                                 <rect key="frame" x="218" y="634" width="69" height="31"/>
                                 <state key="normal" title="Button"/>
@@ -198,21 +206,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="signup" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-tm-q1c">
                                 <rect key="frame" x="175" y="44" width="64" height="64"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnS-3f-nYe">
-                                <rect key="frame" x="310" y="634" width="76" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Confirm"/>
-                                <connections>
-                                    <action selector="didTapConfirm:" destination="m3I-oz-9Ka" eventType="touchUpInside" id="kcA-eG-v1C"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check email to get code, Input it here!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avt-uS-5Hg">
+                                <rect key="frame" x="62.5" y="530" width="289" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YR3-1R-Zax"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mvl-Cz-Ht6" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="497" id="1Iv-bA-zDA"/>
+                            <constraint firstItem="Avt-uS-5Hg" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="530" id="2pG-PD-sh4"/>
                             <constraint firstItem="3hO-tm-q1c" firstAttribute="height" secondItem="LxY-jp-pNC" secondAttribute="height" multiplier="0.0760095" id="3Br-dW-hVv"/>
                             <constraint firstItem="7bQ-Ij-bcL" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="354" id="5Kq-hf-Kgm"/>
+                            <constraint firstItem="Avt-uS-5Hg" firstAttribute="centerX" secondItem="YR3-1R-Zax" secondAttribute="centerX" id="5lA-GP-Z81"/>
                             <constraint firstItem="W73-YG-tC6" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="304" id="81m-n9-lwP"/>
                             <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="9C8-Xe-gDE" secondAttribute="trailing" constant="127" id="BGK-9k-Nkx"/>
                             <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="7bQ-Ij-bcL" secondAttribute="trailing" constant="20" id="BiE-HK-nUi"/>
@@ -254,6 +262,7 @@
                         <outlet property="buttonConfirm" destination="VnS-3f-nYe" id="qqW-Vw-5mq"/>
                         <outlet property="buttonSignup" destination="mvl-Cz-Ht6" id="DZE-xD-4IQ"/>
                         <outlet property="labelConfirm" destination="pdp-5n-lx3" id="sE7-X4-I6v"/>
+                        <outlet property="labelConfirmTitle" destination="Avt-uS-5Hg" id="xXf-39-zpI"/>
                         <outlet property="textFieldConfirm" destination="mi8-5F-hLJ" id="v4H-MY-v3p"/>
                         <outlet property="textFieldEmail" destination="Etu-14-HnL" id="hBk-U8-f5p"/>
                         <outlet property="textFieldPassword" destination="7bQ-Ij-bcL" id="Dfz-Y1-FQn"/>
@@ -332,15 +341,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="Search"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-GD-sfq">
-                                <rect key="frame" x="-12" y="63" width="224" height="214"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="mike"/>
-                                <connections>
-                                    <segue destination="khl-OD-TTI" kind="show" id="WpR-E8-Cr5"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyPage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04S-ND-EsI">
                                 <rect key="frame" x="248" y="768" width="91" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -348,11 +348,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYa-GD-sfq">
+                                <rect key="frame" x="-12" y="73" width="224" height="214"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="mike"/>
+                                <connections>
+                                    <segue destination="khl-OD-TTI" kind="show" id="WpR-E8-Cr5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HgU-ZY-Qcr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="H9C-gT-ZHV"/>
+                    <navigationItem key="navigationItem" id="H9C-gT-ZHV">
+                        <barButtonItem key="leftBarButtonItem" title="Logoff" id="vRs-6Z-hxG">
+                            <connections>
+                                <action selector="didTapLogoff:" destination="2cY-JC-GCx" id="8tU-8b-8e7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vn-ac-hI6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

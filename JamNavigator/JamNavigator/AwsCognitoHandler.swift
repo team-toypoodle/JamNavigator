@@ -68,6 +68,39 @@ extension SignupViewController {
     }
 }
 
+// メニューViewで使う Cognito認証機能（ログオフ）
+extension MenuViewController {
+    // サインアウト（PC内で）
+    func signOutLocally() {
+        Amplify.Auth.signOut() {
+            result in
+            
+            switch result {
+            case .success:
+                print("Successfully signed out")
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
+            }
+        }
+    }
+    
+    // サインアウト（クラウドから全体）
+    func signOutGlobally(callback: @escaping (Bool, String?) -> Void) {
+        Amplify.Auth.signOut(options: .init(globalSignOut: true)) {
+            result in
+            
+            switch result {
+            case .success:
+                print("Successfully signed out")
+                callback(true, nil)
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
+                callback(false, error.errorDescription)
+            }
+        }
+    }
+}
+
 extension TopViewController {
     // 自動認証機能
     func fetchCurrentAuthSession() {
@@ -123,34 +156,6 @@ extension TopViewController {
             case .failure(let error):
                 print("Sign in failed \(error)")
                 callback(false, error.errorDescription)
-            }
-        }
-    }
-    
-    // サインアウト（PC内で）
-    func signOutLocally() {
-        Amplify.Auth.signOut() {
-            result in
-            
-            switch result {
-            case .success:
-                print("Successfully signed out")
-            case .failure(let error):
-                print("Sign out failed with error \(error)")
-            }
-        }
-    }
-    
-    // サインアウト（クラウドから全体）
-    func signOutGlobally() {
-        Amplify.Auth.signOut(options: .init(globalSignOut: true)) {
-            result in
-            
-            switch result {
-            case .success:
-                print("Successfully signed out")
-            case .failure(let error):
-                print("Sign out failed with error \(error)")
             }
         }
     }

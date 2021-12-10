@@ -17,5 +17,19 @@ class MenuViewController: UIViewController {
         
         self.navigationItem.hidesBackButton = true
     }
+    
+    @IBAction func didTapLogoff(_ sender: Any) {
+        signOutGlobally() {
+            (success, errMessage) in
+            
+            if success {
+                DispatchQueue.main.async {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            } else {
+                self.alert(caption: "WARNING", message: errMessage ?? "logoff error", button1: "Cancel")
+            }
+        }
+    }
 }
 

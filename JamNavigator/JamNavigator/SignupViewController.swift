@@ -17,6 +17,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var buttonSignup: UIButton!
     @IBOutlet weak var buttonCancelSignup: UIButton!
 
+    @IBOutlet weak var labelConfirmTitle: UILabel!
     @IBOutlet weak var labelConfirm: UILabel!
     @IBOutlet weak var textFieldConfirm: UITextField!
     @IBOutlet weak var buttonConfirm: UIButton!
@@ -26,7 +27,7 @@ class SignupViewController: UIViewController {
         textFieldUsername.text = username
         textFieldPassword.text = password
         
-        _ = [labelConfirm, textFieldConfirm, buttonConfirm, buttonCancelConfirm].map{
+        _ = [labelConfirmTitle, labelConfirm, textFieldConfirm, buttonConfirm, buttonCancelConfirm].map{
             $0.isHidden = true
         }
     }
@@ -49,7 +50,7 @@ class SignupViewController: UIViewController {
             case .ConfirmingCode:
                 DispatchQueue.main.async {
                     // 確認コードを入力するコントロールを有効化
-                    _ = [self.labelConfirm, self.textFieldConfirm, self.buttonConfirm, self.buttonCancelConfirm].map{
+                    _ = [self.labelConfirmTitle, self.labelConfirm, self.textFieldConfirm, self.buttonConfirm, self.buttonCancelConfirm].map{
                         $0.isHidden = false
                     }
                     // サインアップ情報（アカウント、PW、email）を非活性に
