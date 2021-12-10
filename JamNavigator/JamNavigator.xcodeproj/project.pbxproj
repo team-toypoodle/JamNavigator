@@ -15,7 +15,7 @@
 		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
 		874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE527606B8E0072107F /* SceneDelegate.swift */; };
-		874F5FE827606B8E0072107F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE727606B8E0072107F /* ViewController.swift */; };
+		874F5FE827606B8E0072107F /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE727606B8E0072107F /* TopViewController.swift */; };
 		874F5FEB27606B8E0072107F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874F5FE927606B8E0072107F /* Main.storyboard */; };
 		874F5FED27606B910072107F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 874F5FEC27606B910072107F /* Assets.xcassets */; };
 		874F5FF027606B910072107F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874F5FEE27606B910072107F /* LaunchScreen.storyboard */; };
@@ -48,12 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = awsconfiguration.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		874F5FE027606B8E0072107F /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		874F5FE327606B8E0072107F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		874F5FE527606B8E0072107F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		874F5FE727606B8E0072107F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		874F5FE727606B8E0072107F /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		874F5FEA27606B8E0072107F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		874F5FEC27606B910072107F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		874F5FEF27606B910072107F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,13 +124,13 @@
 			children = (
 				874F5FE327606B8E0072107F /* AppDelegate.swift */,
 				874F5FE527606B8E0072107F /* SceneDelegate.swift */,
-				874F5FE727606B8E0072107F /* ViewController.swift */,
+				874F5FE727606B8E0072107F /* TopViewController.swift */,
 				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
-				874F5FEC27606B910072107F /* Assets.xcassets */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
+				874F5FEC27606B910072107F /* Assets.xcassets */,
 				874F5FF127606B910072107F /* Info.plist */,
 			);
 			path = JamNavigator;
@@ -305,7 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874F5FE827606B8E0072107F /* ViewController.swift in Sources */,
+				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
 				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,

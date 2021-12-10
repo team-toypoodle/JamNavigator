@@ -7,6 +7,7 @@
 
 import UIKit
 import Amplify
+import AWSCognitoAuthPlugin
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         do{
             Amplify.Logging.logLevel = .verbose
+            try Amplify.add(plugin: AWSCognitoAuthPlugin()) // for Cognito authentication
             try Amplify.configure()
             print("Amplify init completed successfully!")
 

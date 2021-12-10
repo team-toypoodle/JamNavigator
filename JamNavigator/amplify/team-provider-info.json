@@ -10,6 +10,11 @@
       "StackName": "amplify-jamnavigator-dev-104813",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:456263665996:stack/amplify-jamnavigator-dev-104813/42aeca10-595b-11ec-853a-0ec59593c6b7",
       "AmplifyAppId": "d22weszz7mzjkl"
+    },
+    "categories": {
+      "auth": {
+        "jamnavigator367e195e": {}
+      }
     }
   }
 }
