@@ -40,7 +40,11 @@ extension SignupViewController {
                 }
             case .failure(let error):
                 print("An error occurred while registering a user \(error)")
-                callback(.Err, error.errorDescription)
+                if error.errorDescription.lowercased().contains("user already exists") {
+                    callback(.ConfirmingCode, error.errorDescription)
+                } else {
+                    callback(.Err, error.errorDescription)
+                }
             }
         }
     }
@@ -48,15 +52,17 @@ extension SignupViewController {
     // サインアップ signUp(usename, email)実行後、指定emailに届いた確認コードを AWS Cognitoに知らせる関数
     // username: signUpで指定したものと同じ
     // confirmationCode: emailで受信した確認コード
-    func confirmSignUp(for username: String, with confirmationCode: String) {
+    func confirmSignUp(for username: String, with confirmationCode: String, callback: @escaping (Bool, String?) -> Void) {
         Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) {
             result in
             switch result {
             case .success:
                 print("Confirm signUp succeeded")
+                callback(true, nil)
                 
             case .failure(let error):
                 print("An error occurred while confirming sign up \(error)")
+                callback(false, error.errorDescription)
             }
         }
     }

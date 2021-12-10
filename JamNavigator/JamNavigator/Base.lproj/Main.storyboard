@@ -127,6 +127,14 @@
                                     <action selector="didTapCancelSignup:" destination="m3I-oz-9Ka" eventType="touchUpInside" id="eeK-0b-I6e"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5Y-Hl-dAE">
+                                <rect key="frame" x="218" y="634" width="69" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <connections>
+                                    <action selector="didTapCancelConfirm:" destination="m3I-oz-9Ka" eventType="touchUpInside" id="48c-ar-Erb"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bQ-Ij-bcL">
                                 <rect key="frame" x="126" y="354" width="268" height="34"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.74857719369999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,6 +159,18 @@
                                 <color key="textColor" red="0.73333333329999995" green="0.10980392160000001" blue="0.47058823529999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mi8-5F-hLJ">
+                                <rect key="frame" x="126" y="576" width="268" height="34"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.74834437090000006" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdp-5n-lx3">
+                                <rect key="frame" x="71" y="583" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.73333333329999995" green="0.10980392160000001" blue="0.47058823529999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Etu-14-HnL">
                                 <rect key="frame" x="123" y="420" width="265" height="34"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.74834437090000006" colorSpace="custom" customColorSpace="sRGB"/>
@@ -163,6 +183,12 @@
                                 <color key="textColor" red="0.73333333329999995" green="0.10980392160000001" blue="0.47058823529999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to JamNavi members!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFv-uX-hQG">
+                                <rect key="frame" x="59" y="128" width="302" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.73333333329999995" green="0.10980392160000001" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input your new account to signup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAc-2v-f7N">
                                 <rect key="frame" x="80" y="242" width="254" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -172,12 +198,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="signup" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-tm-q1c">
                                 <rect key="frame" x="175" y="44" width="64" height="64"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to JamNavi members!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFv-uX-hQG">
-                                <rect key="frame" x="59" y="128" width="302" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.73333333329999995" green="0.10980392160000001" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnS-3f-nYe">
+                                <rect key="frame" x="310" y="634" width="76" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Confirm"/>
+                                <connections>
+                                    <action selector="didTapConfirm:" destination="m3I-oz-9Ka" eventType="touchUpInside" id="kcA-eG-v1C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YR3-1R-Zax"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -188,6 +216,7 @@
                             <constraint firstItem="W73-YG-tC6" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="304" id="81m-n9-lwP"/>
                             <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="9C8-Xe-gDE" secondAttribute="trailing" constant="127" id="BGK-9k-Nkx"/>
                             <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="7bQ-Ij-bcL" secondAttribute="trailing" constant="20" id="BiE-HK-nUi"/>
+                            <constraint firstItem="pdp-5n-lx3" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="583" id="CAd-SP-eXH"/>
                             <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="mvl-Cz-Ht6" secondAttribute="trailing" constant="28" id="CLx-RX-J9J"/>
                             <constraint firstItem="Etu-14-HnL" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="123" id="E4w-lx-wvE"/>
                             <constraint firstItem="3hO-tm-q1c" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="44" id="Fl6-kv-vlH"/>
@@ -195,23 +224,37 @@
                             <constraint firstItem="3hO-tm-q1c" firstAttribute="centerX" secondItem="YR3-1R-Zax" secondAttribute="centerX" id="G7p-PX-nMS"/>
                             <constraint firstItem="tFv-uX-hQG" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="128" id="NIN-2A-UIX"/>
                             <constraint firstItem="W73-YG-tC6" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="26" id="RgQ-vg-RbB"/>
+                            <constraint firstItem="VnS-3f-nYe" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="634" id="TjV-ij-X9B"/>
                             <constraint firstItem="Etu-14-HnL" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="420" id="U6h-3S-50U"/>
+                            <constraint firstItem="mi8-5F-hLJ" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="126" id="WR6-LG-ziq"/>
+                            <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="mi8-5F-hLJ" secondAttribute="trailing" constant="20" id="Y0z-GQ-JsX"/>
+                            <constraint firstItem="h5Y-Hl-dAE" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="634" id="bPI-np-kbC"/>
                             <constraint firstItem="M3I-Iy-2oh" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="65" id="dWX-6s-DmA"/>
                             <constraint firstItem="DAc-2v-f7N" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="242" id="dlh-6e-mqm"/>
                             <constraint firstItem="kZ0-9U-KKw" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="35" id="eef-ly-y1D"/>
+                            <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="VnS-3f-nYe" secondAttribute="trailing" constant="28" id="jiD-Vs-DTl"/>
                             <constraint firstItem="tFv-uX-hQG" firstAttribute="centerX" secondItem="YR3-1R-Zax" secondAttribute="centerX" id="lMY-wj-ORH"/>
+                            <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="h5Y-Hl-dAE" secondAttribute="trailing" constant="127" id="mML-FS-fCo"/>
                             <constraint firstItem="tOm-EO-KfI" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="297" id="mNb-Oy-uYE"/>
                             <constraint firstItem="3hO-tm-q1c" firstAttribute="width" secondItem="LxY-jp-pNC" secondAttribute="width" multiplier="0.154589" id="mcF-ro-vsE"/>
                             <constraint firstItem="kZ0-9U-KKw" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="361" id="ngm-q7-9pH"/>
                             <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="Etu-14-HnL" secondAttribute="trailing" constant="26" id="opP-tT-Bjp"/>
+                            <constraint firstItem="mi8-5F-hLJ" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="576" id="qME-Tl-Fqt"/>
                             <constraint firstItem="9C8-Xe-gDE" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="497" id="qmk-LF-QAI"/>
                             <constraint firstItem="tOm-EO-KfI" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="126" id="tCH-Ue-fw0"/>
+                            <constraint firstItem="pdp-5n-lx3" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="71" id="vct-eM-lmM"/>
                             <constraint firstItem="YR3-1R-Zax" firstAttribute="trailing" secondItem="tOm-EO-KfI" secondAttribute="trailing" constant="20" id="vgp-di-Saw"/>
                             <constraint firstItem="7bQ-Ij-bcL" firstAttribute="leading" secondItem="YR3-1R-Zax" secondAttribute="leading" constant="126" id="x1U-tV-98C"/>
                             <constraint firstItem="M3I-Iy-2oh" firstAttribute="top" secondItem="YR3-1R-Zax" secondAttribute="top" constant="427" id="xVd-Z7-jRX"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonCancelConfirm" destination="h5Y-Hl-dAE" id="R4l-wn-PMI"/>
+                        <outlet property="buttonCancelSignup" destination="9C8-Xe-gDE" id="doq-1P-usV"/>
+                        <outlet property="buttonConfirm" destination="VnS-3f-nYe" id="qqW-Vw-5mq"/>
+                        <outlet property="buttonSignup" destination="mvl-Cz-Ht6" id="DZE-xD-4IQ"/>
+                        <outlet property="labelConfirm" destination="pdp-5n-lx3" id="sE7-X4-I6v"/>
+                        <outlet property="textFieldConfirm" destination="mi8-5F-hLJ" id="v4H-MY-v3p"/>
                         <outlet property="textFieldEmail" destination="Etu-14-HnL" id="hBk-U8-f5p"/>
                         <outlet property="textFieldPassword" destination="7bQ-Ij-bcL" id="Dfz-Y1-FQn"/>
                         <outlet property="textFieldUsername" destination="tOm-EO-KfI" id="Fu3-3T-AI5"/>

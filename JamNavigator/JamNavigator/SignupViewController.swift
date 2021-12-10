@@ -14,11 +14,21 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
-    
-    
+    @IBOutlet weak var buttonSignup: UIButton!
+    @IBOutlet weak var buttonCancelSignup: UIButton!
+
+    @IBOutlet weak var labelConfirm: UILabel!
+    @IBOutlet weak var textFieldConfirm: UITextField!
+    @IBOutlet weak var buttonConfirm: UIButton!
+    @IBOutlet weak var buttonCancelConfirm: UIButton!
+
     override func viewDidLoad() {
         textFieldUsername.text = username
         textFieldPassword.text = password
+        
+        _ = [labelConfirm, textFieldConfirm, buttonConfirm, buttonCancelConfirm].map{
+            $0.isHidden = true
+        }
     }
     
     
@@ -37,6 +47,18 @@ class SignupViewController: UIViewController {
             case .Done:
                 self.dismiss(animated: true, completion: nil)
             case .ConfirmingCode:
+                DispatchQueue.main.async {
+                    // 確認コードを入力するコントロールを有効化
+                    _ = [self.labelConfirm, self.textFieldConfirm, self.buttonConfirm, self.buttonCancelConfirm].map{
+                        $0.isHidden = false
+                    }
+                    // サインアップ情報（アカウント、PW、email）を非活性に
+                    _ = [self.textFieldUsername, self.textFieldPassword, self.textFieldEmail, self.buttonSignup].map {
+                        $0?.isEnabled = false
+                        $0?.alpha = 0.25
+                    }
+                    self.buttonCancelSignup.isHidden = true
+                }
                 break
             case .Err:
                 self.alert(caption: "WARNING", message: message ?? "Signup errror", button1: "Cancel")
@@ -50,6 +72,32 @@ class SignupViewController: UIViewController {
     @IBAction func didTapCancelSignup(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func didTapCancelConfirm(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapConfirm(_ sender: Any) {
+        guard let code = textFieldConfirm.text else {
+            return
+        }
+        if code.count < 4 || code.count > 12 {
+            return
+        }
+        confirmSignUp(for: textFieldUsername.text!, with: code) {
+            (success, errMessage) in
+            
+            if success {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                self.alert(caption: "WARNING", message: errMessage ?? "unknown error", button1: "OK")
+            }
+        }
+    }
+    
+    
     
     func checkSignupFields() -> Bool {
         guard let username = textFieldUsername.text else {  // textFieldUsernameが入力されてなかったら return
