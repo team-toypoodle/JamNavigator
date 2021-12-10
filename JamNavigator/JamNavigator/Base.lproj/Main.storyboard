@@ -29,7 +29,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="2cY-JC-GCx" kind="show" id="HBo-5w-ulK"/>
+                                    <segue destination="2cY-JC-GCx" kind="show" identifier="segueTopToMenu" id="HBo-5w-ulK"/>
                                 </connections>
                             </button>
                         </subviews>

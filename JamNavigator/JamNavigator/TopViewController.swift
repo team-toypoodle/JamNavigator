@@ -39,6 +39,11 @@ class TopViewController: UIViewController {
                     print("User sub - \(usersub)")    // as User backend ID
                     //let identityId = try identityProvider.getIdentityId().get()
                     //print("Identity id \(identityId)")
+                    
+                    // Menu用の Viewに画面遷移
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "segueTopToMenu", sender: self)
+                    }
                 }
                 
                 // Get AWS credentials
