@@ -52,16 +52,18 @@ extension TopViewController {
     // ログイン
     // username: signUpでしていしたものと同じ
     // password:     同上
-    func signIn(username: String, password: String) {
+    func signIn(username: String, password: String, callback: @escaping (Bool, String?) -> Void ) {
         Amplify.Auth.signIn(username: username, password: password) {
             result in
             
             switch result {
             case .success:
                 print("Sign in succeeded")
+                callback(true, nil)
                 
             case .failure(let error):
                 print("Sign in failed \(error)")
+                callback(false, error.errorDescription)
             }
         }
     }
@@ -101,6 +103,34 @@ extension TopViewController {
                 
             case .failure(let error):
                 print("An error occurred while confirming sign up \(error)")
+            }
+        }
+    }
+    
+    // サインアウト（PC内で）
+    func signOutLocally() {
+        Amplify.Auth.signOut() {
+            result in
+            
+            switch result {
+            case .success:
+                print("Successfully signed out")
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
+            }
+        }
+    }
+    
+    // サインアウト（クラウドから全体）
+    func signOutGlobally() {
+        Amplify.Auth.signOut(options: .init(globalSignOut: true)) {
+            result in
+            
+            switch result {
+            case .success:
+                print("Successfully signed out")
+            case .failure(let error):
+                print("Sign out failed with error \(error)")
             }
         }
     }

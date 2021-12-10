@@ -14,6 +14,8 @@ class MenuViewController: UIViewController {
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.hidesBackButton = true
     }
 }
 
