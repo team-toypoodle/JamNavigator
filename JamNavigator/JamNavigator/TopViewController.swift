@@ -7,6 +7,7 @@
 
 import UIKit
 import Amplify
+import AWSPluginsCore
 
 class TopViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class TopViewController: UIViewController {
         //signUp(username: "tonosaki", password: "tonotono", email: "manabu@tomarika.com") // received 568764
         //confirmSignUp(for: "tonosaki", with: "568764")
         
+        //以下は、ログインの手順サンプル
         //signIn(username: "tonosaki", password: "tonotono")
     }
     
@@ -28,14 +30,32 @@ class TopViewController: UIViewController {
         _ = Amplify.Auth.fetchAuthSession {
             result in
             
-            switch result {
-            case .success(let session):
-                print("Is user signed in - \(session.isSignedIn)")
+            do {
+                let session = try result.get()
                 
-            case .failure(let error):
-                print("Fetch session failed with error \(error)")
-            }
-        }
+                // Get user sub or identity id
+                if let identityProvider = session as? AuthCognitoIdentityProvider {
+                    let usersub = try identityProvider.getUserSub().get()
+                    print("User sub - \(usersub)")    // as User backend ID
+                    //let identityId = try identityProvider.getIdentityId().get()
+                    //print("Identity id \(identityId)")
+                }
+                
+                // Get AWS credentials
+                //if let awsCredentialsProvider = session as? AuthAWSCredentialsProvider {
+                //    let credentials = try awsCredentialsProvider.getAWSCredentials().get()
+                //    print("Access key - \(credentials.accessKey) ")
+                //}
+                
+                // Get cognito user pool token
+                //if let cognitoTokenProvider = session as? AuthCognitoTokensProvider {
+                //    let tokens = try cognitoTokenProvider.getCognitoTokens().get()
+                //    print("Id token - \(tokens.idToken) ")
+                //}
+                
+            } catch {
+                print("Fetch auth session failed with error - \(error)")
+            }        }
     }
     
     // ログイン
