@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="83.705357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="JmT-Xk-gCQ">
             <objects>
-                <viewController id="2cY-JC-GCx" sceneMemberID="viewController">
+                <viewController id="2cY-JC-GCx" customClass="MenuViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uqh-lU-zlN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -12,6 +12,8 @@
 		02D1D5972762E7FB009FCAA6 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5962762E7FB009FCAA6 /* AWSPluginsCore */; };
 		02D1D5992762E7FB009FCAA6 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5982762E7FB009FCAA6 /* AWSS3StoragePlugin */; };
 		02D1D59B2762E7FB009FCAA6 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D59A2762E7FB009FCAA6 /* Amplify */; };
+		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
+		02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */; };
 		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
 		874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE527606B8E0072107F /* SceneDelegate.swift */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
 		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		874F5FE027606B8E0072107F /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,9 +129,11 @@
 				874F5FE327606B8E0072107F /* AppDelegate.swift */,
 				874F5FE527606B8E0072107F /* SceneDelegate.swift */,
 				874F5FE727606B8E0072107F /* TopViewController.swift */,
+				02D6887027630A3C0060B471 /* MenuViewController.swift */,
 				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
+				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
@@ -308,8 +314,10 @@
 				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
 				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
+				02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
 				874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */,
+				02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
