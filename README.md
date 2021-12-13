@@ -22,3 +22,31 @@ Amplyfi setup
 ```
 amplify pull
 ```
+
+```
+? Select the authentication method you want to use: AWS profile
+AWS access credentials can not be found.
+? Setup new user No
+? accessKeyId:  ********************
+? secretAccessKey:  ****************************************
+? region:  ap-northeast-1
+? Which app are you working on? **************
+Backend environment 'dev' found. Initializing...
+? Choose your default editor: Xcode (Mac OS only)
+? Choose the type of app that you're building ios
+
+? Do you plan on modifying this backend? Yes
+
+Successfully pulled backend environment dev from the cloud.
+```
+
+
+```
+amplify pull
+```
+
+setup OK!
+
+
+
+
