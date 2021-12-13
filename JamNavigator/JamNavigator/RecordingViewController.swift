@@ -10,6 +10,8 @@ import AVFoundation
 
 class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,6 +32,22 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
     var audioPlayer: AVAudioPlayer!
     var isRecording = false
     var isPlaying = false
+    
+    // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "segueRecToUpload":
+            print("Navi: Rec --> Upload")
+            let uploadView = segue.destination as! UploadViewController
+            uploadView.userSub = userSub
+
+        default:
+            print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
+            break
+        }
+    }
+
     
     @IBAction func touchUpInsideRecButton(_ sender: Any) {
 
