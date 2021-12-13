@@ -6,19 +6,20 @@ Record your music and share with your virtual session member.
 Help us to find instant jam session members !
 Enjoy!
 
-- "JamNvigator.xcodeproj" inclued folder.
+Run it in the folder that contains the "JamNvigator.xcodeproj"
 
-Amplify CLI install command
+
+1.Amplify CLI install command
 ```
 sudo npm install -g @aws-amplify/cli
 ```
 
-Amplify version
+2.Check the Amplify version.
 ```
 amplify -v
 ```
 
-Amplyfi setup
+3.Amplyfi setup start.
 ```
 amplify pull
 ```
@@ -39,13 +40,13 @@ Backend environment 'dev' found. Initializing...
 
 Successfully pulled backend environment dev from the cloud.
 ```
-
+4.Run the following command again.
 
 ```
 amplify pull
 ```
 
-setup OK!
+Setup compeleted!!
 
 
 
