@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026A5A802763233500C09469 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A7F2763233500C09469 /* SignupViewController.swift */; };
+		026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A8127632B6900C09469 /* ViewControllerUtils.swift */; };
+		02D1D5932762E7FB009FCAA6 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5922762E7FB009FCAA6 /* AWSAPIPlugin */; };
+		02D1D5952762E7FB009FCAA6 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5942762E7FB009FCAA6 /* AWSCognitoAuthPlugin */; };
+		02D1D5972762E7FB009FCAA6 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5962762E7FB009FCAA6 /* AWSPluginsCore */; };
+		02D1D5992762E7FB009FCAA6 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D5982762E7FB009FCAA6 /* AWSS3StoragePlugin */; };
+		02D1D59B2762E7FB009FCAA6 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 02D1D59A2762E7FB009FCAA6 /* Amplify */; };
+		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
+		02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */; };
+		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
 		874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE527606B8E0072107F /* SceneDelegate.swift */; };
-		874F5FE827606B8E0072107F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE727606B8E0072107F /* ViewController.swift */; };
+		874F5FE827606B8E0072107F /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE727606B8E0072107F /* TopViewController.swift */; };
 		874F5FEB27606B8E0072107F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874F5FE927606B8E0072107F /* Main.storyboard */; };
 		874F5FED27606B910072107F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 874F5FEC27606B910072107F /* Assets.xcassets */; };
 		874F5FF027606B910072107F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874F5FEE27606B910072107F /* LaunchScreen.storyboard */; };
@@ -21,6 +31,7 @@
 		87BCC9482760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9492761A1C6003BB540 /* RecordingViewController.swift */; };
 		87EA56F32761DD290062303C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA56F22761DD290062303C /* UploadViewController.swift */; };
+		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,10 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026A5A7F2763233500C09469 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
+		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
+		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		874F5FE027606B8E0072107F /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		874F5FE327606B8E0072107F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		874F5FE527606B8E0072107F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		874F5FE727606B8E0072107F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		874F5FE727606B8E0072107F /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		874F5FEA27606B8E0072107F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		874F5FEC27606B910072107F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		874F5FEF27606B910072107F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +81,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D1D5932762E7FB009FCAA6 /* AWSAPIPlugin in Frameworks */,
+				02D1D59B2762E7FB009FCAA6 /* Amplify in Frameworks */,
+				02D1D5952762E7FB009FCAA6 /* AWSCognitoAuthPlugin in Frameworks */,
+				02D1D5972762E7FB009FCAA6 /* AWSPluginsCore in Frameworks */,
+				02D1D5992762E7FB009FCAA6 /* AWSS3StoragePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +113,7 @@
 				874F5FF927606B910072107F /* JamNavigatorTests */,
 				874F600327606B910072107F /* JamNavigatorUITests */,
 				874F5FE127606B8E0072107F /* Products */,
+				FE58CA69FAD70C3AAFEC68F1 /* AmplifyConfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,13 +132,17 @@
 			children = (
 				874F5FE327606B8E0072107F /* AppDelegate.swift */,
 				874F5FE527606B8E0072107F /* SceneDelegate.swift */,
-				874F5FE727606B8E0072107F /* ViewController.swift */,
+				874F5FE727606B8E0072107F /* TopViewController.swift */,
+				026A5A7F2763233500C09469 /* SignupViewController.swift */,
+				02D6887027630A3C0060B471 /* MenuViewController.swift */,
 				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
+				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
+				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
-				874F5FEC27606B910072107F /* Assets.xcassets */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
+				874F5FEC27606B910072107F /* Assets.xcassets */,
 				874F5FF127606B910072107F /* Info.plist */,
 			);
 			path = JamNavigator;
@@ -138,6 +165,15 @@
 			path = JamNavigatorUITests;
 			sourceTree = "<group>";
 		};
+		FE58CA69FAD70C3AAFEC68F1 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */,
+				814F437C8FC0014819F5496A /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,6 +190,13 @@
 			dependencies = (
 			);
 			name = JamNavigator;
+			packageProductDependencies = (
+				02D1D5922762E7FB009FCAA6 /* AWSAPIPlugin */,
+				02D1D5942762E7FB009FCAA6 /* AWSCognitoAuthPlugin */,
+				02D1D5962762E7FB009FCAA6 /* AWSPluginsCore */,
+				02D1D5982762E7FB009FCAA6 /* AWSS3StoragePlugin */,
+				02D1D59A2762E7FB009FCAA6 /* Amplify */,
+			);
 			productName = JamNavigator;
 			productReference = 874F5FE027606B8E0072107F /* JamNavigator.app */;
 			productType = "com.apple.product-type.application";
@@ -226,6 +269,9 @@
 				Base,
 			);
 			mainGroup = 874F5FD727606B8E0072107F;
+			packageReferences = (
+				02D1D5912762E7FB009FCAA6 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+			);
 			productRefGroup = 874F5FE127606B8E0072107F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -245,6 +291,8 @@
 				874F5FF027606B910072107F /* LaunchScreen.storyboard in Resources */,
 				874F5FED27606B910072107F /* Assets.xcassets in Resources */,
 				874F5FEB27606B8E0072107F /* Main.storyboard in Resources */,
+				2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */,
+				E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,11 +317,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874F5FE827606B8E0072107F /* ViewController.swift in Sources */,
+				026A5A802763233500C09469 /* SignupViewController.swift in Sources */,
+				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
 				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
+				026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */,
+				02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
 				874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */,
+				02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,11 +507,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = mike;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -471,7 +526,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -482,11 +537,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = mike;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -498,7 +556,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -634,6 +692,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		02D1D5912762E7FB009FCAA6 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		02D1D5922762E7FB009FCAA6 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02D1D5912762E7FB009FCAA6 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		02D1D5942762E7FB009FCAA6 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02D1D5912762E7FB009FCAA6 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		02D1D5962762E7FB009FCAA6 /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02D1D5912762E7FB009FCAA6 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPluginsCore;
+		};
+		02D1D5982762E7FB009FCAA6 /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02D1D5912762E7FB009FCAA6 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSS3StoragePlugin;
+		};
+		02D1D59A2762E7FB009FCAA6 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02D1D5912762E7FB009FCAA6 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 874F5FD827606B8E0072107F /* Project object */;
 }
