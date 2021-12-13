@@ -5,3 +5,8 @@
 Record your music and share with your virtual session member.
 Help us to find instant jam session members !
 Enjoy!
+
+Amplify CLI install command
+```
+sudo npm install -g @aws-amplify/cli
+```
