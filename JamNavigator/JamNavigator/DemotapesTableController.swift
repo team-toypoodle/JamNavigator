@@ -10,13 +10,22 @@ import Amplify
 import AWSAPIPlugin
 
 final class DemotapesTableViewClass: UITableViewController {
-    private var demotapes:[String] = [
-        "テルツェット三重奏曲", "ビバルディ 春", "ショパン 革命", "パプリカ", "夜に駆ける", "うっせぇわ"
-    ]
+    private var demotapes: List<Demotape> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        listDemotapes(){
+            (success, list) in
+            if success {
+                if let list = list{
+                    self.demotapes = list
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+                
+            }
+        }
         tableView.allowsSelection = true
     }
     
@@ -26,9 +35,11 @@ final class DemotapesTableViewClass: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
+        let item = demotapes[indexPath.row]
         
-        cell.textLabel?.text = demotapes[indexPath.row]
+        cell.textLabel?.text = item.name
         cell.imageView?.image = UIImage(named: "PlayButton")
+        cell.detailTextLabel?.text = Array(item.instruments?.map{$0!} ?? []).joined(separator: ", ") + "   " + Array(item.genres?.map{$0!} ?? []).joined(separator: ", ")
         
         return cell
     }
@@ -59,7 +70,8 @@ final class DemotapesTableViewClass: UITableViewController {
         }
     }
     
-    func listTodos(callback: @escaping (Bool, List<Demotape>?) -> Void) {
+    // デモテープの一覧をクラウドから収集
+    func listDemotapes(callback: @escaping (Bool, List<Demotape>?) -> Void) {
         let demotape = Demotape.keys
         let predicate = demotape.name != ""
         Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) {

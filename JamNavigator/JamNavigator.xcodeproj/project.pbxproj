@@ -59,8 +59,8 @@
 		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
 		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
-		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
-		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
+		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
+		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
 		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		874F5FE027606B8E0072107F /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +79,7 @@
 		87BCC9452760921A003BB540 /* DemotapesTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemotapesTableController.swift; sourceTree = "<group>"; };
 		87BCC9492761A1C6003BB540 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
-		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -527,7 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 42235ECE62;
+				DEVELOPMENT_TEAM = MV5A9GRYAX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = mike;
@@ -557,7 +557,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 42235ECE62;
+				DEVELOPMENT_TEAM = MV5A9GRYAX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = mike;
