@@ -10,6 +10,8 @@ import AVFoundation
 
 class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,6 +33,22 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
     var isRecording = false
     var isPlaying = false
     
+    // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "segueRecToUpload":
+            print("Navi: Rec --> Upload")
+            let uploadView = segue.destination as! UploadViewController
+            uploadView.userSub = userSub
+
+        default:
+            print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
+            break
+        }
+    }
+
+    
     @IBAction func touchUpInsideRecButton(_ sender: Any) {
 
         let session = AVAudioSession.sharedInstance()
@@ -44,7 +62,7 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
 
-        audioRecorder = try! AVAudioRecorder(url: getURL(), settings: settings)
+        audioRecorder = try! AVAudioRecorder(url: getLocalAudioUrl(), settings: settings)
         audioRecorder.delegate = self
         audioRecorder.record()
 
@@ -76,16 +94,9 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
         recordingLabel.text = "Rec"
     }
     
-    func getURL() -> URL{
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let docsDirect = paths[0]
-        let url = docsDirect.appendingPathComponent("recording.m4a")
-        return url
-    }
-    
     @IBAction func play(_ sender: Any) {
        
-        audioPlayer = try! AVAudioPlayer(contentsOf: getURL())
+        audioPlayer = try! AVAudioPlayer(contentsOf: getLocalAudioUrl())
         audioPlayer.delegate = self
         audioPlayer.play()
 

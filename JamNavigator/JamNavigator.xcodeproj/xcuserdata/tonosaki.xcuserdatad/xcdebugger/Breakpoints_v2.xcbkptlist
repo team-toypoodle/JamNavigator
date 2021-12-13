@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4E9E3142-3694-4736-85AD-0BDF96135CD0"
+            uuid = "4969D882-C831-4DB0-9577-146893A7C741"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "JamNavigator/AwsCognitoHandler.swift"
+            filePath = "JamNavigator/UploadViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "signUp(username:password:email:callback:)"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "uploadButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D0E1C03D-C377-4F28-99E4-9AB62D5D9B18"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JamNavigator/UploadViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "uploadButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

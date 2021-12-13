@@ -19,4 +19,11 @@ extension UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func getLocalAudioUrl() -> URL{
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let docsDirect = paths[0]
+        let url = docsDirect.appendingPathComponent("recording.m4a")
+        return url
+    }
 }

@@ -8,6 +8,8 @@
 import UIKit
 import Amplify
 import AWSCognitoAuthPlugin
+import AWSS3StoragePlugin
+import AWSAPIPlugin
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,13 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             //Amplify.Logging.logLevel = .verbose
             try Amplify.add(plugin: AWSCognitoAuthPlugin()) // for Cognito authentication
+            try Amplify.add(plugin: AWSS3StoragePlugin())   // for S3 Storage access
+            try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels())) // for GraphQL Demotabe
             try Amplify.configure()
             print("Amplify init completed successfully!")
 
         } catch{
             print("Fatal error : Amplify init exception")
         }
-        
         
         return true
     }

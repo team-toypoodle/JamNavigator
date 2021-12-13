@@ -18,6 +18,21 @@ class MenuViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
+    // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "segueMenuToRec":
+            print("Navi: Menu --> Rec")
+            let recView = segue.destination as! RecordingViewController
+            recView.userSub = userSub
+
+        default:
+            print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
+            break
+        }
+    }
+    
     @IBAction func didTapLogoff(_ sender: Any) {
         signOutGlobally() {
             (success, errMessage) in
