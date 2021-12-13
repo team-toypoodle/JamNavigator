@@ -160,3 +160,25 @@ extension TopViewController {
         }
     }
 }
+
+extension DemotapesTableViewClass{
+    func downloadMusic (key: String, callback: @escaping (Bool, Data?) -> Void) {
+        let storageOperation = Amplify.Storage.downloadData(
+            key: key,
+            progressListener: {
+                progress in
+                print("Progress: \(progress)")
+            },
+            resultListener: {
+                (event) in
+                switch event {
+                case let .success(data):
+                    print("Completed: \(data)")
+                    callback(true, data)
+                case let .failure(storageError):
+                    print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+                    callback(false, nil)
+            }
+        })
+    }
+}
