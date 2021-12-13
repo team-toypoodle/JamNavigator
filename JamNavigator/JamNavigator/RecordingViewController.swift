@@ -44,7 +44,7 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
 
-        audioRecorder = try! AVAudioRecorder(url: getURL(), settings: settings)
+        audioRecorder = try! AVAudioRecorder(url: getLocalAudioUrl(), settings: settings)
         audioRecorder.delegate = self
         audioRecorder.record()
 
@@ -76,16 +76,9 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
         recordingLabel.text = "Rec"
     }
     
-    func getURL() -> URL{
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let docsDirect = paths[0]
-        let url = docsDirect.appendingPathComponent("recording.m4a")
-        return url
-    }
-    
     @IBAction func play(_ sender: Any) {
        
-        audioPlayer = try! AVAudioPlayer(contentsOf: getURL())
+        audioPlayer = try! AVAudioPlayer(contentsOf: getLocalAudioUrl())
         audioPlayer.delegate = self
         audioPlayer.play()
 
