@@ -53,6 +53,19 @@ amplify pull
 
 Setup compeleted!!
 
+---
+### Powerd by Team Toy Poodle
+- Tech Leader : Misaki
+- member : Tono, Tasuku
+
+#### assignment task
+- PoC : 
+  - Tono
+- UI maker : 
+  - Tasuku : Driver
+  - Misaki : Navigator
+- Development
+  - All member
 
 
 
