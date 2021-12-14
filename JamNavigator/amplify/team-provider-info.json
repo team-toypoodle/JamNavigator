@@ -12,15 +12,14 @@
       "AmplifyAppId": "d22weszz7mzjkl"
     },
     "categories": {
-      "auth": {
-        "jamnavigator367e195e": {},
-        "true": {}
-      },
       "function": {
         "S3Trigger84c8f162": {
           "deploymentBucketName": "amplify-jamnavigator-dev-104813-deployment",
           "s3Key": "amplify-builds/S3Trigger84c8f162-53364c4d474e43744368-build.zip"
         }
+      },
+      "auth": {
+        "jamnavigator367e195e": {}
       }
     }
   }
