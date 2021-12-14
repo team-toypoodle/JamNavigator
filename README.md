@@ -19,7 +19,12 @@ sudo npm install -g @aws-amplify/cli
 amplify -v
 ```
 
-3.Amplyfi setup start.
+3.Check the folder.(If this is file not found, include team-provider-info.json.)
+
+~/JamNavigator/JamNavigator/amplify/team-provider-info.json
+
+
+4.Amplyfi setup start.
 ```
 amplify pull
 ```
@@ -40,7 +45,7 @@ Backend environment 'dev' found. Initializing...
 
 Successfully pulled backend environment dev from the cloud.
 ```
-4.Run the following command again.
+5.Run the following command again.
 
 ```
 amplify pull
