@@ -30,7 +30,7 @@ amplify pull
 ```
 
 ```
-? Select the authentication method you want to use: AWS profile
+? Select the authentication method you want to use: AWS access keys
 AWS access credentials can not be found.
 ? Setup new user No
 ? accessKeyId:  ********************
