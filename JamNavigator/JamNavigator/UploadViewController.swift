@@ -84,7 +84,7 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
         commentText.resignFirstResponder()
     }
     
-    // AWS GraphQLに新しい デモテープインスタンスを保存する
+//     AWS GraphQLに新しい, デモテープインスタンスを保存する
     func createDemotape(tape: Demotape) {
         Amplify.API.mutate(request: .create(tape)) {
             event in
