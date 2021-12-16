@@ -3,7 +3,6 @@
 //  JamNavigator
 //
 //  Created by Manabu Tonosaki on 2021/12/10.
-//
 
 import UIKit
 
