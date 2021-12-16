@@ -15,6 +15,7 @@
 		026E46C42769AD62003E8CF2 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C32769AD62003E8CF2 /* AWSPluginsCore */; };
 		026E46C62769AD62003E8CF2 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */; };
 		026E46C82769AD62003E8CF2 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C72769AD62003E8CF2 /* Amplify */; };
+		02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* PushNotificationHandler.swift */; };
 		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
 		02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */; };
 		02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		026A5A7F2763233500C09469 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
+		02C0650D276B224800FBA95B /* PushNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandler.swift; sourceTree = "<group>"; };
 		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
 		02F06256276B1160007ADF50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
 				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
+				02C0650D276B224800FBA95B /* PushNotificationHandler.swift */,
 				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
@@ -365,6 +368,7 @@
 				02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
+				02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
 				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
 			);
@@ -566,7 +570,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dig.toypoodle.jamnavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "JamNavi Provisioning Profiles";
+				PROVISIONING_PROFILE_SPECIFIER = "Jam Navi Provisioning Profile 2";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -599,7 +603,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dig.toypoodle.jamnavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "JamNavi Provisioning Profiles";
+				PROVISIONING_PROFILE_SPECIFIER = "Jam Navi Provisioning Profile 2";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

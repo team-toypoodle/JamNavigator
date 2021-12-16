@@ -11,7 +11,6 @@ import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
 import AWSAPIPlugin
 import Firebase
-import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             application.registerForRemoteNotifications()
         }
-
+                
         // AWS Amplify
         do {
             //Amplify.Logging.logLevel = .verbose
@@ -73,29 +72,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(UIBackgroundFetchResult.newData)
     }
 }
-
-extension AppDelegate : UNUserNotificationCenterDelegate {
-
-    // HACK:アプリがフォアグランドにいるときにPUSHされたイベント処理
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-
-        let userInfo = notification.request.content.userInfo
-        if let messageID = userInfo["gcm.message_id"] {
-            print("Message ID: \(messageID)")
-        }
-        print("======= PUSH1 \(userInfo)")
-        //completionHandler([])
-        completionHandler([ .badge, .sound, .banner ])
-   }
-
-    // HACK:ユーザーが通知バナーをタップした時に発火するイベント処理
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        if let messageID = userInfo["gcm.message_id"] {
-            print("Message ID: \(messageID)")
-        }
-        print("======= PUSH2 \(userInfo)")
-        completionHandler()
-    }
-}
-
