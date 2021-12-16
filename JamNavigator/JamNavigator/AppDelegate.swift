@@ -11,15 +11,28 @@ import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
 import AWSAPIPlugin
 import Firebase
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // 起動後の初期化処理
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        FirebaseApp.configure()
+    
+        // PUSH Notofication w/ Firebase
+        do {
+            FirebaseApp.configure()
+            UNUserNotificationCenter.current().requestAuthorization(    // PUSH通知の受信機能 有効化1
+                options: [.alert, .sound, .badge]){
+                (granted, _) in
+                if granted {
+                    UNUserNotificationCenter.current().delegate = self
+                }
+            }
+            application.registerForRemoteNotifications()
+        }
 
+        // AWS Amplify
         do {
             //Amplify.Logging.logLevel = .verbose
             try Amplify.add(plugin: AWSCognitoAuthPlugin()) // for Cognito authentication
@@ -36,19 +49,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: UISceneSession Lifecycle
-    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+
+    // PUSH通知対応
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        // Print message ID.
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
     }
     
-    
+    // サイレント通知対応
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // Print message ID.
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+}
+
+extension AppDelegate : UNUserNotificationCenterDelegate {
+
+    // HACK:アプリがフォアグランドにいるときにPUSHされたイベント処理
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        let userInfo = notification.request.content.userInfo
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
+        print("======= PUSH1 \(userInfo)")
+        //completionHandler([])
+        completionHandler([ .badge, .sound, .banner ])
+   }
+
+    // HACK:ユーザーが通知バナーをタップした時に発火するイベント処理
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        if let messageID = userInfo["gcm.message_id"] {
+            print("Message ID: \(messageID)")
+        }
+        print("======= PUSH2 \(userInfo)")
+        completionHandler()
+    }
 }
 
