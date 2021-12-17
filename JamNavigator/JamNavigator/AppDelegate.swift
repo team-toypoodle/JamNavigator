@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Fatal error : Amplify init exception")
             return false
         }
+        
         return true
     }
     

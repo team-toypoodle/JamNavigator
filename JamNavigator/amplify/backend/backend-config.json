@@ -46,6 +46,12 @@
           ]
         }
       ]
+    },
+    "jamnavipushapi": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
     }
   },
   "storage": {
@@ -82,6 +88,20 @@
           "additionalAuthenticationProviders": []
         }
       }
+    },
+    "jamnavipush": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "jamnavipushapi",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   }
 }
