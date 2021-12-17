@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try Amplify.add(plugin: AWSCognitoAuthPlugin()) // for Cognito authentication
             try Amplify.add(plugin: AWSS3StoragePlugin())   // for S3 Storage access
             try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels())) // for GraphQL Demotabe
+            try Amplify.add(plugin: AWSAPIPlugin()) // for push rest (express.js) api
             try Amplify.configure()
             print("Amplify init completed successfully!")
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		024F1055276B3CC400028293 /* BackendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F1054276B3CC400028293 /* BackendClient.swift */; };
 		026A5A802763233500C09469 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A7F2763233500C09469 /* SignupViewController.swift */; };
 		026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A8127632B6900C09469 /* ViewControllerUtils.swift */; };
 		026E46BE2769AD62003E8CF2 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46BD2769AD62003E8CF2 /* AWSAPIPlugin */; };
@@ -63,7 +62,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		024F1054276B3CC400028293 /* BackendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendClient.swift; sourceTree = "<group>"; };
 		026A5A7F2763233500C09469 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
 		02C0650D276B224800FBA95B /* PushNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandler.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
 				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
-				024F1054276B3CC400028293 /* BackendClient.swift */,
 				02C0650D276B224800FBA95B /* PushNotificationHandler.swift */,
 				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
@@ -372,7 +369,6 @@
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
 				02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */,
-				024F1055276B3CC400028293 /* BackendClient.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
 				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
 			);

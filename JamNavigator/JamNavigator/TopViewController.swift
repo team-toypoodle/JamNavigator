@@ -17,9 +17,8 @@ class TopViewController: UIViewController {
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchCurrentAuthSession()   // 自動認証を トライしてみる
-        
+
         //以下は、サインアップの手順サンプル
         //signUp(username: "tonosaki", password: "tonotono", email: "manabu@tomarika.com") // received 568764
         //confirmSignUp(for: "tonosaki", with: "568764")
@@ -39,6 +38,9 @@ class TopViewController: UIViewController {
             print("Navi: Top --> Menu")
             let menuView = segue.destination as! MenuViewController
             menuView.userSub = userSub
+
+            // TODO: Delete this because of test code by Tono
+            pushRemote()
             
         case "segueTopToSignup":
             let signupView = segue.destination as! SignupViewController
