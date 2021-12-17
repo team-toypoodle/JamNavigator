@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // PUSH Notofication w/ Firebase
         do {
             FirebaseApp.configure()
+            //Messaging.messaging().delegate = self  commented out because of cannot assign value of type error.
             UNUserNotificationCenter.current().requestAuthorization(    // PUSH通知の受信機能 有効化1
                 options: [.alert, .sound, .badge]){
                 (granted, _) in
@@ -55,22 +56,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
-
-    // PUSH通知対応
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        // Print message ID.
-        if let messageID = userInfo["gcm.message_id"] {
-            print("Message ID: \(messageID)")
-        }
-    }
-    
-    // サイレント通知対応
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // Print message ID.
-        if let messageID = userInfo["gcm.message_id"] {
-            print("Message ID: \(messageID)")
-        }
-        completionHandler(UIBackgroundFetchResult.newData)
     }
 }

@@ -30,6 +30,13 @@ Amplify Params - DO NOT EDIT */
 var express = require('express')
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+var admin = require("firebase-admin");
+var serviceAccount = require('serviceAccount.json');
+
+// Initi for Firebase
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 // declare a new express app
 var app = express()
@@ -63,13 +70,23 @@ app.get('/push/:token/*', function(req, res) {
 ****************************/
 
 app.post('/push/:token', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  
+  // prepare fcm message
+  const fcm = admin.messaging();
+  const messages = [];
+  // messages.push({
+  //   notification: { title: 'Price drop', body: '5% off all electronics' },
+  //   token: registrationToken,
+  // });
+  messages.push({
+    notification: { title: 'Hello !!', body: 'How are you ?' },
+    topic: 'request-topic',
+  });
+  res.json({success: 'post-1 call succeed!', url: req.url, body: req.body});
 });
 
 app.post('/push/:token/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  res.json({success: 'post-2 call succeed!', url: req.url, body: req.body});
 });
 
 /****************************

@@ -30,6 +30,13 @@ Amplify Params - DO NOT EDIT */
 var express = require('express')
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+var admin = require("firebase-admin");
+var serviceAccount = require('serviceAccount.json');
+
+// Initi for Firebase
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 // declare a new express app
 var app = express()
