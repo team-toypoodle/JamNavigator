@@ -4,20 +4,13 @@ Use the following code to retrieve configured secrets from SSM:
 const aws = require('aws-sdk');
 
 const { Parameters } = await (new aws.SSM())
-  .getParameters({
+    .getParameters({
     Names: ["secretkey"].map(secretName => process.env[secretName]),
     WithDecryption: true,
-  })
-  .promise();
+    })
+    .promise();
 
 Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }[]
-*/
-/*
-Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
-    http://aws.amazon.com/apache2.0/
-or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and limitations under the License.
 */
 
 
@@ -35,7 +28,7 @@ var serviceAccount = require('serviceAccount.json');
 
 // Initi for Firebase
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)
 });
 
 // declare a new express app
@@ -45,9 +38,9 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "*")
-  next()
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "*")
+    next()
 });
 
 
@@ -55,28 +48,87 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
-app.get('/push/:token', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+
+app.post('/push/:token', async (req, res) => {
+
+    console.log("POST-A : " + item);
+
+    // prepare fcm message
+    // https://firebase.google.com/docs/cloud-messaging/send-message?hl=ja
+    const fcm = admin.messaging();
+    var item = {
+        notification: { title: req.body.title, body: req.body.body },
+        apns: {
+            payload: {
+                aps: {
+                    sound: "default"
+                }
+            }
+        },
+    };
+    if( req.body.type == "token"){
+        item.token = req.params.token;
+    }
+    if( req.body.type == "topic"){
+        item.topic = req.params.token;
+    }
+    console.log("POST-A : " + item);
+    const messages = [];
+    messages.push(item);
+
+    try {
+        console.log('------ PUSH REQUESTED1 !!');
+        console.log(item);
+        const response = await fcm.sendAll(messages);
+        console.log(response.successCount + ' messages were sent successfully');
+    }
+    catch( ex ) {
+        console.log("*** FCM PUSH ERROR1 : " + ex);
+    }
+
+    res.json({success: 'post-1 call completed.', url: req.url, body: req.body});
 });
 
-app.get('/push/:token/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+
+app.get('/', async (req, res) => {
+    // type: 'topic', token: 'request-topic', title: 'Hey!!', message: 'Piko!' 
+    const e = req.apiGateway.event;
+    console.log("GET-A : " + e);
+    const fcm = admin.messaging();
+    const item = {
+        notification: { title: e.title, body: e.message },
+        apns: {
+            payload: {
+                aps: {
+                    sound: "default"
+                }
+            }
+        },
+    };
+    if( e.type == "token"){
+        item.token = e.token;
+    }
+    if( e.type == "topic"){
+        item.topic = e.token;
+    }
+    const messages = [];
+    messages.push(item);
+
+    try {
+        console.log('------ PUSH REQUESTED2 !!' );
+        console.log(item);
+        const response = await fcm.sendAll(messages);
+        console.log(response.successCount + ' messages were sent successfully');
+    }
+    catch( ex ) {
+        console.log("*** FCM PUSH ERROR2 : " + ex);
+    }
+    res.json({success: 'get-a call succeed!', url: req.url});
 });
 
-/****************************
-* Example post method *
-****************************/
-
-app.post('/push/:token', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
 
 app.post('/push/:token/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+    res.json({success: 'post-2 call succeed!', url: req.url, body: req.body});
 });
 
 /****************************
@@ -84,13 +136,13 @@ app.post('/push/:token/*', function(req, res) {
 ****************************/
 
 app.put('/push/:token', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+    // Add your code here
+    res.json({success: 'put-1 call succeed!', url: req.url, body: req.body})
 });
 
 app.put('/push/:token/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+    // Add your code here
+    res.json({success: 'put-2 call succeed!', url: req.url, body: req.body})
 });
 
 /****************************
@@ -98,13 +150,13 @@ app.put('/push/:token/*', function(req, res) {
 ****************************/
 
 app.delete('/push/:token', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+    // Add your code here
+    res.json({success: 'delete-1 call succeed!', url: req.url});
 });
 
 app.delete('/push/:token/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+    // Add your code here
+    res.json({success: 'delete-2 call succeed!', url: req.url});
 });
 
 app.listen(3000, function() {

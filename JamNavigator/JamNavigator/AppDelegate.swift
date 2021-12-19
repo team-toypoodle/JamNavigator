@@ -19,19 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         // PUSH Notofication w/ Firebase
-        do {
-            FirebaseApp.configure()
-            //Messaging.messaging().delegate = self  commented out because of cannot assign value of type error.
-            UNUserNotificationCenter.current().requestAuthorization(    // PUSH通知の受信機能 有効化1
-                options: [.alert, .sound, .badge]){
-                (granted, _) in
-                if granted {
-                    UNUserNotificationCenter.current().delegate = self
-                }
-            }
-            application.registerForRemoteNotifications()
-        }
-                
+        initPushNotification()
+        application.registerForRemoteNotifications()
+
+
         // AWS Amplify
         do {
             //Amplify.Logging.logLevel = .verbose

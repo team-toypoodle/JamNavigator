@@ -10,6 +10,7 @@ Amplify Params - DO NOT EDIT */
 
 var tapeRepos = require('./DemotapeRepository.js');
 
+// INTERVAL TIMER TRIGGER
 exports.handler = async (event) => {
     const data = await tapeRepos.getItem()
     return {

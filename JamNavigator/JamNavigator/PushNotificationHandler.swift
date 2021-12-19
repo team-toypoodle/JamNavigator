@@ -14,9 +14,36 @@ import Amplify
 extension UIViewController {
     
     // リモート通知を要求する
-    func pushRemote() {
-        let message = #"{"message": "my new Todo"}"#
-        let request = RESTRequest(path: "/push/123", body: message.data(using: .utf8))
+    func pushRemote(topic: String, title: String, message: String) {
+//        let message = #"{"type": "token", "title": "ぴよぴよ", "body": "鳥さんです！"}"#
+//        let request = RESTRequest(path: "/push/e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", body: message.data(using: .utf8))
+        var json = #"{"type": "topic", "title": "@@TITLE@@", "body": "@@BODY@@"}"#
+        json = json.replacingOccurrences(of: "@@TITLE@@", with: title)
+        json = json.replacingOccurrences(of: "@@BODY@@", with: message)
+        let path = "/push/\(topic)"
+        let request = RESTRequest(path: path , body: json.data(using: .utf8))
+        Amplify.API.post(request: request) {
+            result in
+            switch result {
+            case .success(let data):
+                let str = String(decoding: data, as: UTF8.self)
+                print("＋＋＋＋＋", str)
+                    
+            case .failure(let apiError):
+                print("＋＋＋＋＋", apiError)
+            }
+        }
+    }
+
+    // リモート通知を要求する
+    func pushRemote(registrationToken: String, title: String, message: String) {
+//        let message = #"{"type": "token", "title": "ぴよぴよ", "body": "鳥さんです！"}"#
+//        let request = RESTRequest(path: "/push/e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", body: message.data(using: .utf8))
+        var json = #"{"type": "token", "title": "@@TITLE@@", "body": "@@BODY@@"}"#
+        json = json.replacingOccurrences(of: "@@TITLE@@", with: title)
+        json = json.replacingOccurrences(of: "@@BODY@@", with: message)
+        let path = "/push/\(registrationToken)"
+        let request = RESTRequest(path: path , body: json.data(using: .utf8))
         Amplify.API.post(request: request) {
             result in
             switch result {
@@ -44,7 +71,40 @@ extension UIViewController {
 
 }
 
-extension AppDelegate : UNUserNotificationCenterDelegate {
+extension AppDelegate : UNUserNotificationCenterDelegate, MessagingDelegate {
+    
+    // Firebase PUSH通知 初期化処理
+    func initPushNotification() {
+        FirebaseApp.configure()
+
+        //Messaging.messaging().delegate = self  commented out because of cannot assign value of type error.
+        UNUserNotificationCenter.current().requestAuthorization(    // PUSH通知の受信機能 有効化1
+            options: [.alert, .sound, .badge]){
+            (granted, _) in
+            if granted {
+                UNUserNotificationCenter.current().delegate = self
+                
+            } else {
+                print("ERROR: JamNavi: PUSH Authorization error")
+            }
+        }
+        
+        Messaging.messaging().delegate = self
+        Messaging.messaging().token {
+            token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+                print("FCM registration token: \(token)")
+            }
+        }
+    }
+
+    // 通知用トークンを取得（アプリ再インストールなどで変更されるが、再起動ぐらいでは変わらない値）
+    func getFcmToken() -> String? {
+        let token = Messaging.messaging().fcmToken  // [START log_fcm_reg_token]
+        return token
+    }
     
     // PUSH通知対応
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {

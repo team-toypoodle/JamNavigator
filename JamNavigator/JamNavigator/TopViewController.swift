@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TopViewController: UIViewController {
     
@@ -18,6 +19,25 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchCurrentAuthSession()   // 自動認証を トライしてみる
+        
+        // FCM:PUSH通知の登録
+        NotificationCenter.default.addObserver(
+              self,
+              selector: #selector(displayFCMToken(notification:)),
+              name: Notification.Name("FCMToken"),
+              object: nil
+        )
+        
+        // トピックの登録
+        Messaging.messaging().subscribe(toTopic: "request-topic") {   // [START subscribe_topic]
+            error in
+            print("Subscribed to 'request-topic' topic : \(error?.localizedDescription ?? "OK")")
+        }
+
+        // TEST CODE
+        // pushLocal(title: "はろー", body: "こんにちは", delaySeconds: 3.5, sound: .default)
+        //pushRemote(topic: "request-topic", title: "もしもし！", message: "かめさん")
+        pushRemote(registrationToken: "e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", title: "速いね！", message: "うさぎさん")
 
         //以下は、サインアップの手順サンプル
         //signUp(username: "tonosaki", password: "tonotono", email: "manabu@tomarika.com") // received 568764
@@ -30,6 +50,13 @@ class TopViewController: UIViewController {
         //signOutGlobally()
     }
     
+    @objc func displayFCMToken(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let fcmToken = userInfo["token"] as? String {
+            print("Received FCM token: \(fcmToken)")
+        }
+    }
+
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -38,9 +65,6 @@ class TopViewController: UIViewController {
             print("Navi: Top --> Menu")
             let menuView = segue.destination as! MenuViewController
             menuView.userSub = userSub
-
-            // TODO: Delete this because of test code by Tono
-            pushRemote()
             
         case "segueTopToSignup":
             let signupView = segue.destination as! SignupViewController
