@@ -34,7 +34,10 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     var demotape: Demotape? = nil
     let datalist: [String] = ["2","3"]
     
-//  店の位置をポイントする関数
+    @IBAction func didTapRequestButton(_ sender: Any) {
+        
+    }
+    //  店の位置をポイントする関数
     func addPin() {
         for i in 0..<addresses.count {
             CLGeocoder().geocodeAddressString(addresses[i].address) { placemarks, error in

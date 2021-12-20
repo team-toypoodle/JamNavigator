@@ -825,6 +825,9 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Request"/>
                             </button>
+                            <connections>
+                                <action selector="didTapRequestButton:" destination="vCN-ND-L1y" id="uxf-2F-Vbd"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
