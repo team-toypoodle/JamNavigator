@@ -13,10 +13,16 @@ import Amplify
 
 extension UIViewController {
     
+    func joinToFcmTopic(topic: String ) {
+        Messaging.messaging().subscribe(toTopic: topic) {   // [START subscribe_topic]
+            error in
+            print("Error: Subscribed to 'request-topic' topic : \(error?.localizedDescription ?? "OK")")
+        }
+    }
+    
     // リモート通知を要求する
     func pushRemote(topic: String, title: String, message: String) {
-//        let message = #"{"type": "token", "title": "ぴよぴよ", "body": "鳥さんです！"}"#
-//        let request = RESTRequest(path: "/push/e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", body: message.data(using: .utf8))
+
         var json = #"{"type": "topic", "title": "@@TITLE@@", "body": "@@BODY@@"}"#
         json = json.replacingOccurrences(of: "@@TITLE@@", with: title)
         json = json.replacingOccurrences(of: "@@BODY@@", with: message)
@@ -37,8 +43,7 @@ extension UIViewController {
 
     // リモート通知を要求する
     func pushRemote(registrationToken: String, title: String, message: String) {
-//        let message = #"{"type": "token", "title": "ぴよぴよ", "body": "鳥さんです！"}"#
-//        let request = RESTRequest(path: "/push/e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", body: message.data(using: .utf8))
+
         var json = #"{"type": "token", "title": "@@TITLE@@", "body": "@@BODY@@"}"#
         json = json.replacingOccurrences(of: "@@TITLE@@", with: title)
         json = json.replacingOccurrences(of: "@@BODY@@", with: message)
@@ -145,7 +150,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate, MessagingDelegate {
         completionHandler()
     }
     
+    // トークン取得完了時のイベント
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+
         print("Firebase registration token: \(String(describing: fcmToken))")
 
         let dataDict: [String: String] = ["token": fcmToken ?? ""]

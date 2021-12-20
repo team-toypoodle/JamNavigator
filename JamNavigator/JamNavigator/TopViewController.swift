@@ -20,19 +20,8 @@ class TopViewController: UIViewController {
         super.viewDidLoad()
         fetchCurrentAuthSession()   // 自動認証を トライしてみる
         
-        // FCM:PUSH通知の登録
-        NotificationCenter.default.addObserver(
-              self,
-              selector: #selector(displayFCMToken(notification:)),
-              name: Notification.Name("FCMToken"),
-              object: nil
-        )
-        
         // トピックの登録
-        Messaging.messaging().subscribe(toTopic: "request-topic") {   // [START subscribe_topic]
-            error in
-            print("Subscribed to 'request-topic' topic : \(error?.localizedDescription ?? "OK")")
-        }
+        joinToFcmTopic(topic: "request-topic")
 
         // TEST CODE
         // pushLocal(title: "はろー", body: "こんにちは", delaySeconds: 3.5, sound: .default)
