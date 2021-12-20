@@ -10,13 +10,12 @@ import Amplify
 import AWSAPIPlugin
 import AVFoundation
 
-final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelegate{
-    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    private var demotapes: List<Demotape> = []
-    var audioPlayer: AVAudioPlayer!
-    
+
+class DemotapesTableViewClass : DemotapesTableViewBase {
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         listDemotapes(){
             (success, list) in
             if success {
@@ -31,6 +30,13 @@ final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelega
         }
         tableView.allowsSelection = true
     }
+}
+
+class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
+    var demotapes: Array<Demotape> = []
+    var audioPlayer: AVAudioPlayer!
+
     var selectedIndexPath: IndexPath? = nil
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let request = UIContextualAction(style: .normal, title: "Match", handler: {
@@ -119,35 +125,5 @@ final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelega
         tableView.reloadData()
         isPlaying = false
     }
-    
-    
-    
-    
-    
-    
-    // IDを指定して、デモテープインスタンスを取得する（コールバックで）
-    func getDemotape(idString: String, callback: @escaping (Bool, Demotape?) -> Void) {
-        Amplify.API.query(request: .get(Demotape.self, byId: idString)) {
-            event in
-            switch event {
-            case .success(let result):
-                switch result {
-                case .success(let demotape):
-                    guard let demotape = demotape else {
-                        print("Could not find demotape")
-                        return
-                    }
-                    print("Successfully retrieved demotape: \(demotape)")
-                    callback(true, demotape)
-                    
-                case .failure(let error):
-                    print("Got failed result with \(error.errorDescription)")
-                    callback(false, nil)
-                }
-            case .failure(let error):
-                print("Got failed event with error \(error)")
-                callback(false, nil)
-            }
-        }
-    }
+
 }

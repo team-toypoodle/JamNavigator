@@ -347,6 +347,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="Search"/>
+                                <connections>
+                                    <action selector="didTapMatchingButton:" destination="2cY-JC-GCx" eventType="touchUpInside" id="c8c-Zw-HcX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyPage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04S-ND-EsI">
                                 <rect key="frame" x="248" y="768" width="91" height="32"/>
@@ -364,6 +367,10 @@
                                     <segue destination="khl-OD-TTI" kind="show" identifier="segueMenuToRec" id="WpR-E8-Cr5"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="notificationbadge" translatesAutoresizingMaskIntoConstraints="NO" id="ZFl-Ea-QhP">
+                                <rect key="frame" x="106" y="420" width="65" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HgU-ZY-Qcr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -374,7 +381,16 @@
                                 <action selector="didTapLogoff:" destination="2cY-JC-GCx" id="8tU-8b-8e7"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" id="5w1-9E-inp">
+                            <connections>
+                                <segue destination="8E8-Wp-Zg4" kind="show" identifier="segueMenuToMatchConfirm" id="IvH-tF-6zT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="matchingButton" destination="pWO-Jo-Hns" id="SRU-f1-HyC"/>
+                        <outlet property="notificationBadgeImage" destination="ZFl-Ea-QhP" id="hIb-nb-b4u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Vn-ac-hI6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -430,6 +446,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1r-9g-NNr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2669.5652173913045" y="83.705357142857139"/>
+        </scene>
+        <!--Match Confirm Table View Controller-->
+        <scene sceneID="Lx6-2B-1EM">
+            <objects>
+                <tableViewController id="8E8-Wp-Zg4" customClass="MatchConfirmTableViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="XEQ-dW-0ml">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DemotapeCell" id="nfp-KJ-FkG">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nfp-KJ-FkG" id="Dn3-v0-Jty">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8E8-Wp-Zg4" id="OSa-79-2pT"/>
+                            <outlet property="delegate" destination="8E8-Wp-Zg4" id="bLr-2m-w96"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="c8h-8O-pJ8"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iMJ-Yr-EwD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2670" y="811"/>
         </scene>
         <!--Rec-->
         <scene sceneID="3D5-EI-Fu8">
@@ -905,6 +950,7 @@
         <image name="UploadFile" width="300" height="90"/>
         <image name="demotape" width="200" height="200"/>
         <image name="mike" width="150" height="150"/>
+        <image name="notificationbadge" width="96" height="96"/>
         <image name="play" width="200" height="200"/>
         <image name="rec" width="150" height="150"/>
         <image name="signup" width="200" height="200"/>

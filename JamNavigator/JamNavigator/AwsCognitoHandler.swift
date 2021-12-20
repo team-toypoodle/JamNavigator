@@ -161,7 +161,7 @@ extension TopViewController {
     }
 }
 
-extension DemotapesTableViewClass{
+extension DemotapesTableViewBase {
     func downloadMusic (key: String, callback: @escaping (Bool, Data?) -> Void) {
         let storageOperation = Amplify.Storage.downloadData(
             key: key,

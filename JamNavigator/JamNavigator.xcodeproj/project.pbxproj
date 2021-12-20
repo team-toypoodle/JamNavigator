@@ -16,6 +16,7 @@
 		026E46C62769AD62003E8CF2 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */; };
 		026E46C82769AD62003E8CF2 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C72769AD62003E8CF2 /* Amplify */; };
 		02B92A4C277061AF00116D26 /* AwsDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4B277061AF00116D26 /* AwsDataRepository.swift */; };
+		02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */; };
 		02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* PushNotificationHandler.swift */; };
 		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
 		02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */; };
@@ -70,6 +71,7 @@
 		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
 		02B92A4A27705E4100116D26 /* README.DataDesign.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.DataDesign.md; sourceTree = "<group>"; };
 		02B92A4B277061AF00116D26 /* AwsDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsDataRepository.swift; sourceTree = "<group>"; };
+		02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchConfirmTableViewController.swift; sourceTree = "<group>"; };
 		02C0650D276B224800FBA95B /* PushNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandler.swift; sourceTree = "<group>"; };
 		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
@@ -178,12 +180,13 @@
 				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
+				8781C300276B15CB005AF5BB /* RequestViewController.swift */,
+				02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */,
+				02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */,
 				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
 				02B92A4B277061AF00116D26 /* AwsDataRepository.swift */,
 				02C0650D276B224800FBA95B /* PushNotificationHandler.swift */,
 				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
-				8781C300276B15CB005AF5BB /* RequestViewController.swift */,
-				02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
@@ -386,6 +389,7 @@
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */,
 				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
+				02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */,
 				02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
 				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
