@@ -560,6 +560,9 @@
 				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "位置情報を使用します";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を使用します";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = mike;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -593,6 +596,9 @@
 				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "位置情報を使用します";
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を使用します";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = mike;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

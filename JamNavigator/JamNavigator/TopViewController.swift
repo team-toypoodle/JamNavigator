@@ -24,9 +24,9 @@ class TopViewController: UIViewController {
         joinToFcmTopic(topic: "request-topic")
 
         // TEST CODE
-        // pushLocal(title: "はろー", body: "こんにちは", delaySeconds: 3.5, sound: .default)
+//         pushLocal(title: "はろー", body: "こんにちは", delaySeconds: 3.5, sound: .default)
         //pushRemote(topic: "request-topic", title: "もしもし！", message: "かめさん")
-        pushRemote(registrationToken: "e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", title: "速いね！", message: "うさぎさん")
+//        pushRemote(registrationToken: "e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", title: "速いね！", message: "うさぎさん")
 
         //以下は、サインアップの手順サンプル
         //signUp(username: "tonosaki", password: "tonotono", email: "manabu@tomarika.com") // received 568764

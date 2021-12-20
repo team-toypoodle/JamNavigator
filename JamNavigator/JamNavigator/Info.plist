@@ -21,13 +21,7 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSLocationUsageDescription</key>
-	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>位置情報を使用します</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>位置情報を使用します</string>
-　<key>UIBackgroundModes</key>
+	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
