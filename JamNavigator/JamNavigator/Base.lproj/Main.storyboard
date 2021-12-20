@@ -420,9 +420,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Demotape" id="hP8-8N-uSu">
-                        <barButtonItem key="rightBarButtonItem" title="Demo" id="Kxx-sB-7r4">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" id="Kxx-sB-7r4">
                             <connections>
-                                <segue destination="vCN-ND-L1y" kind="show" id="pJz-I9-9La"/>
+                                <segue destination="vCN-ND-L1y" kind="show" identifier="toRequest" id="pJz-I9-9La"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

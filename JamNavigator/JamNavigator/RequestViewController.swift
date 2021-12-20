@@ -31,6 +31,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     @IBOutlet weak var totimePicker: UIDatePicker!
     @IBOutlet weak var drumrollPicker: UIPickerView!
     
+    var demotape: Demotape? = nil
     let datalist: [String] = ["2","3"]
     
 //  店の位置をポイントする関数
@@ -52,6 +53,8 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager!.requestWhenInUseAuthorization()
+        
+        self.title = demotape?.name ?? "NoName"
         
 //        倍率設定
         let span = MKCoordinateSpan(latitudeDelta:0.01,

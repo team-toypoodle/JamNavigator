@@ -30,6 +30,29 @@ final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelega
         }
         tableView.allowsSelection = true
     }
+    var selectedIndexPath: IndexPath? = nil
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let request = UIContextualAction(style: .normal, title: "Match", handler: {
+            (action: UIContextualAction, view: UIView, success:(Bool) -> Void) in
+            self.selectedIndexPath = indexPath
+            self.performSegue(withIdentifier: "toRequest", sender: self)
+            
+        })
+        request.backgroundColor = .darkGray
+        return UISwipeActionsConfiguration(actions: [request])
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toRequest" {
+            guard let destination = segue.destination as? RequestViewController else {
+                fatalError("\(segue.destination) Error")
+            }
+            guard let selectedIndexPath = selectedIndexPath else {
+                return
+            }
+
+            destination.demotape = demotapes[selectedIndexPath.row]
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return demotapes.count
