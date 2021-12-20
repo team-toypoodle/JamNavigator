@@ -10,12 +10,12 @@ import Amplify
 import AWSAPIPlugin
 import AVFoundation
 
-final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelegate{
-    private var demotapes: List<Demotape> = []
-    var audioPlayer: AVAudioPlayer!
-    
+
+class DemotapesTableViewClass : DemotapesTableViewBase {
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         listDemotapes(){
             (success, list) in
             if success {
@@ -30,6 +30,13 @@ final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelega
         }
         tableView.allowsSelection = true
     }
+}
+
+class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
+    var demotapes: Array<Demotape> = []
+    var audioPlayer: AVAudioPlayer!
+
     var selectedIndexPath: IndexPath? = nil
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let request = UIContextualAction(style: .normal, title: "Match", handler: {
@@ -41,19 +48,26 @@ final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelega
         request.backgroundColor = .darkGray
         return UISwipeActionsConfiguration(actions: [request])
     }
+    
+    // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toRequest" {
-            guard let destination = segue.destination as? RequestViewController else {
-                fatalError("\(segue.destination) Error")
-            }
-            guard let selectedIndexPath = selectedIndexPath else {
-                return
-            }
-
-            destination.demotape = demotapes[selectedIndexPath.row]
+        
+        switch segue.identifier {
+        case "toRequest":
+                guard let destination = segue.destination as? RequestViewController else {
+                    fatalError("\(segue.destination) Error")
+                }
+                guard let selectedIndexPath = selectedIndexPath else {
+                    return
+                }
+                destination.demotape = demotapes[selectedIndexPath.row]
+                destination.userSub = userSub
+        default:
+            print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
+            break
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return demotapes.count
     }
@@ -111,60 +125,5 @@ final class DemotapesTableViewClass: UITableViewController , AVAudioPlayerDelega
         tableView.reloadData()
         isPlaying = false
     }
-    
-    
-    
-    
-    
-    
-    // IDを指定して、デモテープインスタンスを取得する（コールバックで）
-    func getDemotape(idString: String, callback: @escaping (Bool, Demotape?) -> Void) {
-        Amplify.API.query(request: .get(Demotape.self, byId: idString)) {
-            event in
-            switch event {
-            case .success(let result):
-                switch result {
-                case .success(let demotape):
-                    guard let demotape = demotape else {
-                        print("Could not find demotape")
-                        return
-                    }
-                    print("Successfully retrieved demotape: \(demotape)")
-                    callback(true, demotape)
-                    
-                case .failure(let error):
-                    print("Got failed result with \(error.errorDescription)")
-                    callback(false, nil)
-                }
-            case .failure(let error):
-                print("Got failed event with error \(error)")
-                callback(false, nil)
-            }
-        }
-    }
-    
-    // デモテープの一覧をクラウドから収集
-    func listDemotapes(callback: @escaping (Bool, List<Demotape>?) -> Void) {
-        let demotape = Demotape.keys
-        let predicate = demotape.name != ""
-        Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) {
-            event in
-            switch event {
-            case .success(let result):
-                switch result {
-                case .success(let tapes):
-                    print("Successfully retrieved list of todos count=: \(tapes.count)")
-                    callback(true, tapes)
-                    
-                case .failure(let error):
-                    print("Got failed result with \(error.errorDescription)")
-                    callback(false, nil)
-                }
-            case .failure(let error):
-                print("Got failed event with error \(error)")
-                callback(false, nil)
-            }
-        }
-    }
-    
+
 }

@@ -25,4 +25,16 @@ extension UIViewController {
         let url = docsDirect.appendingPathComponent("recording.m4a")
         return url
     }
+    
+    // コントロールの Enable・Disableの状態を一括して行う
+    func applyEnableDisableDesign(control: UIControl, sw: Bool) {
+        if sw {
+            control.isEnabled = true
+            control.alpha = 1.0
+        } else {
+            control.isEnabled = false
+            control.alpha = 0.25
+        }
+        
+    }
 }

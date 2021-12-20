@@ -42,11 +42,11 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
             formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let dateTimeStr = formatter1.string(from: Date())
             
-            let instNames = [(checkGuitar, "Guitar"),(checkPiano, "Piano"),(checkViolin, "Violin"),(checkOther,"Other")].filter { $0.0.isOn ?? false }.map {
+            let instNames = [(checkGuitar, "Guitar"),(checkPiano, "Piano"),(checkViolin, "Violin"),(checkOther,"Other")].filter { $0.0.isOn }.map {
                 $0.1
             }
             
-            let genreNames = [(checkClassical, "Classical"),(checkJazz, "Jazz"),(checkRock, "Rock"),(checkGenreOther,"Other")].filter { $0.0.isOn ?? false }.map {
+            let genreNames = [(checkClassical, "Classical"),(checkJazz, "Jazz"),(checkRock, "Rock"),(checkGenreOther,"Other")].filter { $0.0.isOn }.map {
                 $0.1
             }
             guard let fcmtoken = getFcmToken() else {
@@ -66,7 +66,7 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
                 nStar: 0    // 0 means no star yet.
 
             )
-            createDemotape(tape: tape)
+            createData(tape: tape)
         }
         catch let ex {
             alert(caption: "Error", message: ex.localizedDescription, button1: "Cancel")
@@ -88,50 +88,5 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
     @IBAction func tapwhitespace(_ sender: UITapGestureRecognizer) {
         titleText.resignFirstResponder()
         commentText.resignFirstResponder()
-    }
-    
-//     AWS GraphQLに新しい, デモテープインスタンスを保存する
-    func createDemotape(tape: Demotape) {
-        Amplify.API.mutate(request: .create(tape)) {
-            event in
-            switch event {
-            case .success(let result):
-                switch result {
-                case .success(let demotape):
-                    print("Successfully created the demotape: \(demotape)")
-                case .failure(let graphQLError):
-                    print("Failed to create graphql \(graphQLError)")
-                }
-            case .failure(let apiError):
-                print("Failed to create a demotape", apiError)
-            }
-        }
-    }
-    
-    // 音楽のデータファイルをAWSクラウドにアップロードする
-    func uploadMusic(key: String, data: Data) {
-        _ = Amplify.Storage.uploadData(
-            key: key,
-            data: data,
-            progressListener: {
-                progress in
-                print("Progress: \(progress)")
-            },
-            resultListener: {
-                event in
-                switch event {
-                case .success(let data):
-                    print("Completed: \(data)")
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true)
-                    }
-                    
-                case .failure(let storageError):
-                    let mes = "Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)"
-                    print(mes)
-                    self.alert(caption: "Error", message: mes, button1: "Cancel")
-                }
-            }
-        )
     }
 }

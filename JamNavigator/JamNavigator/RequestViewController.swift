@@ -32,6 +32,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     @IBOutlet weak var totimePicker: UIDatePicker!
     @IBOutlet weak var drumrollPicker: UIPickerView!
     
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     var demotape: Demotape? = nil
     let datalist: [String] = ["2","3"]
     
@@ -40,10 +41,32 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         if let attrs = demotape?.attributes {
             if let attr = attrs[0]{
                 let fcmtoken = String(StrUtil.mid(attr, start: 9))
+                saveMatchingData()  // GraphQLで マッチングデータを保存する
                 pushRemote(registrationToken: fcmtoken, title: "Requestがきました", message: "通知をタップして確認してください")
+                performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
             }
         }
     }
+    
+    private func saveMatchingData() {
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateTimeStr = formatter1.string(from: Date())
+        
+        // マッチングユーザーIDを作る
+        let userIds = [demotape?.userId, userSub]
+
+        // GraphQL（データベース）にデモテープ情報を新規作成・登録する
+        let tape = Demotape(
+            name: "WAITING_FIRSTMATCHING",  // アンディさんが、PUSH通知受けて、OK・NGを返答するのを待っているステータス
+            generatedDateTime: dateTimeStr,
+            userId: "MATCHING",
+            instruments: userIds,
+            nStar: 0    // 0 means no star yet.
+        )
+        createData(tape: tape)
+    }
+    
     //  店の位置をポイントする関数
     func addPin() {
         for i in 0..<addresses.count {

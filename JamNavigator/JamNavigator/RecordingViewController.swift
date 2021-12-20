@@ -12,15 +12,6 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
 
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        playButton.alpha = 0.25
-        playButton.isEnabled = false
-        stopButton.alpha = 0.25
-        stopButton.isEnabled = false
-    }
-
     @IBOutlet weak var recordingButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -33,6 +24,13 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
     var isRecording = false
     var isPlaying = false
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        applyEnableDisableDesign(control: playButton, sw: false)
+        applyEnableDisableDesign(control: stopButton, sw: false)
+    }
+
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -47,7 +45,6 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
             break
         }
     }
-
     
     @IBAction func touchUpInsideRecButton(_ sender: Any) {
 
@@ -67,17 +64,10 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
         audioRecorder.record()
 
         isRecording = true
-
         recordingLabel.text = "Recoding..."
-        
-//        label.text = "録音中"
-//        recordingButton.setTitle("STOP", for: .normal)
-        playButton.alpha = 0.25
-        playButton.isEnabled = false
-        stopButton.alpha = 1.0
-        stopButton.isEnabled = true
-        recordingButton.isEnabled = false
-        
+        applyEnableDisableDesign(control: playButton, sw: false)
+        applyEnableDisableDesign(control: stopButton, sw: true)
+        applyEnableDisableDesign(control: recordingButton, sw: false)
     }
     
     @IBAction func touchUpInsideStopButton(_ sender: Any) {
@@ -86,11 +76,9 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
 
 //        label.text = "待機中"
 //        recordingButton.setTitle("RECORD", for: .normal)
-        playButton.alpha = 1.0
-        playButton.isEnabled = true
-        stopButton.alpha = 0.25
-        stopButton.isEnabled = false
-        
+        applyEnableDisableDesign(control: playButton, sw: true)
+        applyEnableDisableDesign(control: stopButton, sw: false)
+        applyEnableDisableDesign(control: recordingButton, sw: true)
         recordingLabel.text = "Rec"
     }
     
@@ -102,20 +90,20 @@ class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudi
 
         isPlaying = true
 
-//                label.text = "再生中"
-//            playButton.setTitle("STOP", for: .normal)
-        recordingButton.alpha = 0.25
-        recordingButton.isEnabled = false
+        applyEnableDisableDesign(control: playButton, sw: false)
+        applyEnableDisableDesign(control: stopButton, sw: true)
+        applyEnableDisableDesign(control: recordingButton, sw: false)
         PlayLabel.text = "Playing..."
-
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("Did finish Playing")
         isPlaying = false
         PlayLabel.text = "Play"
-        recordingButton.alpha = 1.0
-        recordingButton.isEnabled = true
+        applyEnableDisableDesign(control: playButton, sw: true)
+        applyEnableDisableDesign(control: stopButton, sw: false)
+        applyEnableDisableDesign(control: recordingButton, sw: true)
+
     }
     
 }
