@@ -9,7 +9,6 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
@@ -18,6 +17,7 @@ class MenuViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -26,7 +26,10 @@ class MenuViewController: UIViewController {
             print("Navi: Menu --> Rec")
             let recView = segue.destination as! RecordingViewController
             recView.userSub = userSub
-
+        case "segueMenuToList":
+                print("Navi: Menu --> List")
+                let listView = segue.destination as! DemotapesTableViewClass
+                listView.userSub = userSub
         default:
             print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
             break

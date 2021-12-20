@@ -301,7 +301,7 @@
         <!--Menu View Controller-->
         <scene sceneID="JmT-Xk-gCQ">
             <objects>
-                <viewController id="2cY-JC-GCx" customClass="MenuViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuView" id="2cY-JC-GCx" customClass="MenuViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" tag="2" contentMode="scaleToFill" id="Uqh-lU-zlN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -325,7 +325,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="demotape"/>
                                 <connections>
-                                    <segue destination="SLp-pF-v1B" kind="show" id="eZX-5A-GvU"/>
+                                    <segue destination="SLp-pF-v1B" kind="show" identifier="segueMenuToList" id="eZX-5A-GvU"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Matching" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrE-fU-Nrm">
@@ -703,7 +703,7 @@
         <!--Request View Controller-->
         <scene sceneID="8ne-HO-e8g">
             <objects>
-                <viewController id="vCN-ND-L1y" customClass="RequestViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RequestView" id="vCN-ND-L1y" customClass="RequestViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WMy-zy-aBi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -818,17 +818,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jct-X5-VnC">
-                        <barButtonItem key="rightBarButtonItem" title="Request" style="plain" id="HG5-vr-Nbw">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="EX0-3j-VcY">
-                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Request"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Request" style="plain" id="HG5-vr-Nbw">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="EX0-3j-VcY">
+                                    <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Request"/>
+                                    <connections>
+                                        <action selector="didTapRequestButton:" destination="vCN-ND-L1y" eventType="touchUpInside" id="RNS-cG-6WH"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" id="ehp-Sg-OgY">
                                 <connections>
-                                    <action selector="didTapRequestButton:" destination="vCN-ND-L1y" eventType="touchUpInside" id="RNS-cG-6WH"/>
+                                    <segue destination="YvA-Cx-PEB" kind="presentation" identifier="toRequestedComplitelyDialog" id="zVQ-9U-e5Q"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="dayPicker" destination="dKS-P0-lHj" id="MfT-gM-NDi"/>
@@ -842,8 +849,56 @@
             </objects>
             <point key="canvasLocation" x="3759" y="84"/>
         </scene>
+        <!--Requested Complitely Dialog View Controller-->
+        <scene sceneID="dUN-2k-RIa">
+            <objects>
+                <viewController id="YvA-Cx-PEB" customClass="RequestedComplitelyDialogViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gY8-vG-VLi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jN-uR-3Kc">
+                                <rect key="frame" x="184" y="396" width="60.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                <connections>
+                                    <action selector="didTapOkButtonAction:" destination="YvA-Cx-PEB" eventType="touchUpInside" id="5Aj-0C-seA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="マッチング送信しました！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdd-0k-plL">
+                                <rect key="frame" x="103" y="38" width="208" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Complete2" translatesAutoresizingMaskIntoConstraints="NO" id="cis-Ey-PtX">
+                                <rect key="frame" x="42" y="87" width="344" height="294"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="294" id="voI-bl-9HK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OFM-mp-XJy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3jN-uR-3Kc" firstAttribute="top" secondItem="cis-Ey-PtX" secondAttribute="bottom" constant="15" id="4RG-A5-Jxs"/>
+                            <constraint firstItem="Tdd-0k-plL" firstAttribute="top" secondItem="OFM-mp-XJy" secondAttribute="top" constant="38" id="Gy4-Sf-zVf"/>
+                            <constraint firstItem="cis-Ey-PtX" firstAttribute="leading" secondItem="OFM-mp-XJy" secondAttribute="leading" constant="42" id="J4j-72-NGl"/>
+                            <constraint firstItem="Tdd-0k-plL" firstAttribute="centerX" secondItem="OFM-mp-XJy" secondAttribute="centerX" id="QNZ-sn-nb1"/>
+                            <constraint firstItem="cis-Ey-PtX" firstAttribute="centerX" secondItem="3jN-uR-3Kc" secondAttribute="centerX" id="Yiq-y1-RcW"/>
+                            <constraint firstItem="cis-Ey-PtX" firstAttribute="top" secondItem="gY8-vG-VLi" secondAttribute="top" constant="87" id="bBU-fw-R4u"/>
+                            <constraint firstItem="OFM-mp-XJy" firstAttribute="trailing" secondItem="cis-Ey-PtX" secondAttribute="trailing" constant="28" id="cer-I0-uZf"/>
+                            <constraint firstItem="cis-Ey-PtX" firstAttribute="top" secondItem="Tdd-0k-plL" secondAttribute="bottom" constant="28" id="tH1-DH-0fS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zCe-d6-RQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4589.8550724637689" y="83.705357142857139"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Complete2" width="450" height="385"/>
         <image name="Mypage" width="150" height="150"/>
         <image name="Search" width="150" height="150"/>
         <image name="TitleImage" width="256" height="256"/>
