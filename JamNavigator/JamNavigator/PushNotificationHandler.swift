@@ -12,7 +12,11 @@ import UIKit
 import Amplify
 
 extension UIViewController {
-    
+    // 通知用トークンを取得（アプリ再インストールなどで変更されるが、再起動ぐらいでは変わらない値）
+    func getFcmToken() -> String? {
+        let token = Messaging.messaging().fcmToken  // [START log_fcm_reg_token]
+        return token
+    }
     func joinToFcmTopic(topic: String ) {
         Messaging.messaging().subscribe(toTopic: topic) {   // [START subscribe_topic]
             error in
