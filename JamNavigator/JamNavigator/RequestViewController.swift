@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Tono
 
 //店の構造体を宣言
 struct Address {
@@ -35,7 +36,13 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     let datalist: [String] = ["2","3"]
     
     @IBAction func didTapRequestButton(_ sender: Any) {
-        
+
+        if let attrs = demotape?.attributes {
+            if let attr = attrs[0]{
+                let fcmtoken = String(StrUtil.mid(attr, start: 9))
+                pushRemote(registrationToken: fcmtoken, title: "Requestがきました", message: "通知をタップして確認してください")
+            }
+        }
     }
     //  店の位置をポイントする関数
     func addPin() {
