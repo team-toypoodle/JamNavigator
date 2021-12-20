@@ -27,5 +27,9 @@
 	<string>位置情報を使用します</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>位置情報を使用します</string>
+　<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>
