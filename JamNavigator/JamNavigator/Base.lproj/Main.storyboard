@@ -824,10 +824,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Request"/>
+                                <connections>
+                                    <action selector="didTapRequestButton:" destination="vCN-ND-L1y" eventType="touchUpInside" id="RNS-cG-6WH"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="didTapRequestButton:" destination="vCN-ND-L1y" id="uxf-2F-Vbd"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

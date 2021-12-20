@@ -35,6 +35,7 @@
 		874F600527606B910072107F /* JamNavigatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F600427606B910072107F /* JamNavigatorUITests.swift */; };
 		874F600727606B910072107F /* JamNavigatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F600627606B910072107F /* JamNavigatorUITestsLaunchTests.swift */; };
 		8781C301276B15CB005AF5BB /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8781C300276B15CB005AF5BB /* RequestViewController.swift */; };
+		878F14A827704C1100A81059 /* Tono in Frameworks */ = {isa = PBXBuildFile; productRef = 878F14A727704C1100A81059 /* Tono */; };
 		87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC9472760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC9482760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
@@ -104,6 +105,7 @@
 				026E46C42769AD62003E8CF2 /* AWSPluginsCore in Frameworks */,
 				026E46C22769AD62003E8CF2 /* AWSDataStorePlugin in Frameworks */,
 				026E46C82769AD62003E8CF2 /* Amplify in Frameworks */,
+				878F14A827704C1100A81059 /* Tono in Frameworks */,
 				02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				026E46BE2769AD62003E8CF2 /* AWSAPIPlugin in Frameworks */,
 				026E46C02769AD62003E8CF2 /* AWSCognitoAuthPlugin in Frameworks */,
@@ -235,6 +237,7 @@
 				026E46C72769AD62003E8CF2 /* Amplify */,
 				02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				02F06254276B090C007ADF50 /* FirebaseMessaging */,
+				878F14A727704C1100A81059 /* Tono */,
 			);
 			productName = JamNavigator;
 			productReference = 874F5FE027606B8E0072107F /* JamNavigator.app */;
@@ -311,6 +314,7 @@
 			packageReferences = (
 				026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 				02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				878F14A627704C1100A81059 /* XCRemoteSwiftPackageReference "TonoSwift" */,
 			);
 			productRefGroup = 874F5FE127606B8E0072107F /* Products */;
 			projectDirPath = "";
@@ -554,10 +558,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = JamNavigator/JamNavigator.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 42235ECE62;
+				DEVELOPMENT_TEAM = M6HUWMF54V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "位置情報を使用します";
@@ -577,7 +581,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dig.toypoodle.jamnavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Jam Navi Provisioning Profile 2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -590,10 +594,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = JamNavigator/JamNavigator.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 42235ECE62;
+				DEVELOPMENT_TEAM = M6HUWMF54V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "位置情報を使用します";
@@ -613,7 +617,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dig.toypoodle.jamnavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Jam Navi Provisioning Profile 2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -770,6 +774,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		878F14A627704C1100A81059 /* XCRemoteSwiftPackageReference "TonoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mtonosaki/TonoSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -812,6 +824,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		878F14A727704C1100A81059 /* Tono */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 878F14A627704C1100A81059 /* XCRemoteSwiftPackageReference "TonoSwift" */;
+			productName = Tono;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
