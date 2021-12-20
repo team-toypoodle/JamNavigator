@@ -829,6 +829,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dayPicker" destination="dKS-P0-lHj" id="MfT-gM-NDi"/>
+                        <outlet property="drumrollPicker" destination="6Zc-Ej-78u" id="7LD-y7-7C4"/>
                         <outlet property="fromtimePicker" destination="vT3-MB-jKo" id="RkA-bf-MYa"/>
                         <outlet property="mapView" destination="eSk-Y4-IC8" id="bIX-Ex-ERw"/>
                         <outlet property="totimePicker" destination="d6J-Ng-2bL" id="hKw-OS-WMR"/>

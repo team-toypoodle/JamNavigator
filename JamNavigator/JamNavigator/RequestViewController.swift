@@ -23,14 +23,15 @@ var addresses = [
     
 ]
 
-class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
+class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
     @IBOutlet weak var dayPicker: UIDatePicker!
     @IBOutlet weak var fromtimePicker: UIDatePicker!
     @IBOutlet weak var totimePicker: UIDatePicker!
+    @IBOutlet weak var drumrollPicker: UIPickerView!
     
-    
+    let datalist: [String] = ["2","3"]
     
 //  店の位置をポイントする関数
     func addPin() {
@@ -92,6 +93,14 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         print("------To--------")
         print(totimeselecte)
         print("--------------------")
+        
+        // ピッカー設定
+        drumrollPicker.delegate = self
+        drumrollPicker.dataSource = self
+        
+        // デフォルト設定
+        drumrollPicker.selectRow(0, inComponent: 0, animated: false)
+        
     }
 
 
@@ -126,6 +135,18 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
 //        名前の取得
         print((view.annotation?.title ?? "no title")! as String)
         
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return datalist.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return datalist[row]
     }
     
 }
