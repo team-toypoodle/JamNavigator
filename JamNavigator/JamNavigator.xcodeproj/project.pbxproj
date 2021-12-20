@@ -34,6 +34,7 @@
 		874F5FFB27606B910072107F /* JamNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FFA27606B910072107F /* JamNavigatorTests.swift */; };
 		874F600527606B910072107F /* JamNavigatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F600427606B910072107F /* JamNavigatorUITests.swift */; };
 		874F600727606B910072107F /* JamNavigatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F600627606B910072107F /* JamNavigatorUITestsLaunchTests.swift */; };
+		8781C301276B15CB005AF5BB /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8781C300276B15CB005AF5BB /* RequestViewController.swift */; };
 		87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC9472760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC9482760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
@@ -86,6 +87,7 @@
 		874F600027606B910072107F /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		874F600427606B910072107F /* JamNavigatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamNavigatorUITests.swift; sourceTree = "<group>"; };
 		874F600627606B910072107F /* JamNavigatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamNavigatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8781C300276B15CB005AF5BB /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		87BCC9452760921A003BB540 /* DemotapesTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemotapesTableController.swift; sourceTree = "<group>"; };
 		87BCC9492761A1C6003BB540 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
 				02C0650D276B224800FBA95B /* PushNotificationHandler.swift */,
 				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
+				8781C300276B15CB005AF5BB /* RequestViewController.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
@@ -359,6 +362,7 @@
 			files = (
 				026A5A802763233500C09469 /* SignupViewController.swift in Sources */,
 				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
+				8781C301276B15CB005AF5BB /* RequestViewController.swift in Sources */,
 				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
 				026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */,
