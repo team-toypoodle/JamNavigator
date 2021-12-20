@@ -1,5 +1,7 @@
 team-provider-info.json
 .DS_Store
+GoogleService-Info.plist
+serviceAccount.json
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend

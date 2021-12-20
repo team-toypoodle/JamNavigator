@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TopViewController: UIViewController {
     
@@ -17,9 +18,16 @@ class TopViewController: UIViewController {
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchCurrentAuthSession()   // 自動認証を トライしてみる
         
+        // トピックの登録
+        joinToFcmTopic(topic: "request-topic")
+
+        // TEST CODE
+        // pushLocal(title: "はろー", body: "こんにちは", delaySeconds: 3.5, sound: .default)
+        //pushRemote(topic: "request-topic", title: "もしもし！", message: "かめさん")
+        pushRemote(registrationToken: "e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", title: "速いね！", message: "うさぎさん")
+
         //以下は、サインアップの手順サンプル
         //signUp(username: "tonosaki", password: "tonotono", email: "manabu@tomarika.com") // received 568764
         //confirmSignUp(for: "tonosaki", with: "568764")
@@ -31,6 +39,13 @@ class TopViewController: UIViewController {
         //signOutGlobally()
     }
     
+    @objc func displayFCMToken(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        if let fcmToken = userInfo["token"] as? String {
+            print("Received FCM token: \(fcmToken)")
+        }
+    }
+
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

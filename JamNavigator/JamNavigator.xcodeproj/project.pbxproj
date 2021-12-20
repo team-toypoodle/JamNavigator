@@ -15,8 +15,14 @@
 		026E46C42769AD62003E8CF2 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C32769AD62003E8CF2 /* AWSPluginsCore */; };
 		026E46C62769AD62003E8CF2 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */; };
 		026E46C82769AD62003E8CF2 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C72769AD62003E8CF2 /* Amplify */; };
+		02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* PushNotificationHandler.swift */; };
 		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
 		02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */; };
+		02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		02F06255276B090C007ADF50 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06254276B090C007ADF50 /* FirebaseMessaging */; };
+		02F06257276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
+		02F06258276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
+		02F06259276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
 		1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */; };
 		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
@@ -58,8 +64,11 @@
 /* Begin PBXFileReference section */
 		026A5A7F2763233500C09469 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
+		02C0650D276B224800FBA95B /* PushNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandler.swift; sourceTree = "<group>"; };
 		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
+		02F06256276B1160007ADF50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02F0625A276B1578007ADF50 /* JamNavigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JamNavigator.entitlements; sourceTree = "<group>"; };
 		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
 		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
 		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
@@ -88,10 +97,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F06255276B090C007ADF50 /* FirebaseMessaging in Frameworks */,
 				026E46C62769AD62003E8CF2 /* AWSS3StoragePlugin in Frameworks */,
 				026E46C42769AD62003E8CF2 /* AWSPluginsCore in Frameworks */,
 				026E46C22769AD62003E8CF2 /* AWSDataStorePlugin in Frameworks */,
 				026E46C82769AD62003E8CF2 /* Amplify in Frameworks */,
+				02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				026E46BE2769AD62003E8CF2 /* AWSAPIPlugin in Frameworks */,
 				026E46C02769AD62003E8CF2 /* AWSCognitoAuthPlugin in Frameworks */,
 			);
@@ -149,6 +160,7 @@
 		874F5FE227606B8E0072107F /* JamNavigator */ = {
 			isa = PBXGroup;
 			children = (
+				02F0625A276B1578007ADF50 /* JamNavigator.entitlements */,
 				874F5FE327606B8E0072107F /* AppDelegate.swift */,
 				874F5FE527606B8E0072107F /* SceneDelegate.swift */,
 				874F5FE727606B8E0072107F /* TopViewController.swift */,
@@ -158,11 +170,13 @@
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
 				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
+				02C0650D276B224800FBA95B /* PushNotificationHandler.swift */,
 				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
 				874F5FF127606B910072107F /* Info.plist */,
+				02F06256276B1160007ADF50 /* GoogleService-Info.plist */,
 			);
 			path = JamNavigator;
 			sourceTree = "<group>";
@@ -216,6 +230,8 @@
 				026E46C32769AD62003E8CF2 /* AWSPluginsCore */,
 				026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */,
 				026E46C72769AD62003E8CF2 /* Amplify */,
+				02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				02F06254276B090C007ADF50 /* FirebaseMessaging */,
 			);
 			productName = JamNavigator;
 			productReference = 874F5FE027606B8E0072107F /* JamNavigator.app */;
@@ -291,6 +307,7 @@
 			mainGroup = 874F5FD727606B8E0072107F;
 			packageReferences = (
 				026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 874F5FE127606B8E0072107F /* Products */;
 			projectDirPath = "";
@@ -313,6 +330,7 @@
 				874F5FEB27606B8E0072107F /* Main.storyboard in Resources */,
 				2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */,
 				E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */,
+				02F06257276B1160007ADF50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F06258276B1160007ADF50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F06259276B1160007ADF50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +368,7 @@
 				02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
+				02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
 				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
 			);
@@ -528,7 +549,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = JamNavigator/JamNavigator.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -545,8 +568,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DIG.JamNavigator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dig.toypoodle.jamnavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Jam Navi Provisioning Profile 2";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -558,7 +582,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = JamNavigator/JamNavigator.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -575,8 +601,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.DIG.JamNavigator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dig.toypoodle.jamnavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Jam Navi Provisioning Profile 2";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -725,6 +752,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -757,6 +792,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = Amplify;
+		};
+		02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		02F06254276B090C007ADF50 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,0 +1,8 @@
+{
+    "Simulator Target Bundle": "com.dig.toypoodle.jamnavigator",
+    "aps":{
+        "alert":"PUSH TEST!!",
+        "sound":"default",
+        "badge":1
+    }
+}
