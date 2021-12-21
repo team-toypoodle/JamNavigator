@@ -46,7 +46,7 @@ class DemotapesTableViewClass : DemotapesTableViewBase {
 
 class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    var demotapes: Array<Demotape> = []
+    var demotapes: Array<Demotape> = Array<Demotape>()
     var audioPlayer: AVAudioPlayer!
 
     var selectedIndexPath: IndexPath? = nil
