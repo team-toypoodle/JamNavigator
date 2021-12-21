@@ -66,6 +66,6 @@ class MatchConfirmTableViewController : DemotapesTableViewBase {
     
     // マッチングOK
     @IBAction func didTapMatch(_ sender: Any) {
+        
     }
-    
 }

@@ -8,6 +8,8 @@ Demotape テーブルに、次の２つのレコードを混在させる
 ## デモテープのケース
 - userId に、AWS CognitoのUser.Subが入った場合は、レコードがデモテープであることを示す
 - その他は、モデルの仕様どおりとする
+  - attributes →　属性
+        FCMTOKEN=
 
 ## マッチング候補のケース
 - userId に、”MATCHING”という文字列が入った場合は、マッチング候補であることを示す
@@ -20,6 +22,14 @@ Demotape テーブルに、次の２つのレコードを混在させる
     - DONE                          99
   - instruments →　マッチングユーザーの userIdの配列
   - s3StorageKey →　マッチングを特定できるID
+  - attributes →　マッチング条件
+        DATEFT__= 日時（指定１日だけ）
+        TIMEBOXF= タイムボックス（開始）
+        TIMEBOXT= タイムボックス（終了　）
+        TIMEBOXS= スパン（分）
+        #PEOPLE_= 人数
+        LOCID___= ロケーションID
+        
 
 
 
