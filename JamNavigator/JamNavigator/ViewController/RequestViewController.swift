@@ -152,26 +152,83 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
             alert(caption: "WARNING", message: "地図でロケーションを選択してからリクエストしてください", button1: "OK")
             return
         }
-        
-        if let attrs = demotape?.attributes {
-            if let attr = attrs[0]{
-                let fcmtoken = String(StrUtil.mid(attr, start: 9))
-                // GraphQLで マッチングデータを保存する
-                saveMatchingData(date: selectedDate, timeBoxFrom: timeBoxFrom, timeBoxTo: timeBoxTo, spanMinutes: span, noOfPeople: nPpl, locationId: selectedLocationId)
-                pushRemote(registrationToken: fcmtoken, title: "Requestがきました", message: "通知をタップして確認してください")
-                performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
-            }
+
+        // GraphQLで マッチングデータを保存する
+        switch mode {
+            case .Request:
+                saveMatchingData(date: selectedDate, timeBoxFrom: timeBoxFrom, timeBoxTo: timeBoxTo, spanMinutes: span, noOfPeople: nPpl, locationId: selectedLocationId) {
+                    success in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
+                        }
+                    }
+                }
+            case .Confirm:
+                setMatchingOkState() {
+                    success in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
+                        }
+                    }
+                }
+            default:
+                fatalError("モード識別失敗した状態で保存ボタン押したのは想定外のパス")
         }
     }
-    
-    private func saveMatchingData(date: String, timeBoxFrom: String, timeBoxTo: String, spanMinutes: Int, noOfPeople: Int, locationId: String  ) {
+
+    // 【２人限定】マッチング成立、レコード保存＋通知
+    private func setMatchingOkState(callback:  ((Bool) -> Void)? = nil ) {
+
+        guard let matchingItem = demotape else {
+            fatalError("demotapeが nilなのに、マッチング成立できるのはおかしいので停止")
+        }
+        if matchingItem.userId != "MATCHING" {
+            callback?(true)
+            return
+        }
+        
+        // 自分でリクエストしておいて、自分で確定できないように
+        if let users = matchingItem.instruments {
+            if users.count > 0 {
+                if users[0] == userSub || users.count < 2 {
+                    alert(caption: "INFO", message: "自分でリクエストしたマッチングは自分で確定できません", button1: "OK")
+                    callback?(false)
+                    return
+                }
+            }
+        }
+
+        // GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
+        updateMatchingStatus(from: matchingItem, status: "WAITING_THE_REAL") {
+            success, data in
+
+            let fcmTokens = matchingItem.getValues(key: "FCMTOKEN")
+            for fcmToken in fcmTokens {
+                self.pushRemote(registrationToken: fcmToken, title: "Requestが確定しました！", message: "\("某月 某日 某:某")に現地集合してください！")
+            }
+            callback?(true)
+        }
+    }
+
+    // はじめての、マッチングリクエスト
+    private func saveMatchingData(date: String, timeBoxFrom: String, timeBoxTo: String, spanMinutes: Int, noOfPeople: Int, locationId: String, callback: ((Bool) -> Void)? = nil) {
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateTimeStr = formatter1.string(from: Date())
         
         // マッチングユーザーIDを作る
-        let userIds = [demotape?.userId, userSub]
+        let userIds = [userSub, demotape?.userId]   // 最初の UserIDが、マッチングオーナー（言い出しっぺ）
 
+        // デモテープ作った人の FCMトークン
+        guard let fcmtoken = demotape?.getValue(key: "FCMTOKEN") else {
+            print("FCMトークンが見つからなかったため、PUSH通知ができません")
+            alert(caption: "WARNING", message: "相手のスマホには通知が送れないため、マッチングはキャンセルされました", button1: "Cancel")
+            callback?(false)
+            return
+        }
+        
         // GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
         let tape = Demotape(
             name: "WAITING_FIRSTMATCHING",  // アンディさんが、PUSH通知受けて、OK・NGを返答するのを待っているステータス
@@ -183,13 +240,17 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                 "TIMEBOXT=\(timeBoxTo)",
                 "TIMEBOXS=\(spanMinutes)",
                 "#PEOPLE_=\(noOfPeople)",
-                "LOCID___=\(locationId)"
+                "LOCID___=\(locationId)",
+                "FCMTOKEN=\(fcmtoken)",         // デモテープ作った人のFCMトークン
+                "FCMTOKEN=\(getFcmToken() ?? "?")",    // マッチングしたい人のFCMトークン
             ],
             s3StorageKey: UUID().uuidString, // マッチンググループのID
             instruments: userIds,
             nStar: 0    // 0 means no star yet.
         )
         createData(tape: tape)
+        pushRemote(registrationToken: fcmtoken, title: "Requestがきました", message: "通知をタップして確認してください")
+        callback?(true)
     }
     
     //  店の位置をポイントする関数
@@ -219,6 +280,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                         pin.coordinate = coordinate
                         self.mapView.addAnnotation(pin)
                         pin.subtitle = self.addresses[i].id
+                        self.selectedLocationId = self.addresses[i].id
                     }
                 }
             }
@@ -256,8 +318,6 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
 //        名前の取得
         let title = (view.annotation?.title ?? "noname") ?? "noname"
         selectedLocationId = addresses.filter{ $0.name == title }.map{ $0.id }.first ?? "n/a"
-        print("id = \(selectedLocationId),  title = \(title)")
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

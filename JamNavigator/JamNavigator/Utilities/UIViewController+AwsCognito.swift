@@ -109,6 +109,7 @@ extension UIViewController {
                 // Get user sub or identity id
                 if let identityProvider = session as? AuthCognitoIdentityProvider {
                     let usersub = try identityProvider.getUserSub().get()
+                    print("userSub = \(usersub)")
                     callback(usersub)
                 }
                 
