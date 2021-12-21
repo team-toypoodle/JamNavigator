@@ -10,20 +10,6 @@ import MapKit
 import CoreLocation
 import Tono
 
-//店の構造体を宣言
-struct Address {
-    var name: String
-    var address: String
-}
-
-//店の配列
-var addresses = [
-    Address(name: "JOYSOUND 名駅三丁目店", address: "愛知県名古屋市中村区名駅3丁目14−6"),
-    Address(name: "ジャンカラ 名駅東口店", address: "愛知県名古屋市中村区名駅4丁目10−20"),
-    Address(name: "ビッグエコー名駅4丁目店", address: "愛知県名古屋市中村区名駅4丁目5−18")
-    
-]
-
 class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
@@ -32,23 +18,65 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     @IBOutlet weak var totimePicker: UIDatePicker!
     @IBOutlet weak var drumrollPicker: UIPickerView!
     
+    //店の構造体を宣言
+    struct Address {
+        var id: String
+        var name: String
+        var address: String
+    }
+
+    //店の配列
+    let addresses = [
+        Address(id: "KARA-000001", name: "JOYSOUND 名駅三丁目店", address: "愛知県名古屋市中村区名駅3丁目14−6"),
+        Address(id: "KARA-000002", name: "ジャンカラ 名駅東口店", address: "愛知県名古屋市中村区名駅4丁目10−20"),
+        Address(id: "KARA-000003", name: "ビッグエコー名駅4丁目店", address: "愛知県名古屋市中村区名駅4丁目5−18")
+        
+    ]
+    let datalist = ["2","3", "4", "5", "6", "7", "8"]
+
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     var demotape: Demotape? = nil
-    let datalist: [String] = ["2","3"]
-    
+
+    var selectedLocationId: String? = nil   // 地図タップで選択したロケーションの Address.idが格納される
+        
     @IBAction func didTapRequestButton(_ sender: Any) {
 
+        // 開始日を収集
+        let daydateFormatter = DateFormatter()
+        daydateFormatter.dateFormat = "yyyy-MM-dd"
+        let selectedDate = daydateFormatter.string(from: dayPicker.date)
+        print(selectedDate)
+
+        // タイムボックス（開始）を取得
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm:ss"
+        let timeBoxFrom = timeFormatter.string(from: fromtimePicker.date)
+        let timeBoxTo = timeFormatter.string(from: totimePicker.date)
+        print("TimeBox = \(timeBoxFrom) - \(timeBoxTo)")
+        
+        let span = 30
+        
+        // 人数を取得
+        let nPpl = Int(datalist[drumrollPicker.selectedRow(inComponent: 0)]) ?? 0
+        
+        // ロケーションを収集
+        guard let selectedLocationId = selectedLocationId else {
+            alert(caption: "WARNING", message: "地図でロケーションを選択してからリクエストしてください", button1: "OK")
+            return
+        }
+        
         if let attrs = demotape?.attributes {
             if let attr = attrs[0]{
                 let fcmtoken = String(StrUtil.mid(attr, start: 9))
-                saveMatchingData()  // GraphQLで マッチングデータを保存する
+                // GraphQLで マッチングデータを保存する
+                saveMatchingData(date: selectedDate, timeBoxFrom: timeBoxFrom, timeBoxTo: timeBoxTo, spanMinutes: span, noOfPeople: nPpl, locationId: selectedLocationId)
                 pushRemote(registrationToken: fcmtoken, title: "Requestがきました", message: "通知をタップして確認してください")
                 performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
             }
         }
     }
     
-    private func saveMatchingData() {
+    private func saveMatchingData(date: String, timeBoxFrom: String, timeBoxTo: String, spanMinutes: Int, noOfPeople: Int, locationId: String  ) {
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateTimeStr = formatter1.string(from: Date())
@@ -56,11 +84,20 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         // マッチングユーザーIDを作る
         let userIds = [demotape?.userId, userSub]
 
-        // GraphQL（データベース）にデモテープ情報を新規作成・登録する
+        // GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
         let tape = Demotape(
             name: "WAITING_FIRSTMATCHING",  // アンディさんが、PUSH通知受けて、OK・NGを返答するのを待っているステータス
             generatedDateTime: dateTimeStr,
             userId: "MATCHING",
+            attributes: [
+                "DATEFT__=\(date)",
+                "TIMEBOXF=\(timeBoxFrom)",
+                "TIMEBOXT=\(timeBoxTo)",
+                "TIMEBOXS=\(spanMinutes)",
+                "#PEOPLE_=\(noOfPeople)",
+                "LOCID___=\(locationId)"
+            ],
+            s3StorageKey: UUID().uuidString, // マッチンググループのID
             instruments: userIds,
             nStar: 0    // 0 means no star yet.
         )
@@ -70,10 +107,11 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     //  店の位置をポイントする関数
     func addPin() {
         for i in 0..<addresses.count {
-            CLGeocoder().geocodeAddressString(addresses[i].address) { placemarks, error in
+            CLGeocoder().geocodeAddressString(addresses[i].address) {
+                placemarks, error in
                 if let coordinate = placemarks?.first?.location?.coordinate {
                     let pin = MKPointAnnotation()
-                    pin.title = addresses[i].name
+                    pin.title = self.addresses[i].name
                     pin.coordinate = coordinate
                     self.mapView.addAnnotation(pin)
                 }
@@ -169,7 +207,9 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         }
         
 //        名前の取得
-        print((view.annotation?.title ?? "no title")! as String)
+        let title = (view.annotation?.title ?? "noname") ?? "noname"
+        selectedLocationId = addresses.filter{ $0.name == title }.map{ $0.id }.first ?? "n/a"
+        print("id = \(selectedLocationId),  title = \(title)")
         
     }
     

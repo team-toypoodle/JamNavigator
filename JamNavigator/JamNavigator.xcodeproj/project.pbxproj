@@ -138,6 +138,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		021E1A1F2771601900E7E1BE /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */,
+				02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */,
+				02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */,
+				02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */,
+				026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		02FFCB7A277157DE005FF2D3 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,11 +212,7 @@
 			children = (
 				02FFCB7A277157DE005FF2D3 /* Application */,
 				02FFCB7B277157E5005FF2D3 /* ViewController */,
-				02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */,
-				02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */,
-				02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */,
-				02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */,
-				026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */,
+				021E1A1F2771601900E7E1BE /* Utilities */,
 				02F0625A276B1578007ADF50 /* JamNavigator.entitlements */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
