@@ -12,16 +12,21 @@ class MenuViewController: UIViewController {
 
     @IBOutlet weak var matchingButton: UIButton!
     @IBOutlet weak var notificationBadgeImage: UIImageView!
-        
+    @IBOutlet weak var meetButton: UIButton!
+    @IBOutlet weak var meetNotificationBadgeImage: UIImageView!
+    
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         applyEnableDisableDesign(control: matchingButton, sw: false)
+        applyEnableDisableDesign(control: meetButton, sw: false)
     }
     
     // ビュー表示後
     override func viewDidAppear(_ animated: Bool) {
+        
+        // クラウドマッチング、バッジの表示
         listMatchingItems(targetUseId: userSub) {
             success, matchingItems in
             if success, let matchingItems = matchingItems {
@@ -29,6 +34,18 @@ class MenuViewController: UIViewController {
                     let sw = (matchingItems.count > 0)
                     self.notificationBadgeImage.isHidden = !sw
                     self.applyEnableDisableDesign(control: self.matchingButton, sw: sw)
+                }
+            }
+        }
+
+        // 現地集合バッジの表示
+        listMeetsItems(targetUseId: userSub) {
+            success, matchingItems in
+            if success, let matchingItems = matchingItems {
+                DispatchQueue.main.async {
+                    let sw = (matchingItems.count > 0)
+                    self.meetNotificationBadgeImage.isHidden = !sw
+                    self.applyEnableDisableDesign(control: self.meetButton, sw: sw)
                 }
             }
         }

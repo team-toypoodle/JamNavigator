@@ -307,10 +307,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tx-29-EEk">
-                                <rect key="frame" x="202" y="599" width="183" height="192"/>
+                                <rect key="frame" x="202" y="617" width="176" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Mypage" title=""/>
+                                <buttonConfiguration key="configuration" style="plain" image="Matching" title=""/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Demotape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2U-6K-nEi">
                                 <rect key="frame" x="237" y="392" width="113" height="30"/>
@@ -351,8 +351,8 @@
                                     <action selector="didTapMatchingButton:" destination="2cY-JC-GCx" eventType="touchUpInside" id="c8c-Zw-HcX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyPage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04S-ND-EsI">
-                                <rect key="frame" x="248" y="768" width="91" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04S-ND-EsI">
+                                <rect key="frame" x="264" y="799" width="58" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
@@ -369,6 +369,10 @@
                             </button>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="notificationbadge" translatesAutoresizingMaskIntoConstraints="NO" id="ZFl-Ea-QhP">
                                 <rect key="frame" x="106" y="420" width="65" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="notificationbadge" translatesAutoresizingMaskIntoConstraints="NO" id="lUN-Ts-mtL">
+                                <rect key="frame" x="318" y="599" width="65" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -389,6 +393,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="matchingButton" destination="pWO-Jo-Hns" id="SRU-f1-HyC"/>
+                        <outlet property="meetButton" destination="3Tx-29-EEk" id="GHZ-Fh-dqt"/>
+                        <outlet property="meetNotificationBadgeImage" destination="lUN-Ts-mtL" id="bbu-SF-bQ9"/>
                         <outlet property="notificationBadgeImage" destination="ZFl-Ea-QhP" id="hIb-nb-b4u"/>
                     </connections>
                 </viewController>
@@ -983,7 +989,7 @@
     <resources>
         <image name="Complete2" width="450" height="385"/>
         <image name="Match" width="73" height="32"/>
-        <image name="Mypage" width="150" height="150"/>
+        <image name="Matching" width="200" height="200"/>
         <image name="Search" width="150" height="150"/>
         <image name="TitleImage" width="256" height="256"/>
         <image name="UploadFile" width="300" height="90"/>
