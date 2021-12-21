@@ -841,7 +841,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ch-1h-oGx">
-                                                <rect key="frame" x="115" y="475" width="86" height="28"/>
+                                                <rect key="frame" x="114" y="475" width="86" height="28"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -921,6 +921,7 @@
                         <outlet property="drumrollPicker" destination="6Zc-Ej-78u" id="7LD-y7-7C4"/>
                         <outlet property="fromtimePicker" destination="vT3-MB-jKo" id="RkA-bf-MYa"/>
                         <outlet property="mapView" destination="eSk-Y4-IC8" id="bIX-Ex-ERw"/>
+                        <outlet property="spanText" destination="8ch-1h-oGx" id="BAw-nF-ze3"/>
                         <outlet property="totimePicker" destination="d6J-Ng-2bL" id="hKw-OS-WMR"/>
                     </connections>
                 </viewController>
