@@ -18,25 +18,17 @@ class TopViewController: UIViewController {
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCurrentAuthSession()   // 自動認証を トライしてみる
-        
-        // トピックの登録
-        joinToFcmTopic(topic: "request-topic")
-
-        // TEST CODE
-//         pushLocal(title: "はろー", body: "こんにちは", delaySeconds: 3.5, sound: .default)
-        //pushRemote(topic: "request-topic", title: "もしもし！", message: "かめさん")
-//        pushRemote(registrationToken: "e1-g15ILyUOCgr1bi5tlB8:APA91bGQouAWNFK7si71ubBWQ4XkSgoO-uiBl-4euf7GiztOWNg0BVLteoA04yzwdtqCQTgNxNFuchLyElOWQTHvcwIEzNlqRpGDRru4lCQTJl_dtkz0HRMk6GYfKYVOrqEdasuJI0vo", title: "速いね！", message: "うさぎさん")
-
-        //以下は、サインアップの手順サンプル
-        //signUp(username: "tonosaki", password: "tonotono", email: "manabu@tomarika.com") // received 568764
-        //confirmSignUp(for: "tonosaki", with: "568764")
-        
-        //以下は、ログインの手順サンプル
-        //signIn(username: "tonosaki", password: "tonotono")
-        
-        // サインアウトのサンプル
-        //signOutGlobally()
+        fetchCurrentAuthSession() {   // 自動認証を トライしてみる
+            usersub in
+            if let usersub = usersub  {
+                self.userSub = usersub
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "segueTopToMenu", sender: self)
+                }
+            } else {
+                print("自動認証できないので、手動ログイン待ちになりました")
+            }
+        }
     }
     
     @objc func displayFCMToken(notification: NSNotification) {
@@ -99,7 +91,15 @@ class TopViewController: UIViewController {
             (success, errMessage) in
             
             if success {
-                self.fetchCurrentAuthSession()
+                self.fetchCurrentAuthSession() {
+                    usersub in
+                    if let usersub = usersub {
+                        self.userSub = usersub
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "segueTopToMenu", sender: self)
+                        }
+                    }
+                }
                 
             } else {
                 DispatchQueue.main.async {

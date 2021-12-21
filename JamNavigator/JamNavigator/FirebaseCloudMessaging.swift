@@ -12,11 +12,14 @@ import UIKit
 import Amplify
 
 extension UIViewController {
+    
     // 通知用トークンを取得（アプリ再インストールなどで変更されるが、再起動ぐらいでは変わらない値）
     func getFcmToken() -> String? {
         let token = Messaging.messaging().fcmToken  // [START log_fcm_reg_token]
         return token
     }
+    
+    // 自分の端末を Fcmのトピックに参加させる（トピックの通知を受けられるようにする）
     func joinToFcmTopic(topic: String ) {
         Messaging.messaging().subscribe(toTopic: topic) {   // [START subscribe_topic]
             error in
@@ -24,7 +27,7 @@ extension UIViewController {
         }
     }
     
-    // リモート通知を要求する
+    // トピックに対して、リモート通知を要求する
     func pushRemote(topic: String, title: String, message: String) {
 
         var json = #"{"type": "topic", "title": "@@TITLE@@", "body": "@@BODY@@"}"#
@@ -45,7 +48,7 @@ extension UIViewController {
         }
     }
 
-    // リモート通知を要求する
+    // デバイス１個に対して、リモート通知を要求する
     func pushRemote(registrationToken: String, title: String, message: String) {
 
         var json = #"{"type": "token", "title": "@@TITLE@@", "body": "@@BODY@@"}"#
@@ -66,7 +69,7 @@ extension UIViewController {
         }
     }
 
-    // ローカル通知を出す
+    // 自分の端末に対して、ローカル通知を出す
     func pushLocal(title: String, body: String, delaySeconds: Double = 0.0, sound: UNNotificationSound = .default) {
         let content = UNMutableNotificationContent()
         content.title = title
@@ -77,9 +80,9 @@ extension UIViewController {
         let request = UNNotificationRequest(identifier: "localpush-\(title)-\(body)", content: content, trigger: intervalTrigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil) // 通知登録
     }
-
 }
 
+// AppDelegateに対するFCM処理のフッキング
 extension AppDelegate : UNUserNotificationCenterDelegate, MessagingDelegate {
     
     // Firebase PUSH通知 初期化処理
