@@ -7,6 +7,7 @@
 
 import UIKit
 
+// マッチング完了して、印鑑押された画面の ViewController
 class RequestedComplitelyDialogViewController : UIViewController {
     
     @IBAction func didTapOkButtonAction(_ sender: Any) {

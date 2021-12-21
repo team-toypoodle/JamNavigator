@@ -9,6 +9,9 @@ import UIKit
 
 class MatchConfirmTableViewController : DemotapesTableViewBase {
 
+    
+    private var matchingFirstItem: Demotape? = nil  // TODO: 複数同時マッチング非対応のため、最初のマッチングレコードだけ処理する
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +24,9 @@ class MatchConfirmTableViewController : DemotapesTableViewBase {
                     .compactMap{ $0.instruments }
                     .flatMap{ $0.compactMap{ $0 } }
                 let users = Array(Set(unionUsers))  // 重複を取り除く
+                if users.count >= 2 {   // 自分＋誰かがマッチングレコードある場合は、マッチング要求きている状態
+                    self.matchingFirstItem = matchingItems[0]
+                }
                 
                 // 対象ユーザーに限定したデモテープ一覧を作成する
                 self.listDemotapes(removeUserId: self.userSub, userIds: users) {
@@ -38,5 +44,28 @@ class MatchConfirmTableViewController : DemotapesTableViewBase {
         }
         tableView.allowsSelection = true
     }
+    
+    // マッチング拒否
+    @IBAction func didTapReject(_ sender: Any) {
 
+        guard let matchingFirstItem = matchingFirstItem else {
+            print("マッチングアイテムがない状態で、Rejectボタンが押されたので無視する")
+            return
+        }
+        // ステータスを更新する
+        updateMatchingStatus(from: matchingFirstItem, status: "DONE"){
+            success, newItem in
+            
+            if success {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true)
+                }
+            }
+        }
+    }
+    
+    // マッチングOK
+    @IBAction func didTapMatch(_ sender: Any) {
+    }
+    
 }

@@ -56,11 +56,12 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         // マッチングユーザーIDを作る
         let userIds = [demotape?.userId, userSub]
 
-        // GraphQL（データベース）にデモテープ情報を新規作成・登録する
+        // GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
         let tape = Demotape(
             name: "WAITING_FIRSTMATCHING",  // アンディさんが、PUSH通知受けて、OK・NGを返答するのを待っているステータス
             generatedDateTime: dateTimeStr,
             userId: "MATCHING",
+            s3StorageKey: UUID().uuidString, // マッチンググループのID
             instruments: userIds,
             nStar: 0    // 0 means no star yet.
         )
