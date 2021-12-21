@@ -13,11 +13,23 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
 
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     var player: AVAudioPlayer? = nil
-    @IBOutlet weak var wiwiImage: UIImageView!
     var isPlaying = false
+    var meetsItem: Demotape? = nil
+    
+    @IBOutlet weak var dateTimeText: UILabel!
+    @IBOutlet weak var locationNameText: UILabel!
+    @IBOutlet weak var locationAddressText: UILabel!
+    @IBOutlet weak var numberOfPeopleText: UILabel!
+    @IBOutlet weak var wiwiImage: UIImageView!
 
     override func viewDidLoad() {
-        
+        let item = meetsItem!
+        dateTimeText.text = "\(item.getValue(key: "DATEFT")!) \(item.getValue(key: "TIMEBOXF")!)〜 \(item.getValue(key: "TIMEBOXS")!) 分間"
+        numberOfPeopleText.text = "\(item.getValue(key: "#PEOPLE")!) 人"
+        let adid = item.getValue(key: "LOCID")!
+        let address = addresses.filter{ $0.id == adid }.first!
+        locationNameText.text = address.name
+        locationAddressText.text = address.address
     }
     
     @IBAction func didTapPlayMatchingSoundButton(_ sender: Any) {
