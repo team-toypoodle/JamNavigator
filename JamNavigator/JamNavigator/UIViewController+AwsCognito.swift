@@ -9,7 +9,7 @@ import UIKit
 import Amplify
 import AWSPluginsCore
 
-extension SignupViewController {
+extension UIViewController {
     
     enum SignupStatus {
         case Err
@@ -66,10 +66,7 @@ extension SignupViewController {
             }
         }
     }
-}
 
-// メニューViewで使う Cognito認証機能（ログオフ）
-extension MenuViewController {
     // サインアウト（PC内で）
     func signOutLocally() {
         Amplify.Auth.signOut() {
@@ -99,11 +96,10 @@ extension MenuViewController {
             }
         }
     }
-}
 
-extension TopViewController {
     // 自動認証機能
-    func fetchCurrentAuthSession() {
+    // return : userSub
+    func fetchCurrentAuthSession(callback: @escaping (String?) -> Void) {
         _ = Amplify.Auth.fetchAuthSession {
             result in
             
@@ -112,31 +108,13 @@ extension TopViewController {
                 
                 // Get user sub or identity id
                 if let identityProvider = session as? AuthCognitoIdentityProvider {
-                    self.userSub = try identityProvider.getUserSub().get()
-                    print("User sub - \(self.userSub)")    // as User backend ID
-                    //let identityId = try identityProvider.getIdentityId().get()
-                    //print("Identity id \(identityId)")
-                    
-                    // Menu用の Viewに画面遷移
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "segueTopToMenu", sender: self)
-                    }
+                    let usersub = try identityProvider.getUserSub().get()
+                    callback(usersub)
                 }
-                
-                // Get AWS credentials
-                //if let awsCredentialsProvider = session as? AuthAWSCredentialsProvider {
-                //    let credentials = try awsCredentialsProvider.getAWSCredentials().get()
-                //    print("Access key - \(credentials.accessKey) ")
-                //}
-                
-                // Get cognito user pool token
-                //if let cognitoTokenProvider = session as? AuthCognitoTokensProvider {
-                //    let tokens = try cognitoTokenProvider.getCognitoTokens().get()
-                //    print("Id token - \(tokens.idToken) ")
-                //}
                 
             } catch {
                 print("Fetch auth session failed with error - \(error)")
+                callback(nil)
             }
         }
     }
@@ -161,24 +139,3 @@ extension TopViewController {
     }
 }
 
-extension DemotapesTableViewBase {
-    func downloadMusic (key: String, callback: @escaping (Bool, Data?) -> Void) {
-        let storageOperation = Amplify.Storage.downloadData(
-            key: key,
-            progressListener: {
-                progress in
-                print("Progress: \(progress)")
-            },
-            resultListener: {
-                (event) in
-                switch event {
-                case let .success(data):
-                    print("Completed: \(data)")
-                    callback(true, data)
-                case let .failure(storageError):
-                    print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
-                    callback(false, nil)
-            }
-        })
-    }
-}

@@ -8,24 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		026A5A802763233500C09469 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A7F2763233500C09469 /* SignupViewController.swift */; };
-		026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A8127632B6900C09469 /* ViewControllerUtils.swift */; };
+		026A5A8227632B6900C09469 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */; };
 		026E46BE2769AD62003E8CF2 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46BD2769AD62003E8CF2 /* AWSAPIPlugin */; };
 		026E46C02769AD62003E8CF2 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46BF2769AD62003E8CF2 /* AWSCognitoAuthPlugin */; };
 		026E46C22769AD62003E8CF2 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C12769AD62003E8CF2 /* AWSDataStorePlugin */; };
 		026E46C42769AD62003E8CF2 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C32769AD62003E8CF2 /* AWSPluginsCore */; };
 		026E46C62769AD62003E8CF2 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */; };
 		026E46C82769AD62003E8CF2 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C72769AD62003E8CF2 /* Amplify */; };
-		02B92A4C277061AF00116D26 /* AwsDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4B277061AF00116D26 /* AwsDataRepository.swift */; };
+		02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */; };
 		02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */; };
-		02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* PushNotificationHandler.swift */; };
+		02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */; };
 		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
-		02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */; };
+		02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */; };
 		02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */; };
 		02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		02F06255276B090C007ADF50 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06254276B090C007ADF50 /* FirebaseMessaging */; };
 		02F06257276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
 		02F06258276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
 		02F06259276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
+		02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */; };
 		1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */; };
 		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
@@ -68,16 +69,17 @@
 
 /* Begin PBXFileReference section */
 		026A5A7F2763233500C09469 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		026A5A8127632B6900C09469 /* ViewControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtils.swift; sourceTree = "<group>"; };
+		026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utilities.swift"; sourceTree = "<group>"; };
 		02B92A4A27705E4100116D26 /* README.DataDesign.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.DataDesign.md; sourceTree = "<group>"; };
-		02B92A4B277061AF00116D26 /* AwsDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsDataRepository.swift; sourceTree = "<group>"; };
+		02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AwsS3.swift"; sourceTree = "<group>"; };
 		02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchConfirmTableViewController.swift; sourceTree = "<group>"; };
-		02C0650D276B224800FBA95B /* PushNotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHandler.swift; sourceTree = "<group>"; };
+		02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudMessaging.swift; sourceTree = "<group>"; };
 		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsCognitoHandler.swift; sourceTree = "<group>"; };
+		02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AwsCognito.swift"; sourceTree = "<group>"; };
 		02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedComplitelyDialogViewController.swift; sourceTree = "<group>"; };
 		02F06256276B1160007ADF50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02F0625A276B1578007ADF50 /* JamNavigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JamNavigator.entitlements; sourceTree = "<group>"; };
+		02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppSync.swift"; sourceTree = "<group>"; };
 		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
 		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
 		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
@@ -136,6 +138,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02FFCB7A277157DE005FF2D3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				874F5FE327606B8E0072107F /* AppDelegate.swift */,
+				874F5FE527606B8E0072107F /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		02FFCB7B277157E5005FF2D3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				874F5FE727606B8E0072107F /* TopViewController.swift */,
+				026A5A7F2763233500C09469 /* SignupViewController.swift */,
+				02D6887027630A3C0060B471 /* MenuViewController.swift */,
+				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
+				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
+				87EA56F22761DD290062303C /* UploadViewController.swift */,
+				8781C300276B15CB005AF5BB /* RequestViewController.swift */,
+				02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */,
+				02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		68FB89A07F916363B2BF7341 /* AmplifyModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,22 +198,14 @@
 		874F5FE227606B8E0072107F /* JamNavigator */ = {
 			isa = PBXGroup;
 			children = (
+				02FFCB7A277157DE005FF2D3 /* Application */,
+				02FFCB7B277157E5005FF2D3 /* ViewController */,
+				02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */,
+				02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */,
+				02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */,
+				02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */,
+				026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */,
 				02F0625A276B1578007ADF50 /* JamNavigator.entitlements */,
-				874F5FE327606B8E0072107F /* AppDelegate.swift */,
-				874F5FE527606B8E0072107F /* SceneDelegate.swift */,
-				874F5FE727606B8E0072107F /* TopViewController.swift */,
-				026A5A7F2763233500C09469 /* SignupViewController.swift */,
-				02D6887027630A3C0060B471 /* MenuViewController.swift */,
-				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
-				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
-				87EA56F22761DD290062303C /* UploadViewController.swift */,
-				8781C300276B15CB005AF5BB /* RequestViewController.swift */,
-				02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */,
-				02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */,
-				02D6887227630B2F0060B471 /* AwsCognitoHandler.swift */,
-				02B92A4B277061AF00116D26 /* AwsDataRepository.swift */,
-				02C0650D276B224800FBA95B /* PushNotificationHandler.swift */,
-				026A5A8127632B6900C09469 /* ViewControllerUtils.swift */,
 				874F5FE927606B8E0072107F /* Main.storyboard */,
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
@@ -377,20 +396,21 @@
 			files = (
 				026A5A802763233500C09469 /* SignupViewController.swift in Sources */,
 				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
+				02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */,
 				8781C301276B15CB005AF5BB /* RequestViewController.swift in Sources */,
 				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
-				026A5A8227632B6900C09469 /* ViewControllerUtils.swift in Sources */,
-				02B92A4C277061AF00116D26 /* AwsDataRepository.swift in Sources */,
+				026A5A8227632B6900C09469 /* UIViewController+Utilities.swift in Sources */,
+				02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */,
 				02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
 				874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */,
-				02D6887327630B2F0060B471 /* AwsCognitoHandler.swift in Sources */,
+				02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */,
 				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
 				02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */,
-				02C0650E276B224800FBA95B /* PushNotificationHandler.swift in Sources */,
+				02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
 				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
 			);

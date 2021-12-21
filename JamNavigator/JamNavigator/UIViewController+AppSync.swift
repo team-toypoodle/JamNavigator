@@ -1,14 +1,16 @@
 //
-//  AwsDataRepository.swift
+//  UIViewController+AppSync.swift
 //  JamNavigator
 //
-//  Created by Manabu Tonosaki on 2021/12/20.
+//  Created by Manabu Tonosaki on 2021/12/21.
 //
 
 import UIKit
 import Amplify
+import AWSPluginsCore
 
 extension UIViewController {
+
     //  AWS GraphQLに新しい, デモテープインスタンスを保存する
     func createData(tape: Demotape) {
         Amplify.API.mutate(request: .create(tape)) {
@@ -25,33 +27,6 @@ extension UIViewController {
                 print("Failed to create a demotape", apiError)
             }
         }
-    }
-    
-    // 音楽のデータファイルをAWSクラウドにアップロードする
-    func uploadMusic(key: String, data: Data) {
-        _ = Amplify.Storage.uploadData(
-            key: key,
-            data: data,
-            progressListener: {
-                progress in
-                print("Progress: \(progress)")
-            },
-            resultListener: {
-                event in
-                switch event {
-                case .success(let data):
-                    print("Completed: \(data)")
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true)
-                    }
-                    
-                case .failure(let storageError):
-                    let mes = "Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)"
-                    print(mes)
-                    self.alert(caption: "Error", message: mes, button1: "Cancel")
-                }
-            }
-        )
     }
     
     // IDを指定して、デモテープインスタンスを取得する（コールバックで）
@@ -166,3 +141,4 @@ extension UIViewController {
         }
     }
 }
+
