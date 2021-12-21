@@ -30,14 +30,7 @@ class DemotapesTableViewClass : DemotapesTableViewBase {
         }
         tableView.allowsSelection = true
     }
-}
 
-class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
-    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    var demotapes: Array<Demotape> = []
-    var audioPlayer: AVAudioPlayer!
-
-    var selectedIndexPath: IndexPath? = nil
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let request = UIContextualAction(style: .normal, title: "Match", handler: {
             (action: UIContextualAction, view: UIView, success:(Bool) -> Void) in
@@ -49,6 +42,15 @@ class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
         return UISwipeActionsConfiguration(actions: [request])
     }
     
+}
+
+class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
+    var demotapes: Array<Demotape> = []
+    var audioPlayer: AVAudioPlayer!
+
+    var selectedIndexPath: IndexPath? = nil
+
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

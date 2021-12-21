@@ -8,8 +8,6 @@
 import UIKit
 
 class MatchConfirmTableViewController : DemotapesTableViewBase {
-
-    
     private var matchingFirstItem: Demotape? = nil  // TODO: 複数同時マッチング非対応のため、最初のマッチングレコードだけ処理する
 
     override func viewDidLoad() {
@@ -58,7 +56,7 @@ class MatchConfirmTableViewController : DemotapesTableViewBase {
             
             if success {
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }

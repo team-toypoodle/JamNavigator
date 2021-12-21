@@ -19,6 +19,7 @@ Demotape テーブルに、次の２つのレコードを混在させる
     - WAITING_FIRSTMATCHING         1
     - WAITING_NUMBER_OF_PEOPLE      2
     - WAITING_GROUPMATCHING         3
+    - WAITING_THE_REAL              11
     - DONE                          99
   - instruments →　マッチングユーザーの userIdの配列
   - s3StorageKey →　マッチングを特定できるID

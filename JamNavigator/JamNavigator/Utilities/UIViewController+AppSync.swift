@@ -49,6 +49,7 @@ extension UIViewController {
             comments: from.comments
         )
         self.createData(tape: newMatchingItem)
+        callback(true, newMatchingItem)
     }
     
     // IDを指定して、マッチングインスタンスを取得する（コールバックで）
@@ -109,7 +110,7 @@ extension UIViewController {
     // 指定ユーザーに関する マッチング（or 候補）の一覧をコールバックで返す
     func listMatchingItems(targetUseId: String, callback: @escaping (Bool, Array<Demotape>?) -> Void) {
         let demotape = Demotape.keys
-        let predicate = (demotape.userId == "MATCHING" && (demotape.name == "WAITING_FIRSTMATCHING" || demotape.name == "DONE"))
+        let predicate = (demotape.userId == "MATCHING" && (demotape.name == "WAITING_FIRSTMATCHING" || demotape.name == "WAITING_THE_REAL" || demotape.name == "DONE"))
         Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) {
             event in
             switch event {
@@ -190,6 +191,14 @@ extension Demotape {
             return nil
         }
         let ret = String(StrUtil.mid(firstValue, start: 9))
+        return ret
+    }
+    func getValues(key: String) -> [String] {
+        guard let attrs = attributes else {
+            return []
+        }
+        let key8 = StrUtil.left(key + "_________", length: 8)
+        let ret = attrs.compactMap{ $0 }.filter({ $0.hasPrefix("\(key8)=") }).map{ String(StrUtil.mid($0, start: 9)) }
         return ret
     }
 }
