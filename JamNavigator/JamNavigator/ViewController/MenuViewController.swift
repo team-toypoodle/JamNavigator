@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import AVFAudio
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, AVAudioPlayerDelegate {
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
 
     @IBOutlet weak var matchingButton: UIButton!
@@ -18,6 +19,7 @@ class MenuViewController: UIViewController {
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.hidesBackButton = true
         applyEnableDisableDesign(control: matchingButton, sw: false)
         applyEnableDisableDesign(control: meetButton, sw: false)
@@ -67,6 +69,11 @@ class MenuViewController: UIViewController {
                 print("Navi: Menu --> Confirm-List")
                 let listView = segue.destination as! MatchConfirmTableViewController
                 listView.userSub = userSub
+            case "segueMenuToMeets":
+                    print("Navi: Menu --> Meets")
+                    let meetsView = segue.destination as! MeetsViewController
+                    meetsView.userSub = userSub
+
         default:
             print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
             break
@@ -90,6 +97,11 @@ class MenuViewController: UIViewController {
     // マッチングボタン
     @IBAction func didTapMatchingButton(_ sender: UIButton) {
         performSegue(withIdentifier: "segueMenuToMatchConfirm", sender: self)
+    }
+    
+    // 現地集合ボタン
+    @IBAction func didTapMeetsButton(_ sender: Any) {
+        performSegue(withIdentifier: "segueMenuToMeets", sender: self)
     }
 }
 

@@ -280,6 +280,60 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="787.5"/>
         </scene>
+        <!--Meets View Controller-->
+        <scene sceneID="kZk-fe-Awo">
+            <objects>
+                <viewController id="qgz-Iq-2zf" customClass="MeetsViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Bl-lT-odR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehT-1n-0Gg">
+                                <rect key="frame" x="120" y="107" width="176" height="174"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="matchSound" title=""/>
+                                <connections>
+                                    <action selector="didTapMeetsButton:" destination="2cY-JC-GCx" eventType="touchUpInside" id="pH8-pJ-S7l"/>
+                                    <action selector="didTapPlayMatchingSoundButton:" destination="qgz-Iq-2zf" eventType="touchUpInside" id="8RX-6d-aCA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Play Matching Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJf-Vy-3ZY">
+                                <rect key="frame" x="89" y="301" width="237" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="JIn-hp-AWG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="wiwi" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-8E-21c">
+                                <rect key="frame" x="220" y="54" width="106" height="68"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I9M-Ln-ENd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="centerX" secondItem="RJf-Vy-3ZY" secondAttribute="centerX" id="LBZ-im-X6b"/>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="top" secondItem="ehT-1n-0Gg" secondAttribute="bottom" constant="21" id="LhZ-w2-e51"/>
+                            <constraint firstItem="Lsd-8E-21c" firstAttribute="leading" secondItem="I9M-Ln-ENd" secondAttribute="leading" constant="220" id="UlB-V3-sWp"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="top" secondItem="I9M-Ln-ENd" secondAttribute="top" constant="18" id="cu7-tQ-ztg"/>
+                            <constraint firstItem="I9M-Ln-ENd" firstAttribute="bottom" secondItem="RJf-Vy-3ZY" secondAttribute="bottom" constant="529" id="gwJ-7M-ylk"/>
+                            <constraint firstItem="I9M-Ln-ENd" firstAttribute="top" secondItem="Lsd-8E-21c" secondAttribute="top" constant="34" id="gww-QG-KXi"/>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="width" secondItem="2Bl-lT-odR" secondAttribute="width" multiplier="0.572464" id="jpQ-K5-eLs"/>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="leading" secondItem="I9M-Ln-ENd" secondAttribute="leading" constant="89" id="nWl-Zx-NSu"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="centerX" secondItem="2Bl-lT-odR" secondAttribute="centerX" id="vpi-JR-aOu"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="leading" secondItem="I9M-Ln-ENd" secondAttribute="leading" constant="119" id="yVn-QV-Lg8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hYT-i5-50L"/>
+                    <connections>
+                        <outlet property="wiwiImage" destination="Lsd-8E-21c" id="fIn-s2-gmj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCF-pV-4Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1772" y="839"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="gc2-8D-gs7">
             <objects>
@@ -311,6 +365,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="Matching" title=""/>
+                                <connections>
+                                    <action selector="didTapMeetsButton:" destination="2cY-JC-GCx" eventType="touchUpInside" id="0SJ-QR-Eio"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Demotape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2U-6K-nEi">
                                 <rect key="frame" x="237" y="392" width="113" height="30"/>
@@ -385,11 +442,18 @@
                                 <action selector="didTapLogoff:" destination="2cY-JC-GCx" id="8tU-8b-8e7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" id="5w1-9E-inp">
-                            <connections>
-                                <segue destination="8E8-Wp-Zg4" kind="show" identifier="segueMenuToMatchConfirm" id="IvH-tF-6zT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem enabled="NO" id="5w1-9E-inp">
+                                <connections>
+                                    <segue destination="8E8-Wp-Zg4" kind="show" identifier="segueMenuToMatchConfirm" id="IvH-tF-6zT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" id="l56-8p-8O5">
+                                <connections>
+                                    <segue destination="qgz-Iq-2zf" kind="show" identifier="segueMenuToMeets" id="COF-4X-e89"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="matchingButton" destination="pWO-Jo-Hns" id="SRU-f1-HyC"/>
@@ -994,6 +1058,7 @@
         <image name="TitleImage" width="256" height="256"/>
         <image name="UploadFile" width="300" height="90"/>
         <image name="demotape" width="200" height="200"/>
+        <image name="matchSound" width="200" height="200"/>
         <image name="mike" width="150" height="150"/>
         <image name="notificationbadge" width="96" height="96"/>
         <image name="play" width="200" height="200"/>
@@ -1001,6 +1066,7 @@
         <image name="signup" width="200" height="200"/>
         <image name="stop" width="150" height="150"/>
         <image name="upload" width="200" height="200"/>
+        <image name="wiwi" width="106" height="68"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
