@@ -17,6 +17,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     @IBOutlet weak var fromtimePicker: UIDatePicker!
     @IBOutlet weak var totimePicker: UIDatePicker!
     @IBOutlet weak var drumrollPicker: UIPickerView!
+    @IBOutlet weak var spanText: UILabel!
     
     //店の構造体を宣言
     struct Address {
@@ -38,7 +39,94 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     var demotape: Demotape? = nil
 
     var selectedLocationId: String? = nil   // 地図タップで選択したロケーションの Address.idが格納される
+
+    enum Modes {
+        case NA
+        case Request
+        case Confirm
+    }
+    var mode: Modes = .NA
+    
+    // 初期化処理
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        do {
+            if let demotape = demotape {
+                mode = demotape.userId == "MATCHING" ? .Confirm : .Request
+            }
+        }
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager!.requestWhenInUseAuthorization()
+        
+        // マップの初期設定
+        let span = MKCoordinateSpan(latitudeDelta:0.01, longitudeDelta: 0.01)
+        let nagoyaStation = CLLocationCoordinate2DMake(35.170915, 136.8793482)
+        let region = MKCoordinateRegion(center: nagoyaStation, span: span)
+        mapView.region = region
+        if mode == .Request {
+            addPins()
+        }
+        mapView.delegate = self
+        
+        // 人数ピッカー設定
+        drumrollPicker.delegate = self
+        drumrollPicker.dataSource = self
+        drumrollPicker.selectRow(0, inComponent: 0, animated: false)
+        
+        // マッチングアイテムモードで開いたときの初期化処理
+        initViewAsMatchingCondition()
+    }
+    
+    // マッチング確認状態の時は、matchingItem(demotape)から、値を自動入力する
+    private func initViewAsMatchingCondition() {
+        guard let matchingItem = demotape else {
+            fatalError("demotapeが nilなのに、このView表示されるのはおかしいので停止")
+        }
+        if matchingItem.userId != "MATCHING" {
+            return
+        }
+        
+        // 日付の自動入力
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        guard let datestr = matchingItem.getValue(key: "DATEFT") else { fatalError("日付がnilになっている状態は想定外のため停止") }
+        let meetingDate = dateFormatter.date(from: datestr)!
+        dayPicker.date = meetingDate
+        dayPicker.isEnabled = false
+        
+        // TimeBox
+        let timeFormatter: DateFormatter = DateFormatter()
+        timeFormatter.calendar = Calendar(identifier: .gregorian)
+        timeFormatter.dateFormat = "hh:mm:ss"
+        guard let timeBoxFStr = matchingItem.getValue(key: "TIMEBOXF") else { fatalError("TimeBoxFがnilになっている状態は想定外のため停止") }
+        let timeBoxF = timeFormatter.date(from: timeBoxFStr)!
+        fromtimePicker.date = timeBoxF
+        fromtimePicker.isEnabled = false
+        guard let timeBoxTStr = matchingItem.getValue(key: "TIMEBOXT") else { fatalError("TimeBoxTがnilになっている状態は想定外のため停止") }
+        let timeBoxT = timeFormatter.date(from: timeBoxTStr)!
+        totimePicker.date = timeBoxT
+        totimePicker.isEnabled = false
+        
+        // Span
+        let span = Int(matchingItem.getValue(key: "TIMEBOXS") ?? "30") ?? 30
+        spanText.text = "\(span) minutes"
+        
+        // 人数
+        let nPplStr = matchingItem.getValue(key: "#PEOPLE") ?? "2"
+        let drumIndex = datalist.firstIndex(of: nPplStr)!
+        let dist = abs(drumIndex.distance(to: datalist.startIndex))
+        drumrollPicker.selectRow(dist, inComponent: 0, animated: false)
+        drumrollPicker.isUserInteractionEnabled = false
+        
+        // 地図のロケーションを指定する
+        let locationId = matchingItem.getValue(key: "LOCID") ?? "n/a"
+        addPin(id: locationId)
+    }
+    
     @IBAction func didTapRequestButton(_ sender: Any) {
 
         // 開始日を収集
@@ -105,7 +193,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     }
     
     //  店の位置をポイントする関数
-    func addPin() {
+    func addPins() {
         for i in 0..<addresses.count {
             CLGeocoder().geocodeAddressString(addresses[i].address) {
                 placemarks, error in
@@ -114,69 +202,28 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                     pin.title = self.addresses[i].name
                     pin.coordinate = coordinate
                     self.mapView.addAnnotation(pin)
+                    pin.subtitle = self.addresses[i].id
                 }
             }
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager!.requestWhenInUseAuthorization()
-        
-        self.title = demotape?.name ?? "NoName"
-        
-//        倍率設定
-        let span = MKCoordinateSpan(latitudeDelta:0.01,
-                                    longitudeDelta: 0.01)
-        
-        let nagoyaStation = CLLocationCoordinate2DMake(35.170915, 136.8793482)
-        
-//        初期表示
-        let region = MKCoordinateRegion(center: nagoyaStation, span: span)
-        mapView.region = region
-        
-//        ポイントを配置
-        addPin()
-        
-        mapView.delegate = self
-        
-//        日付取得
-        dayPicker.datePickerMode = UIDatePicker.Mode.date
-        let daydateFormatter = DateFormatter()
-        daydateFormatter.dateFormat = "dd MMMM yyyy"
-        let dayselectedDate = daydateFormatter.string(from: dayPicker.date)
-        print("--------------------")
-        print(dayselectedDate)
-        print("--------------------")
-        
-        //        FromTime取得
-        fromtimePicker.datePickerMode = UIDatePicker.Mode.time
-        let fromtimeFormatter = DateFormatter()
-        fromtimeFormatter.dateFormat = "HH:mm:ss"
-        let fromtimeselecte = fromtimeFormatter.string(from: fromtimePicker.date)
-        print("------From-------")
-        print(fromtimeselecte)
-        print("--------------------")
-        //        ToTime取得
-        totimePicker.datePickerMode = UIDatePicker.Mode.time
-        let totimeFormatter = DateFormatter()
-        totimeFormatter.dateFormat = "HH:mm:ss"
-        let totimeselecte = totimeFormatter.string(from: totimePicker.date)
-        print("------To--------")
-        print(totimeselecte)
-        print("--------------------")
-        
-        // ピッカー設定
-        drumrollPicker.delegate = self
-        drumrollPicker.dataSource = self
-        
-        // デフォルト設定
-        drumrollPicker.selectRow(0, inComponent: 0, animated: false)
-        
+    func addPin(id: String) {
+        for i in 0..<addresses.count {
+            if addresses[i].id   == id {
+                CLGeocoder().geocodeAddressString(addresses[i].address) {
+                    placemarks, error in
+                    if let coordinate = placemarks?.first?.location?.coordinate {
+                        let pin = MKPointAnnotation()
+                        pin.title = self.addresses[i].name
+                        pin.coordinate = coordinate
+                        self.mapView.addAnnotation(pin)
+                        pin.subtitle = self.addresses[i].id
+                    }
+                }
+            }
+        }
     }
-
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {

@@ -8,6 +8,7 @@
 import UIKit
 import Amplify
 import AWSPluginsCore
+import Tono
 
 extension UIViewController {
     
@@ -174,6 +175,22 @@ extension UIViewController {
                     callback(false, nil)
             }
         }
+    }
+}
+
+extension Demotape {
+
+    // attributesからキーを指定して値を収集する。なければ nilが変える
+    func getValue(key: String) -> String? {
+        guard let attr = attributes else {
+            return nil
+        }
+        let key8 = StrUtil.left(key + "_________", length: 8)
+        guard let firstValue = attr.compactMap{ $0 }.filter({ $0.hasPrefix("\(key8)=") }).first else {
+            return nil
+        }
+        let ret = String(StrUtil.mid(firstValue, start: 9))
+        return ret
     }
 }
 
