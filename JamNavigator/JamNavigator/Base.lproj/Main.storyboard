@@ -280,6 +280,112 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="787.5"/>
         </scene>
+        <!--Meets View Controller-->
+        <scene sceneID="kZk-fe-Awo">
+            <objects>
+                <viewController id="qgz-Iq-2zf" customClass="MeetsViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Bl-lT-odR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehT-1n-0Gg">
+                                <rect key="frame" x="120" y="107" width="174" height="174"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="matchSound" title=""/>
+                                <connections>
+                                    <action selector="didTapMeetsButton:" destination="2cY-JC-GCx" eventType="touchUpInside" id="pH8-pJ-S7l"/>
+                                    <action selector="didTapPlayMatchingSoundButton:" destination="qgz-Iq-2zf" eventType="touchUpInside" id="8RX-6d-aCA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Matching Sound" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJf-Vy-3ZY">
+                                <rect key="frame" x="33" y="301" width="353" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="wiwi" translatesAutoresizingMaskIntoConstraints="NO" id="Lsd-8E-21c">
+                                <rect key="frame" x="220" y="54" width="105" height="68"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7Y-D2-KPD">
+                                <rect key="frame" x="33" y="393" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xxxx/xx/xx xx:xx ... (30min)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBc-fP-wJP">
+                                <rect key="frame" x="33" y="422" width="355" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncD-4R-AHa">
+                                <rect key="frame" x="33" y="479" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of people" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pd5-0e-Qis">
+                                <rect key="frame" x="33" y="593" width="138" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ビッグエコーあああ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzF-yh-gHI">
+                                <rect key="frame" x="33" y="508" width="355" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="愛知県名古屋市 のにゃら楽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjo-Jt-YdQ">
+                                <rect key="frame" x="33" y="539" width="355" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG1-JD-YT7">
+                                <rect key="frame" x="31" y="622" width="355" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I9M-Ln-ENd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="trailing" secondItem="Lsd-8E-21c" secondAttribute="trailing" constant="61" id="ON9-qE-E93"/>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="leading" secondItem="I9M-Ln-ENd" secondAttribute="leading" constant="33" id="RtT-59-Rml"/>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="centerX" secondItem="2Bl-lT-odR" secondAttribute="centerX" constant="2.5" id="T7u-Ua-ryT"/>
+                            <constraint firstItem="Lsd-8E-21c" firstAttribute="leading" secondItem="I9M-Ln-ENd" secondAttribute="leading" constant="220" id="UlB-V3-sWp"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="width" secondItem="2Bl-lT-odR" secondAttribute="width" multiplier="0.425121" id="W1D-hx-IMa"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="top" secondItem="I9M-Ln-ENd" secondAttribute="top" constant="19" id="cu7-tQ-ztg"/>
+                            <constraint firstItem="I9M-Ln-ENd" firstAttribute="top" secondItem="Lsd-8E-21c" secondAttribute="top" constant="34" id="gww-QG-KXi"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="height" secondItem="2Bl-lT-odR" secondAttribute="height" multiplier="0.194196" id="h9h-RG-a6S"/>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="top" secondItem="ehT-1n-0Gg" secondAttribute="bottom" constant="20" id="sDg-1N-cRk"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="centerX" secondItem="2Bl-lT-odR" secondAttribute="centerX" constant="1" id="vpi-JR-aOu"/>
+                            <constraint firstItem="RJf-Vy-3ZY" firstAttribute="centerX" secondItem="ehT-1n-0Gg" secondAttribute="centerX" constant="2.5" id="vw8-sU-Vp0"/>
+                            <constraint firstItem="ehT-1n-0Gg" firstAttribute="leading" secondItem="I9M-Ln-ENd" secondAttribute="leading" constant="120" id="yVn-QV-Lg8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hYT-i5-50L"/>
+                    <connections>
+                        <outlet property="dateTimeText" destination="uBc-fP-wJP" id="0Aq-69-o4E"/>
+                        <outlet property="locationAddressText" destination="Bjo-Jt-YdQ" id="VPN-UZ-YGW"/>
+                        <outlet property="locationNameText" destination="OzF-yh-gHI" id="WUR-3o-BHP"/>
+                        <outlet property="numberOfPeopleText" destination="BG1-JD-YT7" id="c43-ah-M1n"/>
+                        <outlet property="wiwiImage" destination="Lsd-8E-21c" id="fIn-s2-gmj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCF-pV-4Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1771.0144927536232" y="838.39285714285711"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="gc2-8D-gs7">
             <objects>
@@ -307,10 +413,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tx-29-EEk">
-                                <rect key="frame" x="202" y="599" width="183" height="192"/>
+                                <rect key="frame" x="202" y="617" width="176" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Mypage" title=""/>
+                                <buttonConfiguration key="configuration" style="plain" image="Matching" title=""/>
+                                <connections>
+                                    <action selector="didTapMeetsButton:" destination="2cY-JC-GCx" eventType="touchUpInside" id="0SJ-QR-Eio"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Demotape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2U-6K-nEi">
                                 <rect key="frame" x="237" y="392" width="113" height="30"/>
@@ -351,8 +460,8 @@
                                     <action selector="didTapMatchingButton:" destination="2cY-JC-GCx" eventType="touchUpInside" id="c8c-Zw-HcX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyPage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04S-ND-EsI">
-                                <rect key="frame" x="248" y="768" width="91" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04S-ND-EsI">
+                                <rect key="frame" x="264" y="799" width="58" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
@@ -371,6 +480,10 @@
                                 <rect key="frame" x="106" y="420" width="65" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="notificationbadge" translatesAutoresizingMaskIntoConstraints="NO" id="lUN-Ts-mtL">
+                                <rect key="frame" x="318" y="599" width="65" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HgU-ZY-Qcr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -381,14 +494,23 @@
                                 <action selector="didTapLogoff:" destination="2cY-JC-GCx" id="8tU-8b-8e7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" id="5w1-9E-inp">
-                            <connections>
-                                <segue destination="8E8-Wp-Zg4" kind="show" identifier="segueMenuToMatchConfirm" id="IvH-tF-6zT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem enabled="NO" id="5w1-9E-inp">
+                                <connections>
+                                    <segue destination="8E8-Wp-Zg4" kind="show" identifier="segueMenuToMatchConfirm" id="IvH-tF-6zT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" id="l56-8p-8O5">
+                                <connections>
+                                    <segue destination="qgz-Iq-2zf" kind="show" identifier="segueMenuToMeets" id="COF-4X-e89"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="matchingButton" destination="pWO-Jo-Hns" id="SRU-f1-HyC"/>
+                        <outlet property="meetButton" destination="3Tx-29-EEk" id="GHZ-Fh-dqt"/>
+                        <outlet property="meetNotificationBadgeImage" destination="lUN-Ts-mtL" id="bbu-SF-bQ9"/>
                         <outlet property="notificationBadgeImage" destination="ZFl-Ea-QhP" id="hIb-nb-b4u"/>
                     </connections>
                 </viewController>
@@ -983,11 +1105,12 @@
     <resources>
         <image name="Complete2" width="450" height="385"/>
         <image name="Match" width="73" height="32"/>
-        <image name="Mypage" width="150" height="150"/>
+        <image name="Matching" width="200" height="200"/>
         <image name="Search" width="150" height="150"/>
         <image name="TitleImage" width="256" height="256"/>
         <image name="UploadFile" width="300" height="90"/>
         <image name="demotape" width="200" height="200"/>
+        <image name="matchSound" width="200" height="200"/>
         <image name="mike" width="150" height="150"/>
         <image name="notificationbadge" width="96" height="96"/>
         <image name="play" width="200" height="200"/>
@@ -995,8 +1118,12 @@
         <image name="signup" width="200" height="200"/>
         <image name="stop" width="150" height="150"/>
         <image name="upload" width="200" height="200"/>
+        <image name="wiwi" width="106" height="68"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

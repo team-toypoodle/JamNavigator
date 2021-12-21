@@ -10,7 +10,7 @@ import XCTest
 class JamNavigatorUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
-        true
+        false   // true --> false by toy poodle
     }
 
     override func setUpWithError() throws {

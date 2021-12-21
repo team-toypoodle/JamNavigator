@@ -107,6 +107,49 @@ extension UIViewController {
         }
     }
     
+    // 指定ユーザーに関する、現地集合アイテムの一覧をコールバックで返す
+    func listMeetsItems(targetUseId: String, callback: @escaping (Bool, Array<Demotape>?) -> Void) {
+        let demotape = Demotape.keys
+        let predicate = (demotape.userId == "MATCHING" && (demotape.name == "WAITING_THE_REAL" || demotape.name == "DONE"))
+        Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) {
+            event in
+            switch event {
+                case .success(let result):
+                    switch result {
+                        case .success(let tapes):
+                            print("Successfully retrieved list of todos count=: \(tapes.count)")
+                            var matchingItems = Array<Demotape>()
+                            for tape in tapes {
+                                if let uses = tape.instruments {
+                                    if uses.contains(targetUseId) {
+                                        matchingItems.append(tape)
+                                    }
+                                }
+                            }
+                            let grouping = Dictionary(grouping: matchingItems) {
+                                $0.s3StorageKey ?? "nil"
+                            }
+                            var ret = Array<Demotape>()
+                            for item in matchingItems {
+                                if let tartapes = grouping[item.s3StorageKey ?? "nil"], tartapes.count == 1 {
+                                    if tartapes[0].name != "DONE" { // Doneのみのグループは対象外にする（クラウドマッチング時点で削除されたアイテムなので）
+                                        ret.append(item)
+                                    }
+                                }
+                            }
+                            callback(true, ret)
+                            
+                        case .failure(let error):
+                            print("Got failed result with \(error.errorDescription)")
+                            callback(false, nil)
+                    }
+                case .failure(let error):
+                    print("Got failed event with error \(error)")
+                    callback(false, nil)
+            }
+        }
+    }
+    
     // 指定ユーザーに関する マッチング（or 候補）の一覧をコールバックで返す
     func listMatchingItems(targetUseId: String, callback: @escaping (Bool, Array<Demotape>?) -> Void) {
         let demotape = Demotape.keys

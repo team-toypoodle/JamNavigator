@@ -19,9 +19,6 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fcmtoken = getFcmToken()
-        pushRemote(registrationToken: fcmtoken!, title: "テスト", message: "本日は晴天なり")
-
         fetchCurrentAuthSession() {   // 自動認証を トライしてみる
             usersub in
             if let usersub = usersub  {

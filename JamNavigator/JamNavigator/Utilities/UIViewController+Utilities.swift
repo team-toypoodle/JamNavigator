@@ -5,8 +5,11 @@
 //  Created by Manabu Tonosaki on 2021/12/10.
 
 import UIKit
+import AVFoundation
 
 extension UIViewController {
+    
+    
     func alert(caption: String, message: String, button1: String, callback: (() -> Void)? = nil ) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: caption, message: message, preferredStyle:  UIAlertController.Style.alert)

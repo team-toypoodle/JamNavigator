@@ -19,20 +19,6 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     @IBOutlet weak var drumrollPicker: UIPickerView!
     @IBOutlet weak var spanText: UILabel!
     
-    //店の構造体を宣言
-    struct Address {
-        var id: String
-        var name: String
-        var address: String
-    }
-
-    //店の配列
-    let addresses = [
-        Address(id: "KARA-000001", name: "JOYSOUND 名駅三丁目店", address: "愛知県名古屋市中村区名駅3丁目14−6"),
-        Address(id: "KARA-000002", name: "ジャンカラ 名駅東口店", address: "愛知県名古屋市中村区名駅4丁目10−20"),
-        Address(id: "KARA-000003", name: "ビッグエコー名駅4丁目店", address: "愛知県名古屋市中村区名駅4丁目5−18")
-        
-    ]
     let datalist = ["2","3", "4", "5", "6", "7", "8"]
 
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
@@ -101,7 +87,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         // TimeBox
         let timeFormatter: DateFormatter = DateFormatter()
         timeFormatter.calendar = Calendar(identifier: .gregorian)
-        timeFormatter.dateFormat = "hh:mm:ss"
+        timeFormatter.dateFormat = "hh:mm"
         guard let timeBoxFStr = matchingItem.getValue(key: "TIMEBOXF") else { fatalError("TimeBoxFがnilになっている状態は想定外のため停止") }
         let timeBoxF = timeFormatter.date(from: timeBoxFStr)!
         fromtimePicker.date = timeBoxF
@@ -137,7 +123,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
 
         // タイムボックス（開始）を取得
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm:ss"
+        timeFormatter.dateFormat = "HH:mm"
         let timeBoxFrom = timeFormatter.string(from: fromtimePicker.date)
         let timeBoxTo = timeFormatter.string(from: totimePicker.date)
         print("TimeBox = \(timeBoxFrom) - \(timeBoxTo)")
@@ -215,7 +201,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     // はじめての、マッチングリクエスト
     private func saveMatchingData(date: String, timeBoxFrom: String, timeBoxTo: String, spanMinutes: Int, noOfPeople: Int, locationId: String, callback: ((Bool) -> Void)? = nil) {
         let formatter1 = DateFormatter()
-        formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter1.dateFormat = "yyyy-MM-dd HH:mm"
         let dateTimeStr = formatter1.string(from: Date())
         
         // マッチングユーザーIDを作る
@@ -260,10 +246,10 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                 placemarks, error in
                 if let coordinate = placemarks?.first?.location?.coordinate {
                     let pin = MKPointAnnotation()
-                    pin.title = self.addresses[i].name
+                    pin.title = addresses[i].name
                     pin.coordinate = coordinate
                     self.mapView.addAnnotation(pin)
-                    pin.subtitle = self.addresses[i].id
+                    pin.subtitle = addresses[i].id
                 }
             }
         }
@@ -276,11 +262,11 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                     placemarks, error in
                     if let coordinate = placemarks?.first?.location?.coordinate {
                         let pin = MKPointAnnotation()
-                        pin.title = self.addresses[i].name
+                        pin.title = addresses[i].name
                         pin.coordinate = coordinate
                         self.mapView.addAnnotation(pin)
-                        pin.subtitle = self.addresses[i].id
-                        self.selectedLocationId = self.addresses[i].id
+                        pin.subtitle = addresses[i].id
+                        self.selectedLocationId = addresses[i].id
                     }
                 }
             }

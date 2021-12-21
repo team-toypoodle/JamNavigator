@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class RecordingViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
 
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
 
