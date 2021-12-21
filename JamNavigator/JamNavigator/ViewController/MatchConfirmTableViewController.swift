@@ -64,8 +64,26 @@ class MatchConfirmTableViewController : DemotapesTableViewBase {
         }
     }
     
+    // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //segueConfirmToRequest
+        switch segue.identifier {
+        case "segueConfirmToRequest":
+                guard let destination = segue.destination as? RequestViewController else {
+                    fatalError("\(segue.destination) Error")
+                }
+                destination.demotape = matchingFirstItem
+                destination.userSub = userSub
+        default:
+            print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
+            break
+        }
+    }
+    
+
+    
     // マッチングOK
     @IBAction func didTapMatch(_ sender: Any) {
-        
+        performSegue(withIdentifier: "segueConfirmToRequest", sender: self)
     }
 }

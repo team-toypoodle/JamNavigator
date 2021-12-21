@@ -498,12 +498,17 @@
                                     <action selector="didTapReject:" destination="8E8-Wp-Zg4" id="qhP-Iz-jfI"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem enabled="NO" id="lsk-Wk-cvM">
+                                <connections>
+                                    <segue destination="vCN-ND-L1y" kind="show" identifier="segueConfirmToRequest" id="hTL-WT-aYb"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMJ-Yr-EwD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2670" y="811"/>
+            <point key="canvasLocation" x="2670" y="825"/>
         </scene>
         <!--Rec-->
         <scene sceneID="3D5-EI-Fu8">
@@ -971,6 +976,9 @@
             <point key="canvasLocation" x="4589.8550724637689" y="83.705357142857139"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hTL-WT-aYb"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Complete2" width="450" height="385"/>
         <image name="Match" width="73" height="32"/>
