@@ -18,12 +18,17 @@ class TopViewController: UIViewController {
     // Viewが表示された直後に初期化などを行う
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fcmtoken = getFcmToken()
+        pushRemote(registrationToken: fcmtoken!, title: "テスト", message: "本日は晴天なり")
+
         fetchCurrentAuthSession() {   // 自動認証を トライしてみる
             usersub in
             if let usersub = usersub  {
                 self.userSub = usersub
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "segueTopToMenu", sender: self)
+                    
                 }
             } else {
                 print("自動認証できないので、手動ログイン待ちになりました")
