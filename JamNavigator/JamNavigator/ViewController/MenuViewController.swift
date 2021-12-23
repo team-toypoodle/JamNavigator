@@ -30,9 +30,10 @@ class MenuViewController: UIViewController, AVAudioPlayerDelegate {
     // ビュー表示後
     override func viewDidAppear(_ animated: Bool) {
         
+        print("---------------------”目立つ”------------------------")
+        
         // クラウドマッチング、バッジの表示
-        listMatchingItems(targetUseId: userSub) {
-            success, matchingItems in
+        listMatchingItems(targetUseId: userSub) {success, matchingItems in
             if success, let matchingItems = matchingItems {
                 let sw = (matchingItems.count > 0)
                 DispatchQueue.main.async {
@@ -43,8 +44,8 @@ class MenuViewController: UIViewController, AVAudioPlayerDelegate {
         }
         
         // 現地集合バッジの表示
-        listMeetsItems(targetUseId: userSub) {
-            success, matchingItems in
+        listMeetsItems(targetUseId: userSub) {success, matchingItems in
+            print("success : ",success,matchingItems)
             if success, let matchingItems = matchingItems {
                 let sw = (matchingItems.count > 0)
                 if sw {

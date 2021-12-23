@@ -10,7 +10,7 @@ import Amplify
 import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
 import AWSAPIPlugin
-import Firebase
+//import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         // PUSH Notofication w/ Firebase
-        initPushNotification()
-        application.registerForRemoteNotifications()
+//        initPushNotification()
+//        application.registerForRemoteNotifications()
 
 
         // AWS Amplify

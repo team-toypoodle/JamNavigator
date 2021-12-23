@@ -1,0 +1,18 @@
+{
+  "resourceName": "s33a5b02a2",
+  "policyUUID": "3a5b02a2",
+  "bucketName": "jamnavigator93c28ba9944c4929be638e3f63354630",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

@@ -1,8 +1,8 @@
 {
-  "providers": [
-    "awscloudformation"
-  ],
   "projectName": "JamNavigator",
   "version": "3.1",
-  "frontend": "ios"
+  "frontend": "ios",
+  "providers": [
+    "awscloudformation"
+  ]
 }

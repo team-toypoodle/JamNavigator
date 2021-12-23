@@ -21,20 +21,15 @@
 		02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */; };
 		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
 		02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */; };
-		02D6EB3E2771FB3400C922C7 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */; };
-		02D6EB3F2771FB3400C922C7 /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */; };
-		02D6EB402771FB3400C922C7 /* Demotape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646BDF703CEFE693D5D2316F /* Demotape.swift */; };
 		02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */; };
 		02D6EB562771FDFC00C922C7 /* ConstDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */; };
 		02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */; };
 		02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		02F06255276B090C007ADF50 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06254276B090C007ADF50 /* FirebaseMessaging */; };
-		02F06257276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
-		02F06258276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
-		02F06259276B1160007ADF50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02F06256276B1160007ADF50 /* GoogleService-Info.plist */; };
 		02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */; };
 		1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */; };
 		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
+		454BB65875477405C4B63BE7 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF01ABB41A5A742137B9D6 /* Todo.swift */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
 		874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE527606B8E0072107F /* SceneDelegate.swift */; };
 		874F5FE827606B8E0072107F /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE727606B8E0072107F /* TopViewController.swift */; };
@@ -52,6 +47,7 @@
 		9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646BDF703CEFE693D5D2316F /* Demotape.swift */; };
 		D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */; };
 		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
+		F37A312796826E2BC37A200F /* Todo+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C2F1C6AB45EA2B7F8873 /* Todo+Schema.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,14 +79,13 @@
 		02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AwsCognito.swift"; sourceTree = "<group>"; };
 		02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstDatabase.swift; sourceTree = "<group>"; };
 		02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedComplitelyDialogViewController.swift; sourceTree = "<group>"; };
-		02F06256276B1160007ADF50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		02F0625A276B1578007ADF50 /* JamNavigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JamNavigator.entitlements; sourceTree = "<group>"; };
 		02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppSync.swift"; sourceTree = "<group>"; };
-		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
-		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
-		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
-		874F5FE027606B8E0072107F /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
+		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
+		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = awsconfiguration.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		874F5FE027606B8E0072107F /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = JamNavigator.app; path = "/Users/heemankim/Desktop/SWIFT/toy/JamNavigator/JamNavigator/build/Debug-iphoneos/JamNavigator.app"; sourceTree = "<absolute>"; };
 		874F5FE327606B8E0072107F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		874F5FE527606B8E0072107F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		874F5FE727606B8E0072107F /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -98,16 +93,18 @@
 		874F5FEC27606B910072107F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		874F5FEF27606B910072107F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		874F5FF127606B910072107F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		874F5FF627606B910072107F /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		874F5FF627606B910072107F /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = JamNavigatorTests.xctest; path = "/Users/heemankim/Desktop/SWIFT/toy/JamNavigator/JamNavigator/build/Debug-iphoneos/JamNavigatorTests.xctest"; sourceTree = "<absolute>"; };
 		874F5FFA27606B910072107F /* ConstDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstDatabaseTests.swift; sourceTree = "<group>"; };
-		874F600027606B910072107F /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		874F600027606B910072107F /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = JamNavigatorUITests.xctest; path = "/Users/heemankim/Desktop/SWIFT/toy/JamNavigator/JamNavigator/build/Debug-iphoneos/JamNavigatorUITests.xctest"; sourceTree = "<absolute>"; };
 		874F600427606B910072107F /* JamNavigatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamNavigatorUITests.swift; sourceTree = "<group>"; };
 		874F600627606B910072107F /* JamNavigatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamNavigatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8781C300276B15CB005AF5BB /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		87BCC9452760921A003BB540 /* DemotapesTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemotapesTableController.swift; sourceTree = "<group>"; };
 		87BCC9492761A1C6003BB540 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
-		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		C094C2F1C6AB45EA2B7F8873 /* Todo+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Todo+Schema.swift"; path = "amplify/generated/models/Todo+Schema.swift"; sourceTree = "<group>"; };
+		D6BF01ABB41A5A742137B9D6 /* Todo.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = amplify/generated/models/Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */,
+				C094C2F1C6AB45EA2B7F8873 /* Todo+Schema.swift */,
+				D6BF01ABB41A5A742137B9D6 /* Todo.swift */,
 				7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */,
 				646BDF703CEFE693D5D2316F /* Demotape.swift */,
 			);
@@ -199,20 +198,9 @@
 				874F5FE227606B8E0072107F /* JamNavigator */,
 				874F5FF927606B910072107F /* JamNavigatorTests */,
 				874F600327606B910072107F /* JamNavigatorUITests */,
-				874F5FE127606B8E0072107F /* Products */,
 				FE58CA69FAD70C3AAFEC68F1 /* AmplifyConfig */,
 				68FB89A07F916363B2BF7341 /* AmplifyModels */,
 			);
-			sourceTree = "<group>";
-		};
-		874F5FE127606B8E0072107F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				874F5FE027606B8E0072107F /* JamNavigator.app */,
-				874F5FF627606B910072107F /* JamNavigatorTests.xctest */,
-				874F600027606B910072107F /* JamNavigatorUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		874F5FE227606B8E0072107F /* JamNavigator */ = {
@@ -226,7 +214,6 @@
 				874F5FEE27606B910072107F /* LaunchScreen.storyboard */,
 				874F5FEC27606B910072107F /* Assets.xcassets */,
 				874F5FF127606B910072107F /* Info.plist */,
-				02F06256276B1160007ADF50 /* GoogleService-Info.plist */,
 				02B92A4A27705E4100116D26 /* README.DataDesign.md */,
 			);
 			path = JamNavigator;
@@ -362,7 +349,7 @@
 				02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				878F14A627704C1100A81059 /* XCRemoteSwiftPackageReference "TonoSwift" */,
 			);
-			productRefGroup = 874F5FE127606B8E0072107F /* Products */;
+			productRefGroup = 874F5FD727606B8E0072107F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -383,7 +370,6 @@
 				874F5FEB27606B8E0072107F /* Main.storyboard in Resources */,
 				2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */,
 				E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */,
-				02F06257276B1160007ADF50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +377,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02F06258276B1160007ADF50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +384,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02F06259276B1160007ADF50 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,10 +409,12 @@
 				02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */,
-				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
 				02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */,
 				02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */,
 				02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */,
+				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
+				F37A312796826E2BC37A200F /* Todo+Schema.swift in Sources */,
+				454BB65875477405C4B63BE7 /* Todo.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
 				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
 			);
@@ -440,9 +426,6 @@
 			files = (
 				874F5FFB27606B910072107F /* ConstDatabaseTests.swift in Sources */,
 				02D6EB562771FDFC00C922C7 /* ConstDatabase.swift in Sources */,
-				02D6EB3E2771FB3400C922C7 /* AmplifyModels.swift in Sources */,
-				02D6EB402771FB3400C922C7 /* Demotape.swift in Sources */,
-				02D6EB3F2771FB3400C922C7 /* Demotape+Schema.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
