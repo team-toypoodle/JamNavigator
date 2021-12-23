@@ -1,230 +1,99 @@
 {
-	"providers": {
-		"awscloudformation": {
-			"AuthRoleName": "amplify-jamnavigator-dev-104813-authRole",
-			"UnauthRoleArn": "arn:aws:iam::456263665996:role/amplify-jamnavigator-dev-104813-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::456263665996:role/amplify-jamnavigator-dev-104813-authRole",
-			"Region": "ap-northeast-1",
-			"DeploymentBucketName": "amplify-jamnavigator-dev-104813-deployment",
-			"UnauthRoleName": "amplify-jamnavigator-dev-104813-unauthRole",
-			"StackName": "amplify-jamnavigator-dev-104813",
-			"StackId": "arn:aws:cloudformation:ap-northeast-1:456263665996:stack/amplify-jamnavigator-dev-104813/42aeca10-595b-11ec-853a-0ec59593c6b7",
-			"AmplifyAppId": "d22weszz7mzjkl",
-			"APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
-		}
-	},
-	"auth": {
-		"jamnavigator367e195e": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false,
-			"frontendAuthConfig": {
-				"socialProviders": [],
-				"usernameAttributes": [],
-				"signupAttributes": [
-					"EMAIL"
-				],
-				"passwordProtectionSettings": {
-					"passwordPolicyMinLength": 8,
-					"passwordPolicyCharacters": []
-				},
-				"mfaConfiguration": "OFF",
-				"mfaTypes": [
-					"SMS"
-				],
-				"verificationMechanisms": [
-					"EMAIL"
-				]
-			},
-			"output": {
-				"UserPoolId": "ap-northeast-1_1Ld3kqANS",
-				"AppClientIDWeb": "2tnhu6b9k24h4b187p1m94ljqc",
-				"AppClientID": "3qpte0popg2rrev91ohst3ahv4",
-				"IdentityPoolId": "ap-northeast-1:2fcf8501-15f0-4923-aaf1-e371c98f1051",
-				"UserPoolArn": "arn:aws:cognito-idp:ap-northeast-1:456263665996:userpool/ap-northeast-1_1Ld3kqANS",
-				"IdentityPoolName": "jamnavigator367e195e_identitypool_367e195e__dev",
-				"UserPoolName": "jamnavigator367e195e_userpool_367e195e"
-			},
-			"lastPushTimeStamp": "2021-12-20T04:25:35.676Z",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/auth/jamnavigator367e195e-cloudformation-template.json",
-				"logicalId": "authjamnavigator367e195e"
-			}
-		}
-	},
-	"function": {
-		"S3Trigger84c8f162": {
-			"service": "Lambda",
-			"providerPlugin": "awscloudformation",
-			"build": true,
-			"output": {
-				"Region": "ap-northeast-1",
-				"Arn": "arn:aws:lambda:ap-northeast-1:456263665996:function:S3Trigger84c8f162-dev",
-				"Name": "S3Trigger84c8f162-dev",
-				"LambdaExecutionRole": "S3Trigger84c8f162LambdaRole84c8f162-dev"
-			},
-			"lastPushTimeStamp": "2021-12-20T04:25:35.681Z",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/function/S3Trigger84c8f162-cloudformation-template.json",
-				"logicalId": "functionS3Trigger84c8f162"
-			},
-			"s3Bucket": {
-				"deploymentBucketName": "amplify-jamnavigator-dev-104813-deployment",
-				"s3Key": "amplify-builds/S3Trigger84c8f162-53364c4d474e43744368-build.zip"
-			}
-		},
-		"jamnavirestfunc": {
-			"build": true,
-			"providerPlugin": "awscloudformation",
-			"service": "Lambda",
-			"dependsOn": [
-				{
-					"category": "api",
-					"resourceName": "jamnavigator",
-					"attributes": [
-						"GraphQLAPIIdOutput",
-						"GraphQLAPIEndpointOutput",
-						"GraphQLAPIKeyOutput"
-					]
-				}
-			],
-			"lastBuildTimeStamp": "2021-12-20T04:23:00.562Z",
-			"lastBuildType": "PROD",
-			"lastPackageTimeStamp": "2021-12-20T04:23:00.598Z",
-			"distZipFilename": "jamnavirestfunc-535765304432726e5777-build.zip",
-			"s3Bucket": {
-				"deploymentBucketName": "amplify-jamnavigator-dev-104813-deployment",
-				"s3Key": "amplify-builds/jamnavirestfunc-535765304432726e5777-build.zip"
-			},
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/function/jamnavirestfunc-cloudformation-template.json",
-				"logicalId": "functionjamnavirestfunc"
-			},
-			"lastPushTimeStamp": "2021-12-20T04:25:35.705Z",
-			"output": {
-				"Region": "ap-northeast-1",
-				"CloudWatchEventRule": "amplify-jamnavigator-dev-104813-fu-CloudWatchEvent-D56DCLBA7EGJ",
-				"Arn": "arn:aws:lambda:ap-northeast-1:456263665996:function:jamnavirestfunc-dev",
-				"Name": "jamnavirestfunc-dev",
-				"LambdaExecutionRole": "jamnavigatorLambdaRole0ba5255d-dev"
-			},
-			"lastPushDirHash": "9s9QN0lGH9ZpzxpNa4t5tZLzRw4="
-		},
-		"jamnavipushapi": {
-			"build": true,
-			"providerPlugin": "awscloudformation",
-			"service": "Lambda",
-			"dependsOn": [],
-			"lastBuildTimeStamp": "2021-12-19T09:59:26.752Z",
-			"lastBuildType": "PROD",
-			"lastPackageTimeStamp": "2021-12-19T09:59:30.301Z",
-			"distZipFilename": "jamnavipushapi-4c475179382f696d5352-build.zip",
-			"s3Bucket": {
-				"deploymentBucketName": "amplify-jamnavigator-dev-104813-deployment",
-				"s3Key": "amplify-builds/jamnavipushapi-4c475179382f696d5352-build.zip"
-			},
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/function/jamnavipushapi-cloudformation-template.json",
-				"logicalId": "functionjamnavipushapi"
-			},
-			"lastPushTimeStamp": "2021-12-20T04:25:35.685Z",
-			"output": {
-				"Region": "ap-northeast-1",
-				"Arn": "arn:aws:lambda:ap-northeast-1:456263665996:function:jamnavipushapi-dev",
-				"Name": "jamnavipushapi-dev",
-				"LambdaExecutionRole": "jamnavigatorLambdaRolef76af0c5-dev"
-			},
-			"lastPushDirHash": "nUmULaKJM/yeEuxIpI3tcR2Apr0="
-		}
-	},
-	"storage": {
-		"jamnavis3": {
-			"service": "S3",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "S3Trigger84c8f162",
-					"attributes": [
-						"Name",
-						"Arn",
-						"LambdaExecutionRole"
-					]
-				}
-			],
-			"output": {
-				"BucketName": "jamnavigatorbc70fbaf53ab49de92d5d37b069c8b21104813-dev",
-				"Region": "ap-northeast-1"
-			},
-			"lastPushTimeStamp": "2021-12-20T04:25:35.686Z",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
-				"logicalId": "storagejamnavis3"
-			}
-		}
-	},
-	"api": {
-		"jamnavigator": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"defaultAuthentication": {
-						"authenticationType": "API_KEY",
-						"apiKeyConfig": {
-							"apiKeyExpirationDays": 365,
-							"apiKeyExpirationDate": "2022-12-13T02:18:24.661Z",
-							"description": "jamnaviapi"
-						}
-					},
-					"additionalAuthenticationProviders": []
-				},
-				"GraphQLAPIIdOutput": "7kqkbkjq7jholel7ettglx37re",
-				"GraphQLAPIEndpointOutput": "https://oird3vm4kreonepcf4yiebrem4.appsync-api.ap-northeast-1.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-dhlb7rwd2ve25dejqiqslg3u4m"
-			},
-			"lastPushTimeStamp": "2021-12-20T04:25:35.687Z",
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/api/cloudformation-template.json",
-				"logicalId": "apijamnavigator"
-			}
-		},
-		"jamnavipush": {
-			"service": "API Gateway",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "jamnavipushapi",
-					"attributes": [
-						"Name",
-						"Arn"
-					]
-				}
-			],
-			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-104813-deployment/amplify-cfn-templates/api/jamnavipush-cloudformation-template.json",
-				"logicalId": "apijamnavipush"
-			},
-			"lastPushTimeStamp": "2021-12-20T04:25:35.689Z",
-			"output": {
-				"ApiName": "jamnavipush",
-				"RootUrl": "https://67ns5jqbu8.execute-api.ap-northeast-1.amazonaws.com/dev",
-				"ApiId": "67ns5jqbu8"
-			},
-			"lastPushDirHash": "FMg1Bza+K9BvEticy3si+ogv/aI="
-		}
-	},
-	"notifications": {
-		"JamNaviFcm": {
-			"service": "Pinpoint",
-			"output": {
-				"Name": "JamNaviFcm-dev",
-				"Id": "aa77274376c245618e7e77672ae5ee3f",
-				"Region": "ap-northeast-1"
-			},
-			"lastPushTimeStamp": "2021-12-21T02:38:35.260Z"
-		}
-	}
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-jamnavigator-dev-135111-authRole",
+      "UnauthRoleArn": "arn:aws:iam::965750456118:role/amplify-jamnavigator-dev-135111-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::965750456118:role/amplify-jamnavigator-dev-135111-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-jamnavigator-dev-135111-deployment",
+      "UnauthRoleName": "amplify-jamnavigator-dev-135111-unauthRole",
+      "StackName": "amplify-jamnavigator-dev-135111",
+      "StackId": "arn:aws:cloudformation:us-east-2:965750456118:stack/amplify-jamnavigator-dev-135111/f77685a0-63ab-11ec-bba9-02002f4e277e",
+      "AmplifyAppId": "d24c76i0kkvldp"
+    }
+  },
+  "api": {
+    "jamnavigator": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "xmppkaajrraj7bugxoead6gbma",
+        "GraphQLAPIEndpointOutput": "https://b4pla76aivhorooji633vmpdnm.appsync-api.us-east-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-oxemwyvth5ghnby7qlygcvvz3e"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-135111-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apijamnavigator"
+      },
+      "lastPushTimeStamp": "2021-12-23T05:20:37.648Z",
+      "lastPushDirHash": "baQ/avb8QW3iuiYAhk1GdafxTOQ="
+    }
+  },
+  "auth": {
+    "jamnavigator9971164b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-135111-deployment/amplify-cfn-templates/auth/jamnavigator9971164b-cloudformation-template.json",
+        "logicalId": "authjamnavigator9971164b"
+      },
+      "lastPushTimeStamp": "2021-12-23T05:20:37.681Z",
+      "output": {
+        "UserPoolId": "us-east-2_IgsGeXPP3",
+        "AppClientIDWeb": "2nkehq2h1bauvfhtrn5k5v0fuo",
+        "AppClientID": "23j6qtblg5bjnn6hkh4kfqjh0m",
+        "IdentityPoolId": "us-east-2:a0cbf5c3-2b61-41cb-a5fe-40d09cca83da",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:965750456118:userpool/us-east-2_IgsGeXPP3",
+        "IdentityPoolName": "jamnavigator9971164b_identitypool_9971164b__dev",
+        "UserPoolName": "jamnavigator9971164b_userpool_9971164b"
+      },
+      "lastPushDirHash": "27SJF7tyGle5Mfb3jJ8wBnMuD0o="
+    }
+  },
+  "storage": {
+    "s33a5b02a2": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2021-12-23T05:20:37.681Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-jamnavigator-dev-135111-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storages33a5b02a2"
+      },
+      "output": {
+        "BucketName": "jamnavigator93c28ba9944c4929be638e3f63354630135111-dev",
+        "Region": "us-east-2"
+      },
+      "lastPushDirHash": "rbwYSU+XHrRKh4+1Wk0FJ3+xQbo="
+    }
+  }
 }
