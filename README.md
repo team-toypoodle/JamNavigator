@@ -44,7 +44,7 @@ Backend environment dev found in Amplify Console app: JamNavigator
 5.Run the following command again.
 
 ```
-amplify pull
+amplify codegen models
 ```
 
 Setup compeleted!!
