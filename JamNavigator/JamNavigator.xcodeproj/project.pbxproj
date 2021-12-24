@@ -29,7 +29,6 @@
 		02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */; };
 		1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */; };
 		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
-		454BB65875477405C4B63BE7 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BF01ABB41A5A742137B9D6 /* Todo.swift */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
 		874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE527606B8E0072107F /* SceneDelegate.swift */; };
 		874F5FE827606B8E0072107F /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE727606B8E0072107F /* TopViewController.swift */; };
@@ -47,7 +46,6 @@
 		9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646BDF703CEFE693D5D2316F /* Demotape.swift */; };
 		D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */; };
 		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
-		F37A312796826E2BC37A200F /* Todo+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094C2F1C6AB45EA2B7F8873 /* Todo+Schema.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,11 +79,13 @@
 		02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedComplitelyDialogViewController.swift; sourceTree = "<group>"; };
 		02F0625A276B1578007ADF50 /* JamNavigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JamNavigator.entitlements; sourceTree = "<group>"; };
 		02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppSync.swift"; sourceTree = "<group>"; };
-		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
-		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
-		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = awsconfiguration.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
-		874F5FE027606B8E0072107F /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = JamNavigator.app; path = "/Users/heemankim/Desktop/SWIFT/toy/JamNavigator/JamNavigator/build/Debug-iphoneos/JamNavigator.app"; sourceTree = "<absolute>"; };
+		0591BF71277567CB00925B0D /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0591BF72277567CB00925B0D /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0591BF73277567CB00925B0D /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
+		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
+		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		874F5FE327606B8E0072107F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		874F5FE527606B8E0072107F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		874F5FE727606B8E0072107F /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -93,18 +93,14 @@
 		874F5FEC27606B910072107F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		874F5FEF27606B910072107F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		874F5FF127606B910072107F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		874F5FF627606B910072107F /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = JamNavigatorTests.xctest; path = "/Users/heemankim/Desktop/SWIFT/toy/JamNavigator/JamNavigator/build/Debug-iphoneos/JamNavigatorTests.xctest"; sourceTree = "<absolute>"; };
 		874F5FFA27606B910072107F /* ConstDatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstDatabaseTests.swift; sourceTree = "<group>"; };
-		874F600027606B910072107F /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = JamNavigatorUITests.xctest; path = "/Users/heemankim/Desktop/SWIFT/toy/JamNavigator/JamNavigator/build/Debug-iphoneos/JamNavigatorUITests.xctest"; sourceTree = "<absolute>"; };
 		874F600427606B910072107F /* JamNavigatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamNavigatorUITests.swift; sourceTree = "<group>"; };
 		874F600627606B910072107F /* JamNavigatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JamNavigatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8781C300276B15CB005AF5BB /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		87BCC9452760921A003BB540 /* DemotapesTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemotapesTableController.swift; sourceTree = "<group>"; };
 		87BCC9492761A1C6003BB540 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
-		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
-		C094C2F1C6AB45EA2B7F8873 /* Todo+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Todo+Schema.swift"; path = "amplify/generated/models/Todo+Schema.swift"; sourceTree = "<group>"; };
-		D6BF01ABB41A5A742137B9D6 /* Todo.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = amplify/generated/models/Todo.swift; sourceTree = "<group>"; };
+		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,8 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */,
-				C094C2F1C6AB45EA2B7F8873 /* Todo+Schema.swift */,
-				D6BF01ABB41A5A742137B9D6 /* Todo.swift */,
 				7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */,
 				646BDF703CEFE693D5D2316F /* Demotape.swift */,
 			);
@@ -200,6 +194,9 @@
 				874F600327606B910072107F /* JamNavigatorUITests */,
 				FE58CA69FAD70C3AAFEC68F1 /* AmplifyConfig */,
 				68FB89A07F916363B2BF7341 /* AmplifyModels */,
+				0591BF71277567CB00925B0D /* JamNavigator.app */,
+				0591BF72277567CB00925B0D /* JamNavigatorTests.xctest */,
+				0591BF73277567CB00925B0D /* JamNavigatorUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -273,7 +270,7 @@
 				878F14A727704C1100A81059 /* Tono */,
 			);
 			productName = JamNavigator;
-			productReference = 874F5FE027606B8E0072107F /* JamNavigator.app */;
+			productReference = 0591BF71277567CB00925B0D /* JamNavigator.app */;
 			productType = "com.apple.product-type.application";
 		};
 		874F5FF527606B910072107F /* JamNavigatorTests */ = {
@@ -291,7 +288,7 @@
 			);
 			name = JamNavigatorTests;
 			productName = JamNavigatorTests;
-			productReference = 874F5FF627606B910072107F /* JamNavigatorTests.xctest */;
+			productReference = 0591BF72277567CB00925B0D /* JamNavigatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		874F5FFF27606B910072107F /* JamNavigatorUITests */ = {
@@ -309,7 +306,7 @@
 			);
 			name = JamNavigatorUITests;
 			productName = JamNavigatorUITests;
-			productReference = 874F600027606B910072107F /* JamNavigatorUITests.xctest */;
+			productReference = 0591BF73277567CB00925B0D /* JamNavigatorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -413,8 +410,6 @@
 				02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */,
 				02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */,
 				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
-				F37A312796826E2BC37A200F /* Todo+Schema.swift in Sources */,
-				454BB65875477405C4B63BE7 /* Todo.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
 				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
 			);
