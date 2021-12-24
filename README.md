@@ -26,24 +26,20 @@ amplify -v
 
 4.Amplyfi setup start.
 ```
-amplify pull
+amplify pull --appId <appId> --envName <envName>
 ```
 
 ```
 ? Select the authentication method you want to use: AWS access keys
-AWS access credentials can not be found.
-? Setup new user No
 ? accessKeyId:  ********************
 ? secretAccessKey:  ****************************************
-? region:  ap-northeast-1
-? Which app are you working on? **************
-Backend environment 'dev' found. Initializing...
-? Choose your default editor: Xcode (Mac OS only)
+? region:  us-east-2
+Amplify AppID found: d24c76i0kkvldp. Amplify App name is: JamNavigator
+Backend environment dev found in Amplify Console app: JamNavigator
+? Choose your default editor: Visual Studio Code
 ? Choose the type of app that you're building ios
-
 ? Do you plan on modifying this backend? Yes
-
-Successfully pulled backend environment dev from the cloud.
+⠏ Fetching updates to backend environment: dev from the cloud.
 ```
 5.Run the following command again.
 
