@@ -53,7 +53,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         let region = MKCoordinateRegion(center: nagoyaStation, span: span)
         mapView.region = region
         if mode == .Request {
-//            addPins()
+            addPins()
         }
         mapView.delegate = self
         
@@ -110,7 +110,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         
         // 地図のロケーションを指定する
         let locationId = matchingItem.getValue(key: "LOCID") ?? "n/a"
-//        addPin(id: locationId)
+        addPin(id: locationId)
     }
     
     @IBAction func didTapRequestButton(_ sender: Any) {
