@@ -16,19 +16,15 @@ class DemotapesTableViewClass : DemotapesTableViewBase {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        listDemotapes(){
-            (success, list) in
-            if success {
-                if let list = list{
-                    self.demotapes = list
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-                
+        listDemotapes() {
+            mayBeList in
+            guard let list = mayBeList else { return }
+            self.demotapes = list
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.allowsSelection = true
             }
         }
-        tableView.allowsSelection = true
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -46,28 +42,21 @@ class DemotapesTableViewClass : DemotapesTableViewBase {
 
 class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    var demotapes: Array<Demotape> = Array<Demotape>()
+    var demotapes = Array<Demotape>()
     var audioPlayer: AVAudioPlayer!
 
     var selectedIndexPath: IndexPath? = nil
 
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch segue.identifier {
-        case "toRequest":
-                guard let destination = segue.destination as? RequestViewController else {
-                    fatalError("\(segue.destination) Error")
-                }
-                guard let selectedIndexPath = selectedIndexPath else {
-                    return
-                }
-                destination.demotape = demotapes[selectedIndexPath.row]
-                destination.userSub = userSub
-        default:
-            print("Warning: missing segue identifire = \(segue.identifier ?? "nil")")
-            break
+        guard let destination = segue.destination as? RequestViewController else {
+            fatalError("\(segue.destination) Error")
         }
+        guard let selectedIndexPath = selectedIndexPath else {
+            return
+        }
+        destination.demotape = demotapes[selectedIndexPath.row]
+        destination.userSub = userSub
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
