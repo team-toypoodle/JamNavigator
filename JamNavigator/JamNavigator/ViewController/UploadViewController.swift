@@ -25,7 +25,7 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
     @IBAction func uploadButton(_ sender: Any) {
         
         do {
-            // ローカルに保存されている音声ファイルを取得する
+            // ローカルに保存されている音声ファイルを取得する/
             let filename = getLocalAudioUrl()
             let music: Data = try Data(contentsOf: filename)
             print( "------- music data size = \(music.count) bytes" )
