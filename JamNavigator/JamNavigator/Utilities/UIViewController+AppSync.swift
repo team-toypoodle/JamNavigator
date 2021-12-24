@@ -84,25 +84,25 @@ extension UIViewController {
     }
     
     // デモテープの一覧をクラウドから収集
-    func listDemotapes(callback: @escaping (Bool, Array<Demotape>?) -> Void) {
+    func listDemotapes(callback: @escaping (Array<Demotape>?) -> Void) {
         let demotape = Demotape.keys
         let predicate = (demotape.userId != "MATCHING")
         Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) {
             event in
             switch event {
-                case .success(let result):
-                    switch result {
-                        case .success(let tapes):
-                            print("Successfully retrieved list of todos count=: \(tapes.count)")
-                            callback(true, Array<Demotape>(tapes))
-                            
-                        case .failure(let error):
-                            print("Got failed result with \(error.errorDescription)")
-                            callback(false, nil)
-                    }
+            case .success(let result):
+                switch result {
+                case .success(let tapes):
+                    print("Successfully retrieved list of todos count=: \(tapes.count)")
+                    callback(Array<Demotape>(tapes))
+                    
                 case .failure(let error):
-                    print("Got failed event with error \(error)")
-                    callback(false, nil)
+                    print("Got failed result with \(error.errorDescription)")
+                    callback(nil)
+                }
+            case .failure(let error):
+                print("Got failed event with error \(error)")
+                callback(nil)
             }
         }
     }

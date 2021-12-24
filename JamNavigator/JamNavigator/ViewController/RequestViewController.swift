@@ -1,10 +1,3 @@
-//
-//  RequestViewController.swift
-//  JamNavigator
-//
-//  Created by Tasuku Furuki on 2021/12/16.
-//
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -16,7 +9,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     @IBOutlet weak var dayPicker: UIDatePicker!
     @IBOutlet weak var fromtimePicker: UIDatePicker!
     @IBOutlet weak var totimePicker: UIDatePicker!
-    @IBOutlet weak var drumrollPicker: UIPickerView!
+    //@IBOutlet weak var drumrollPicker: UIPickerView!
     @IBOutlet weak var spanText: UILabel!
     
     let datalist = ["2","3", "4", "5", "6", "7", "8"]
@@ -57,11 +50,6 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         }
         mapView.delegate = self
         
-        // 人数ピッカー設定
-        drumrollPicker.delegate = self
-        drumrollPicker.dataSource = self
-        drumrollPicker.selectRow(0, inComponent: 0, animated: false)
-        
         // マッチングアイテムモードで開いたときの初期化処理
         initViewAsMatchingCondition()
     }
@@ -71,28 +59,32 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         guard let matchingItem = demotape else {
             fatalError("demotapeが nilなのに、このView表示されるのはおかしいので停止")
         }
-        if matchingItem.userId != "MATCHING" {
-            return
-        }
+        if matchingItem.userId != "MATCHING" { return }
         
         // 日付の自動入力
-        let dateFormatter: DateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.calendar = Calendar(identifier: .gregorian)
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        guard let datestr = matchingItem.getValue(key: "DATEFT") else { fatalError("日付がnilになっている状態は想定外のため停止") }
+        guard let datestr = matchingItem.getValue(key: "DATEFT") else {
+            fatalError("日付がnilになっている状態は想定外のため停止")
+        }
         let meetingDate = dateFormatter.date(from: datestr)!
         dayPicker.date = meetingDate
         dayPicker.isEnabled = false
         
         // TimeBox
-        let timeFormatter: DateFormatter = DateFormatter()
+        let timeFormatter = DateFormatter()
         timeFormatter.calendar = Calendar(identifier: .gregorian)
         timeFormatter.dateFormat = "hh:mm"
-        guard let timeBoxFStr = matchingItem.getValue(key: "TIMEBOXF") else { fatalError("TimeBoxFがnilになっている状態は想定外のため停止") }
+        guard let timeBoxFStr = matchingItem.getValue(key: "TIMEBOXF") else {
+            fatalError("TimeBoxFがnilになっている状態は想定外のため停止")
+        }
         let timeBoxF = timeFormatter.date(from: timeBoxFStr)!
         fromtimePicker.date = timeBoxF
         fromtimePicker.isEnabled = false
-        guard let timeBoxTStr = matchingItem.getValue(key: "TIMEBOXT") else { fatalError("TimeBoxTがnilになっている状態は想定外のため停止") }
+        guard let timeBoxTStr = matchingItem.getValue(key: "TIMEBOXT") else {
+            fatalError("TimeBoxTがnilになっている状態は想定外のため停止")
+        }
         let timeBoxT = timeFormatter.date(from: timeBoxTStr)!
         totimePicker.date = timeBoxT
         totimePicker.isEnabled = false
@@ -105,8 +97,6 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         let nPplStr = matchingItem.getValue(key: "#PEOPLE") ?? "2"
         let drumIndex = datalist.firstIndex(of: nPplStr)!
         let dist = abs(drumIndex.distance(to: datalist.startIndex))
-        drumrollPicker.selectRow(dist, inComponent: 0, animated: false)
-        drumrollPicker.isUserInteractionEnabled = false
         
         // 地図のロケーションを指定する
         let locationId = matchingItem.getValue(key: "LOCID") ?? "n/a"
@@ -130,84 +120,84 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         
         let span = 30
         
-        // 人数を取得
-        let nPpl = Int(datalist[drumrollPicker.selectedRow(inComponent: 0)]) ?? 0
+        // 人数を定義
+        let nPpl = 2
         
         // ロケーションを収集
         guard let selectedLocationId = selectedLocationId else {
             alert(caption: "WARNING", message: "地図でロケーションを選択してからリクエストしてください", button1: "OK")
             return
         }
-
+//        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
         // GraphQLで マッチングデータを保存する
-//        switch mode {
-//            case .Request:
-//                saveMatchingData(date: selectedDate, timeBoxFrom: timeBoxFrom, timeBoxTo: timeBoxTo, spanMinutes: span, noOfPeople: nPpl, locationId: selectedLocationId) {
-//                    success in
-//                    if success {
-//                        DispatchQueue.main.async {
-//                            self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
-//                        }
-//                    }
-//                }
-//            case .Confirm:
-//                setMatchingOkState() {
-//                    success in
-//                    if success {
-//                        DispatchQueue.main.async {
-//                            self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
-//                        }
-//                    }
-//                }
-//            default:
-//                fatalError("モード識別失敗した状態で保存ボタン押したのは想定外のパス")
-//        }
-//    }
-//
-//    // 【２人限定】マッチング成立、レコード保存＋通知
-//    private func setMatchingOkState(callback:  ((Bool) -> Void)? = nil ) {
-//
-//        guard let matchingItem = demotape else {
-//            fatalError("demotapeが nilなのに、マッチング成立できるのはおかしいので停止")
-//        }
-//        if matchingItem.userId != "MATCHING" {
-//            callback?(true)
-//            return
-//        }
-//
-//        // 自分でリクエストしておいて、自分で確定できないように
-//        if let users = matchingItem.instruments {
-//            if users.count > 0 {
-//                if users[0] == userSub || users.count < 2 {
-//                    alert(caption: "INFO", message: "自分でリクエストしたマッチングは自分で確定できません", button1: "OK")
-//                    callback?(false)
-//                    return
-//                }
-//            }
-//        }
+        switch mode {
+        case .Request:
+            saveMatchingData(date: selectedDate, timeBoxFrom: timeBoxFrom, timeBoxTo: timeBoxTo, spanMinutes: span, noOfPeople: nPpl, locationId: selectedLocationId) {
+                success in
+                if success {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
+                    }
+                }
+            }
+        case .Confirm:
+            setMatchingOkState() {
+                success in
+                if success {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
+                    }
+                }
+            }
+        default:
+            fatalError("モード識別失敗した状態で保存ボタン押したのは想定外のパス")
+        }
+    }
 
-        // GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
-//        updateMatchingStatus(from: matchingItem, status: "WAITING_THE_REAL") {
-//            success, data in
-//
-//            let fcmTokens = matchingItem.getValues(key: "FCMTOKEN")
-//            for fcmToken in fcmTokens {
-//                self.pushRemote(registrationToken: fcmToken, title: "Requestが確定しました！", message: "\("某月 某日 某:某")に現地集合してください！")
-//            }
-//            callback?(true)
-//        }
-//    }
+    // 【２人限定】マッチング成立、レコード保存＋通知
+    private func setMatchingOkState(callback:  ((Bool) -> Void)? = nil ) {
+
+        guard let matchingItem = demotape else {
+            fatalError("demotapeが nilなのに、マッチング成立できるのはおかしいので停止")
+        }
+        if matchingItem.userId != "MATCHING" {
+            callback?(true)
+            return
+        }
+
+        // 自分でリクエストしておいて、自分で確定できないように
+        if let users = matchingItem.instruments {
+            if users.count > 0 {
+                if users[0] == userSub || users.count < 2 {
+                    alert(caption: "INFO", message: "自分でリクエストしたマッチングは自分で確定できません", button1: "OK")
+                    callback?(false)
+                    return
+                }
+            }
+        }
+
+         //GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
+        updateMatchingStatus(from: matchingItem, status: "WAITING_THE_REAL") {
+            success, data in
+
+            let fcmTokens = matchingItem.getValues(key: "FCMTOKEN")
+            for fcmToken in fcmTokens {
+                self.pushRemote(registrationToken: fcmToken, title: "Requestが確定しました！", message: "\("某月 某日 某:某")に現地集合してください！")
+            }
+            callback?(true)
+        }
+    }
 
     // はじめての、マッチングリクエスト
-//    private func saveMatchingData(date: String, timeBoxFrom: String, timeBoxTo: String, spanMinutes: Int, noOfPeople: Int, locationId: String, callback: ((Bool) -> Void)? = nil) {
-//        let formatter1 = DateFormatter()
-//        formatter1.dateFormat = "yyyy-MM-dd HH:mm"
-//        let dateTimeStr = formatter1.string(from: Date())
-//
-//        // マッチングユーザーIDを作る
-//        let userIds = [userSub, demotape?.userId]   // 最初の UserIDが、マッチングオーナー（言い出しっぺ）
-//
-//        // デモテープ作った人の FCMトークン
+    private func saveMatchingData(date: String, timeBoxFrom: String, timeBoxTo: String, spanMinutes: Int, noOfPeople: Int, locationId: String, callback: ((Bool) -> Void)? = nil) {
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "yyyy-MM-dd HH:mm"
+        let dateTimeStr = formatter1.string(from: Date())
+
+        // マッチングユーザーIDを作る
+        let userIds = [userSub, demotape?.userId]   // 最初の UserIDが、マッチングオーナー（言い出しっぺ）
+
+        // デモテープ作った人の FCMトークン
 //        guard let fcmtoken = demotape?.getValue(key: "FCMTOKEN") else {
 //            print("FCMトークンが見つからなかったため、PUSH通知ができません")
 //            alert(caption: "WARNING", message: "相手のスマホには通知が送れないため、マッチングはキャンセルされました", button1: "Cancel")
@@ -215,28 +205,28 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
 //            return
 //        }
         
-        // GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
-//        let tape = Demotape(
-//            name: "WAITING_FIRSTMATCHING",  // アンディさんが、PUSH通知受けて、OK・NGを返答するのを待っているステータス
-//            generatedDateTime: dateTimeStr,
-//            userId: "MATCHING",
-//            attributes: [
-//                "DATEFT__=\(date)",
-//                "TIMEBOXF=\(timeBoxFrom)",
-//                "TIMEBOXT=\(timeBoxTo)",
-//                "TIMEBOXS=\(spanMinutes)",
-//                "#PEOPLE_=\(noOfPeople)",
-//                "LOCID___=\(locationId)",
-//                "FCMTOKEN=\(fcmtoken)",         // デモテープ作った人のFCMトークン
-//                "FCMTOKEN=\(getFcmToken() ?? "?")",    // マッチングしたい人のFCMトークン
-//            ],
-//            s3StorageKey: UUID().uuidString, // マッチンググループのID
-//            instruments: userIds,
-//            nStar: 0    // 0 means no star yet.
-//        )
-//        createData(tape: tape)
+         //GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
+        let tape = Demotape(
+            name: "WAITING_FIRSTMATCHING",  // アンディさんが、PUSH通知受けて、OK・NGを返答するのを待っているステータス
+            generatedDateTime: dateTimeStr,
+            userId: "MATCHING",
+            attributes: [
+                "DATEFT__=\(date)",
+                "TIMEBOXF=\(timeBoxFrom)",
+                "TIMEBOXT=\(timeBoxTo)",
+                "TIMEBOXS=\(spanMinutes)",
+                "#PEOPLE_=\(noOfPeople)",
+                "LOCID___=\(locationId)",
+                //"FCMTOKEN=\(fcmtoken)",         // デモテープ作った人のFCMトークン
+                "FCMTOKEN=\(getFcmToken() ?? "?")",    // マッチングしたい人のFCMトークン
+            ],
+            s3StorageKey: UUID().uuidString, // マッチンググループのID
+            instruments: userIds,
+            nStar: 0    // 0 means no star yet.
+        )
+        createData(tape: tape)
 //        pushRemote(registrationToken: fcmtoken, title: "Requestがきました", message: "通知をタップして確認してください")
-//        callback?(true)
+        callback?(true)
     }
     
     //  店の位置をポイントする関数
