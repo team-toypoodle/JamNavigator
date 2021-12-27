@@ -1,31 +1,50 @@
 import UIKit
 
+struct Instrument{
+    let name:String
+    var isActive:Bool = true
+}
+
+struct FilterContents{
+    var all = [
+        Instrument(name:"guiter"),
+        Instrument(name:"piano"),
+        Instrument(name:"violin"),
+        Instrument(name:"other")
+    ]
+    func getActiveContents() -> [String] {
+        let activeContents = all.filter { $0.isActive }
+        return activeContents.map{ $0.name }
+    }
+}
+
 class FilterTableViewController:UITableViewController{
 
     @IBAction func didTapDoneButton(_ sender: Any) {
+        let activeContents = filterContents.getActiveContents()
+        delegate?.applyFilter(filter: activeContents)
         dismiss(animated: true)
     }
-    let filterContents = [
-        "guiter",
-        "piano",
-        "violin",
-        "other"
-    ]
+    var filterContents = FilterContents()
     
-    
+    weak var delegate: FilterDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filterContents.count
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell",for: indexPath)
-        cell.textLabel?.text = filterContents[indexPath.row]
-        cell.accessoryType = .checkmark
+        cell.textLabel?.text = filterContents.all[indexPath.row].name
+        if filterContents.all[indexPath.row].isActive {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         return cell
     }
     
@@ -34,8 +53,10 @@ class FilterTableViewController:UITableViewController{
         switch cell?.accessoryType {
         case .checkmark:
             cell?.accessoryType = .none
+            filterContents.all[indexPath.row].isActive = false
         case .none?:
             cell?.accessoryType = .checkmark
+            filterContents.all[indexPath.row].isActive = true
         default:
             cell?.accessoryType = .none
         }

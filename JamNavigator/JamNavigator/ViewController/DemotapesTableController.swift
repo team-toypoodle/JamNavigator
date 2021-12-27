@@ -3,10 +3,15 @@ import Amplify
 import AWSAPIPlugin
 import AVFoundation
 
+protocol FilterDelegate: AnyObject {
+    func applyFilter(filter:[String])
+}
+
 class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
 
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     var demotapes = Array<Demotape>()
+    var activeDemotapes = Array<Demotape>()
     var audioPlayer: AVAudioPlayer!
     var selectedIndexPath: IndexPath? = nil
     var activeFilter = [
@@ -33,15 +38,21 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? RequestViewController else {
-//            fatalError("\(segue.destination) Error")
+        switch segue.identifier {
+        case "toRequest":
+            guard let destination = segue.destination as? RequestViewController else { return }
+            guard let selectedIndexPath = selectedIndexPath else { return }
+            destination.demotape = demotapes[selectedIndexPath.row]
+            destination.userSub = userSub
+        case "toFilter":
+            guard
+                let filterTableViewNavVC = segue.destination as? UINavigationController,
+                let destination = filterTableViewNavVC.topViewController as? FilterTableViewController
+            else { return }
+            destination.delegate = self
+        default :
             return
         }
-        guard let selectedIndexPath = selectedIndexPath else {
-            return
-        }
-        destination.demotape = demotapes[selectedIndexPath.row]
-        destination.userSub = userSub
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -56,6 +67,7 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(activeFilter)
         return demotapes.count
     }
     
@@ -105,5 +117,13 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
         playingRowIndex = IndexPath()
         tableView.reloadData()
         isPlaying = false
+    }
+}
+
+extension DemotapesTableViewClass: FilterDelegate {
+    func applyFilter(filter:[String]) {
+        print("動いた")
+        activeFilter = filter
+        tableView.reloadData()
     }
 }
