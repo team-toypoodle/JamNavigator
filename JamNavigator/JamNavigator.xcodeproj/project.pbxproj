@@ -43,6 +43,7 @@
 		87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9492761A1C6003BB540 /* RecordingViewController.swift */; };
 		87EA56F32761DD290062303C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA56F22761DD290062303C /* UploadViewController.swift */; };
 		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
+		FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02D99827795DD300071BB0 /* FilterTableViewController.swift */; };
 		FE855B162775844900DE0F0C /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE855B132775844900DE0F0C /* Demotape+Schema.swift */; };
 		FE855B172775844900DE0F0C /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE855B142775844900DE0F0C /* AmplifyModels.swift */; };
 		FE855B182775844900DE0F0C /* Demotape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE855B152775844900DE0F0C /* Demotape.swift */; };
@@ -98,6 +99,7 @@
 		B6C9183227745F680083CB82 /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183327745F680083CB82 /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183427745F680083CB82 /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE02D99827795DD300071BB0 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		FE855B132775844900DE0F0C /* Demotape+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "../amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
 		FE855B142775844900DE0F0C /* AmplifyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = ../amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		FE855B152775844900DE0F0C /* Demotape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Demotape.swift; path = ../amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */,
 				02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */,
 				0275BAB82771E390004F9614 /* MeetsViewController.swift */,
+				FE02D99827795DD300071BB0 /* FilterTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				026A5A8227632B6900C09469 /* UIViewController+Utilities.swift in Sources */,
 				02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */,
 				02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */,
+				FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */,
 				0275BAB92771E390004F9614 /* MeetsViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
 				FE855B162775844900DE0F0C /* Demotape+Schema.swift in Sources */,

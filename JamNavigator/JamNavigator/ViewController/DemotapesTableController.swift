@@ -1,18 +1,23 @@
-//
-//  DemotapesTableController.swift
-//  JamNavigator
-//
-//  Created by Tasuku Furuki on 2021/12/08.
-//
-
 import UIKit
 import Amplify
 import AWSAPIPlugin
 import AVFoundation
 
+class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
 
-class DemotapesTableViewClass : DemotapesTableViewBase {
-
+    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
+    var demotapes = Array<Demotape>()
+    var audioPlayer: AVAudioPlayer!
+    var selectedIndexPath: IndexPath? = nil
+    var activeFilter = [
+        "guiter",
+        "piano",
+        "violin",
+        "other"
+    ]
+    var playingRowIndex: IndexPath = IndexPath()
+    var isPlaying = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +31,18 @@ class DemotapesTableViewClass : DemotapesTableViewBase {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? RequestViewController else {
+//            fatalError("\(segue.destination) Error")
+            return
+        }
+        guard let selectedIndexPath = selectedIndexPath else {
+            return
+        }
+        destination.demotape = demotapes[selectedIndexPath.row]
+        destination.userSub = userSub
+    }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let request = UIContextualAction(style: .normal, title: "Match", handler: {
@@ -38,27 +55,6 @@ class DemotapesTableViewClass : DemotapesTableViewBase {
         return UISwipeActionsConfiguration(actions: [request])
     }
     
-}
-
-class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
-    var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    var demotapes = Array<Demotape>()
-    var audioPlayer: AVAudioPlayer!
-
-    var selectedIndexPath: IndexPath? = nil
-
-    // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? RequestViewController else {
-            fatalError("\(segue.destination) Error")
-        }
-        guard let selectedIndexPath = selectedIndexPath else {
-            return
-        }
-        destination.demotape = demotapes[selectedIndexPath.row]
-        destination.userSub = userSub
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return demotapes.count
     }
@@ -79,9 +75,6 @@ class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
         return cell
     }
     
-    var playingRowIndex: IndexPath = IndexPath()
-    var isPlaying = false
-    // 選択したときのイベント
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isPlaying {
             audioPlayer.stop()
@@ -89,23 +82,20 @@ class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
             playingRowIndex = IndexPath()
             tableView.deselectRow(at: indexPath, animated: true)
             tableView.reloadData()
-        }else{
+        } else {
             let item = demotapes[indexPath.row]
-            downloadMusic(key: item.s3StorageKey ?? ""){
+            downloadMusic(key: item.s3StorageKey ?? "") {
                 (success, data) in
-                if success {
-                    if let data = data {
-                        DispatchQueue.main.async {
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
-                            cell.imageView?.image = UIImage(named: "StopButton")
-                            self.isPlaying = true
-                            self.tableView.reloadData()
-                            self.playingRowIndex = indexPath
-                            self.audioPlayer = try! AVAudioPlayer(data: data)
-                            self.audioPlayer.delegate = self
-                            self.audioPlayer.play()
-                        }
-                    }
+                guard success, let data = data else { return }
+                DispatchQueue.main.async {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
+                    cell.imageView?.image = UIImage(named: "StopButton")
+                    self.isPlaying = true
+                    self.tableView.reloadData()
+                    self.playingRowIndex = indexPath
+                    self.audioPlayer = try! AVAudioPlayer(data: data)
+                    self.audioPlayer.delegate = self
+                    self.audioPlayer.play()
                 }
             }
         }
@@ -116,5 +106,4 @@ class DemotapesTableViewBase : UITableViewController, AVAudioPlayerDelegate {
         tableView.reloadData()
         isPlaying = false
     }
-
 }
