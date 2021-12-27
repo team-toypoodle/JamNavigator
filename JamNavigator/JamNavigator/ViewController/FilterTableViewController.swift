@@ -1,31 +1,12 @@
 import UIKit
 
-struct Instrument{
-    let name:String
-    var isActive:Bool = true
-}
-
-struct FilterContents{
-    var all = [
-        Instrument(name:"guiter"),
-        Instrument(name:"piano"),
-        Instrument(name:"violin"),
-        Instrument(name:"other")
-    ]
-    func getActiveContents() -> [String] {
-        let activeContents = all.filter { $0.isActive }
-        return activeContents.map{ $0.name }
-    }
-}
-
 class FilterTableViewController:UITableViewController{
 
     @IBAction func didTapDoneButton(_ sender: Any) {
-        let activeContents = filterContents.getActiveContents()
-        delegate?.applyFilter(filter: activeContents)
+        delegate?.applyFilter(filter: activeFilter)
         dismiss(animated: true)
     }
-    var filterContents = FilterContents()
+    var activeFilter = FilterContents()
     
     weak var delegate: FilterDelegate?
     
@@ -39,8 +20,8 @@ class FilterTableViewController:UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell",for: indexPath)
-        cell.textLabel?.text = filterContents.all[indexPath.row].name
-        if filterContents.all[indexPath.row].isActive {
+        cell.textLabel?.text = activeFilter.all[indexPath.row].name
+        if activeFilter.all[indexPath.row].isActive {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -53,10 +34,10 @@ class FilterTableViewController:UITableViewController{
         switch cell?.accessoryType {
         case .checkmark:
             cell?.accessoryType = .none
-            filterContents.all[indexPath.row].isActive = false
+            activeFilter.all[indexPath.row].isActive = false
         case .none?:
             cell?.accessoryType = .checkmark
-            filterContents.all[indexPath.row].isActive = true
+            activeFilter.all[indexPath.row].isActive = true
         default:
             cell?.accessoryType = .none
         }
