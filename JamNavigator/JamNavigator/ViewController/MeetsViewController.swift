@@ -18,18 +18,18 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var dateTimeText: UILabel!
     @IBOutlet weak var locationNameText: UILabel!
-    @IBOutlet weak var locationAddressText: UILabel!
     @IBOutlet weak var numberOfPeopleText: UILabel!
     @IBOutlet weak var wiwiImage: UIImageView!
-
+    @IBOutlet weak var locationAddressTextView: UITextView!
+    
     override func viewDidLoad() {
         let item = meetsItem!
-        dateTimeText.text = "\(item.getValue(key: "DATEFT")!) \(item.getValue(key: "TIMEBOXF")!)〜 \(item.getValue(key: "TIMEBOXS")!) 分間"
-        numberOfPeopleText.text = "\(item.getValue(key: "#PEOPLE")!) 人"
+        dateTimeText.text = "\(item.getValue(key: "DATEFT")!) \(item.getValue(key: "TIMEBOXF")!)〜 \(item.getValue(key: "TIMEBOXS")!) minutes"
+        numberOfPeopleText.text = "\(item.getValue(key: "#PEOPLE")!) persons"
         let adid = item.getValue(key: "LOCID")!
         let address = addresses.filter{ $0.id == adid }.first!
         locationNameText.text = address.name
-        locationAddressText.text = address.address
+        locationAddressTextView.text = address.address
     }
     
     @IBAction func didTapPlayMatchingSoundButton(_ sender: Any) {
