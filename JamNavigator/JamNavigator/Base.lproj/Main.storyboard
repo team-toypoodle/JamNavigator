@@ -570,7 +570,7 @@
                             </barButtonItem>
                             <barButtonItem title="Item" image="ellipsis" catalog="system" id="Hhg-oc-0x0">
                                 <connections>
-                                    <segue destination="YcX-iz-UEa" kind="presentation" id="8Dr-fI-iKr"/>
+                                    <segue destination="YcX-iz-UEa" kind="presentation" identifier="toFilter" id="8Dr-fI-iKr"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
