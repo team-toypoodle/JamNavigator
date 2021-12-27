@@ -16,7 +16,7 @@ struct Address {
 
 //店の配列
 let addresses = [
-    Address(id: "KARA-000001", name: "JOYSOUND 名駅三丁目店", address: "愛知県名古屋市中村区名駅3丁目14−6"),
-    Address(id: "KARA-000002", name: "ジャンカラ 名駅東口店", address: "愛知県名古屋市中村区名駅4丁目10−20"),
-    Address(id: "KARA-000003", name: "ビッグエコー名駅4丁目店", address: "愛知県名古屋市中村区名駅4丁目5−18")
+    Address(id: "KARA-000001", name: "JOYSOUND Meieki 3", address: "Aichi, Nagoya, Nakamura Ward, Meieki, 3 Chome−15−8"),
+    Address(id: "KARA-000002", name: "Jankara Nagoya Station east exit shop", address: "Aichi, Nagoya, Nakamura Ward, Meieki, 4 Chome−10-20"),
+    Address(id: "KARA-000003", name: "big-echo Meieki 4", address: "Aichi, Nagoya, Nakamura Ward, Meieki, 4 Chome−4−18")
 ]
