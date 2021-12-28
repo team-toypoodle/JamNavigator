@@ -41,6 +41,7 @@
 		B6615A822779AA5D00E25EA4 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A812779AA5D00E25EA4 /* AWSS3StoragePlugin */; };
 		B6615A842779AA5D00E25EA4 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A832779AA5D00E25EA4 /* Amplify */; };
 		B6615AFE277A993600E25EA4 /* CalenderActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6615AFD277A993600E25EA4 /* CalenderActivity.swift */; };
+		B6615B00277AA3BE00E25EA4 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6615AFF277AA3BE00E25EA4 /* DateUtils.swift */; };
 		D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */; };
 		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
 		FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02D99827795DD300071BB0 /* FilterTableViewController.swift */; };
@@ -97,6 +98,7 @@
 		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		B6615AFD277A993600E25EA4 /* CalenderActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderActivity.swift; sourceTree = "<group>"; };
+		B6615AFF277AA3BE00E25EA4 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		B6C9183227745F680083CB82 /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183327745F680083CB82 /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183427745F680083CB82 /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */,
 				026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */,
 				02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */,
+				B6615AFF277AA3BE00E25EA4 /* DateUtils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				026A5A802763233500C09469 /* SignupViewController.swift in Sources */,
+				B6615B00277AA3BE00E25EA4 /* DateUtils.swift in Sources */,
 				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
 				02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */,
 				8781C301276B15CB005AF5BB /* RequestViewController.swift in Sources */,

@@ -15,6 +15,7 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
     var player: AVAudioPlayer? = nil
     var isPlaying = false
     var meetsItem: Demotape? = nil
+    var shareItem = [Any]()
     
     @IBOutlet weak var dateTimeText: UILabel!
     @IBOutlet weak var locationNameText: UILabel!
@@ -23,13 +24,15 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var locationAddressTextView: UITextView!
     
     @IBAction func didTapActionButton(_ sender: Any) {
-        let shareItem = ["test", Date(), Date() + (60 * 60)] as [Any]
         let VC = UIActivityViewController(activityItems: shareItem, applicationActivities: [CalenderActivity()])
         present(VC, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         let item = meetsItem!
+        let dateString = item.getValue(key: "DATEFT")! + "-" + item.getValue(key: "TIMEBOXF")!
+        let date = DateUtils.dateFromString(string: dateString, format: "yyyy-MM-dd-hh:mm")
+        shareItem = ["JamNaviMeeting", date - (9 * 60 * 60), date - (9 * 60 * 60) + (60 * 30)]
         dateTimeText.text = "\(item.getValue(key: "DATEFT")!) \(item.getValue(key: "TIMEBOXF")!)〜 \(item.getValue(key: "TIMEBOXS")!) minutes"
         numberOfPeopleText.text = "\(item.getValue(key: "#PEOPLE")!) persons"
         let adid = item.getValue(key: "LOCID")!
