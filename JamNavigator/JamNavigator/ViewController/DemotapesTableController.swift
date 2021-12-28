@@ -38,7 +38,10 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         listDemotapes() {
             mayBeList in
             guard let list = mayBeList else { return }
@@ -82,7 +85,6 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(activeFilter)
         return activeDemotapes.count
     }
     
@@ -137,7 +139,6 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
 
 extension DemotapesTableViewClass: FilterDelegate {
     func applyFilter(filter:FilterContents) {
-        print("動いた")
         activeFilter = filter
         let activeList = activeFilter.getActiveContents()
         activeDemotapes = demotapes.filter { demotape in

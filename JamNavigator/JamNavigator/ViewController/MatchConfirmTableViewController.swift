@@ -14,7 +14,6 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // 対象ユーザー一覧を生成する
         listMatchingItems(targetUseId: userSub) {
             success, matchingItems in

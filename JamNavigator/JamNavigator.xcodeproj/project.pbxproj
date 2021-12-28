@@ -13,7 +13,6 @@
 		02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */; };
 		02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */; };
 		02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */; };
-		02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887027630A3C0060B471 /* MenuViewController.swift */; };
 		02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */; };
 		02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */; };
 		02D6EB562771FDFC00C922C7 /* ConstDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */; };
@@ -41,6 +40,8 @@
 		B6615A822779AA5D00E25EA4 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A812779AA5D00E25EA4 /* AWSS3StoragePlugin */; };
 		B6615A842779AA5D00E25EA4 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A832779AA5D00E25EA4 /* Amplify */; };
 		B6615AFE277A993600E25EA4 /* CalenderActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6615AFD277A993600E25EA4 /* CalenderActivity.swift */; };
+		B6615B00277AA3BE00E25EA4 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6615AFF277AA3BE00E25EA4 /* DateUtils.swift */; };
+		B6615B02277ACF6800E25EA4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6615B01277ACF6800E25EA4 /* TabBarController.swift */; };
 		D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */; };
 		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
 		FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02D99827795DD300071BB0 /* FilterTableViewController.swift */; };
@@ -71,7 +72,6 @@
 		02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AwsS3.swift"; sourceTree = "<group>"; };
 		02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchConfirmTableViewController.swift; sourceTree = "<group>"; };
 		02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudMessaging.swift; sourceTree = "<group>"; };
-		02D6887027630A3C0060B471 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AwsCognito.swift"; sourceTree = "<group>"; };
 		02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstDatabase.swift; sourceTree = "<group>"; };
 		02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedComplitelyDialogViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		B6615AFD277A993600E25EA4 /* CalenderActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderActivity.swift; sourceTree = "<group>"; };
+		B6615AFF277AA3BE00E25EA4 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		B6615B01277ACF6800E25EA4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B6C9183227745F680083CB82 /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183327745F680083CB82 /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183427745F680083CB82 /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */,
 				026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */,
 				02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */,
+				B6615AFF277AA3BE00E25EA4 /* DateUtils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -160,7 +163,6 @@
 			children = (
 				874F5FE727606B8E0072107F /* TopViewController.swift */,
 				026A5A7F2763233500C09469 /* SignupViewController.swift */,
-				02D6887027630A3C0060B471 /* MenuViewController.swift */,
 				87BCC9452760921A003BB540 /* DemotapesTableController.swift */,
 				87BCC9492761A1C6003BB540 /* RecordingViewController.swift */,
 				87EA56F22761DD290062303C /* UploadViewController.swift */,
@@ -170,6 +172,7 @@
 				0275BAB82771E390004F9614 /* MeetsViewController.swift */,
 				FE02D99827795DD300071BB0 /* FilterTableViewController.swift */,
 				B6615AFD277A993600E25EA4 /* CalenderActivity.swift */,
+				B6615B01277ACF6800E25EA4 /* TabBarController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				026A5A802763233500C09469 /* SignupViewController.swift in Sources */,
+				B6615B00277AA3BE00E25EA4 /* DateUtils.swift in Sources */,
 				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
 				02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */,
 				8781C301276B15CB005AF5BB /* RequestViewController.swift in Sources */,
@@ -392,7 +396,6 @@
 				87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */,
 				026A5A8227632B6900C09469 /* UIViewController+Utilities.swift in Sources */,
 				02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */,
-				02D6887127630A3C0060B471 /* MenuViewController.swift in Sources */,
 				FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */,
 				0275BAB92771E390004F9614 /* MeetsViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
@@ -401,6 +404,7 @@
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				B6615AFE277A993600E25EA4 /* CalenderActivity.swift in Sources */,
 				02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */,
+				B6615B02277ACF6800E25EA4 /* TabBarController.swift in Sources */,
 				02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */,
 				02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */,
 				02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */,

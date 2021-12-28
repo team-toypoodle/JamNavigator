@@ -9,9 +9,12 @@ class CalenderActivity: UIActivity {
         return "Calender"
     }
     override var activityImage: UIImage? {
-        return UIImage(systemName: "calender")
+        return UIImage(named: "calender")
     }
     
+    override class var activityCategory: UIActivity.Category {
+        return .share
+    }
     override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
         return true
     }
@@ -28,6 +31,9 @@ class CalenderActivity: UIActivity {
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.save(event, span: .thisEvent)
+            let interval = event.startDate.timeIntervalSinceReferenceDate
+            guard let url = URL(string: "calshow:\(interval)") else { return }
+            UIApplication.shared.open(url)
         } catch {
             let nserror = error as NSError
             print(nserror)
