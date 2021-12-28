@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		026A5A802763233500C09469 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A7F2763233500C09469 /* SignupViewController.swift */; };
 		026A5A8227632B6900C09469 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */; };
-		026E46BE2769AD62003E8CF2 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46BD2769AD62003E8CF2 /* AWSAPIPlugin */; };
-		026E46C02769AD62003E8CF2 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46BF2769AD62003E8CF2 /* AWSCognitoAuthPlugin */; };
-		026E46C22769AD62003E8CF2 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C12769AD62003E8CF2 /* AWSDataStorePlugin */; };
-		026E46C42769AD62003E8CF2 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C32769AD62003E8CF2 /* AWSPluginsCore */; };
-		026E46C62769AD62003E8CF2 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */; };
-		026E46C82769AD62003E8CF2 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 026E46C72769AD62003E8CF2 /* Amplify */; };
 		0275BAB92771E390004F9614 /* MeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275BAB82771E390004F9614 /* MeetsViewController.swift */; };
 		02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */; };
 		02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */; };
@@ -24,9 +18,8 @@
 		02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */; };
 		02D6EB562771FDFC00C922C7 /* ConstDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */; };
 		02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */; };
-		02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		02F06255276B090C007ADF50 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 02F06254276B090C007ADF50 /* FirebaseMessaging */; };
 		02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */; };
+		1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */; };
 		2DFA0FB9684161BA8E6530DB /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */; };
 		874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE327606B8E0072107F /* AppDelegate.swift */; };
 		874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F5FE527606B8E0072107F /* SceneDelegate.swift */; };
@@ -42,11 +35,15 @@
 		87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9452760921A003BB540 /* DemotapesTableController.swift */; };
 		87BCC94A2761A1C6003BB540 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCC9492761A1C6003BB540 /* RecordingViewController.swift */; };
 		87EA56F32761DD290062303C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA56F22761DD290062303C /* UploadViewController.swift */; };
+		9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646BDF703CEFE693D5D2316F /* Demotape.swift */; };
+		B6615A7E2779AA5D00E25EA4 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A7D2779AA5D00E25EA4 /* AWSAPIPlugin */; };
+		B6615A802779AA5D00E25EA4 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A7F2779AA5D00E25EA4 /* AWSCognitoAuthPlugin */; };
+		B6615A822779AA5D00E25EA4 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A812779AA5D00E25EA4 /* AWSS3StoragePlugin */; };
+		B6615A842779AA5D00E25EA4 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = B6615A832779AA5D00E25EA4 /* Amplify */; };
+		B6615AFE277A993600E25EA4 /* CalenderActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6615AFD277A993600E25EA4 /* CalenderActivity.swift */; };
+		D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */; };
 		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
 		FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02D99827795DD300071BB0 /* FilterTableViewController.swift */; };
-		FE855B162775844900DE0F0C /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE855B132775844900DE0F0C /* Demotape+Schema.swift */; };
-		FE855B172775844900DE0F0C /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE855B142775844900DE0F0C /* AmplifyModels.swift */; };
-		FE855B182775844900DE0F0C /* Demotape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE855B152775844900DE0F0C /* Demotape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +77,8 @@
 		02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedComplitelyDialogViewController.swift; sourceTree = "<group>"; };
 		02F0625A276B1578007ADF50 /* JamNavigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JamNavigator.entitlements; sourceTree = "<group>"; };
 		02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppSync.swift"; sourceTree = "<group>"; };
+		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
+		7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
 		7EF3FC2E527FE40E45D01AC2 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		814F437C8FC0014819F5496A /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		874F5FE327606B8E0072107F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,13 +95,12 @@
 		87BCC9452760921A003BB540 /* DemotapesTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemotapesTableController.swift; sourceTree = "<group>"; };
 		87BCC9492761A1C6003BB540 /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
 		87EA56F22761DD290062303C /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		B6615AFD277A993600E25EA4 /* CalenderActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderActivity.swift; sourceTree = "<group>"; };
 		B6C9183227745F680083CB82 /* JamNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JamNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183327745F680083CB82 /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183427745F680083CB82 /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE02D99827795DD300071BB0 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
-		FE855B132775844900DE0F0C /* Demotape+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Demotape+Schema.swift"; path = "../amplify/generated/models/Demotape+Schema.swift"; sourceTree = "<group>"; };
-		FE855B142775844900DE0F0C /* AmplifyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = ../amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
-		FE855B152775844900DE0F0C /* Demotape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Demotape.swift; path = ../amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,15 +108,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02F06255276B090C007ADF50 /* FirebaseMessaging in Frameworks */,
-				026E46C62769AD62003E8CF2 /* AWSS3StoragePlugin in Frameworks */,
-				026E46C42769AD62003E8CF2 /* AWSPluginsCore in Frameworks */,
-				026E46C22769AD62003E8CF2 /* AWSDataStorePlugin in Frameworks */,
-				026E46C82769AD62003E8CF2 /* Amplify in Frameworks */,
+				B6615A7E2779AA5D00E25EA4 /* AWSAPIPlugin in Frameworks */,
+				B6615A842779AA5D00E25EA4 /* Amplify in Frameworks */,
 				878F14A827704C1100A81059 /* Tono in Frameworks */,
-				02F06253276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				026E46BE2769AD62003E8CF2 /* AWSAPIPlugin in Frameworks */,
-				026E46C02769AD62003E8CF2 /* AWSCognitoAuthPlugin in Frameworks */,
+				B6615A802779AA5D00E25EA4 /* AWSCognitoAuthPlugin in Frameworks */,
+				B6615A822779AA5D00E25EA4 /* AWSS3StoragePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +169,7 @@
 				02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */,
 				0275BAB82771E390004F9614 /* MeetsViewController.swift */,
 				FE02D99827795DD300071BB0 /* FilterTableViewController.swift */,
+				B6615AFD277A993600E25EA4 /* CalenderActivity.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -182,9 +177,9 @@
 		68FB89A07F916363B2BF7341 /* AmplifyModels */ = {
 			isa = PBXGroup;
 			children = (
-				FE855B142775844900DE0F0C /* AmplifyModels.swift */,
-				FE855B152775844900DE0F0C /* Demotape.swift */,
-				FE855B132775844900DE0F0C /* Demotape+Schema.swift */,
+				8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */,
+				7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */,
+				646BDF703CEFE693D5D2316F /* Demotape.swift */,
 			);
 			name = AmplifyModels;
 			sourceTree = "<group>";
@@ -262,15 +257,11 @@
 			);
 			name = JamNavigator;
 			packageProductDependencies = (
-				026E46BD2769AD62003E8CF2 /* AWSAPIPlugin */,
-				026E46BF2769AD62003E8CF2 /* AWSCognitoAuthPlugin */,
-				026E46C12769AD62003E8CF2 /* AWSDataStorePlugin */,
-				026E46C32769AD62003E8CF2 /* AWSPluginsCore */,
-				026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */,
-				026E46C72769AD62003E8CF2 /* Amplify */,
-				02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */,
-				02F06254276B090C007ADF50 /* FirebaseMessaging */,
 				878F14A727704C1100A81059 /* Tono */,
+				B6615A7D2779AA5D00E25EA4 /* AWSAPIPlugin */,
+				B6615A7F2779AA5D00E25EA4 /* AWSCognitoAuthPlugin */,
+				B6615A812779AA5D00E25EA4 /* AWSS3StoragePlugin */,
+				B6615A832779AA5D00E25EA4 /* Amplify */,
 			);
 			productName = JamNavigator;
 			productReference = B6C9183227745F680083CB82 /* JamNavigator.app */;
@@ -345,9 +336,8 @@
 			);
 			mainGroup = 874F5FD727606B8E0072107F;
 			packageReferences = (
-				026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */,
-				02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				878F14A627704C1100A81059 /* XCRemoteSwiftPackageReference "TonoSwift" */,
+				B6615A7C2779AA5D00E25EA4 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 			);
 			productRefGroup = 874F5FD727606B8E0072107F;
 			projectDirPath = "";
@@ -394,10 +384,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE855B182775844900DE0F0C /* Demotape.swift in Sources */,
 				026A5A802763233500C09469 /* SignupViewController.swift in Sources */,
 				874F5FE827606B8E0072107F /* TopViewController.swift in Sources */,
-				FE855B172775844900DE0F0C /* AmplifyModels.swift in Sources */,
 				02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */,
 				8781C301276B15CB005AF5BB /* RequestViewController.swift in Sources */,
 				87EA56F32761DD290062303C /* UploadViewController.swift in Sources */,
@@ -408,14 +396,17 @@
 				FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */,
 				0275BAB92771E390004F9614 /* MeetsViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
-				FE855B162775844900DE0F0C /* Demotape+Schema.swift in Sources */,
 				874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */,
 				02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
+				B6615AFE277A993600E25EA4 /* CalenderActivity.swift in Sources */,
 				02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */,
 				02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */,
 				02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */,
 				02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */,
+				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
+				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
+				9F18A957260A3B3827A66F97 /* Demotape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +591,7 @@
 				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "カレンダーにアクセスするよ！！";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "位置情報を使用します";
 				INFOPLIST_KEY_NSLocationUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を使用します";
@@ -636,6 +628,7 @@
 				DEVELOPMENT_TEAM = 42235ECE62;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JamNavigator/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "カレンダーにアクセスするよ！！";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "位置情報を使用します";
 				INFOPLIST_KEY_NSLocationUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "位置情報を使用します";
@@ -794,22 +787,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
 		878F14A627704C1100A81059 /* XCRemoteSwiftPackageReference "TonoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mtonosaki/TonoSwift.git";
@@ -818,53 +795,41 @@
 				kind = branch;
 			};
 		};
+		B6615A7C2779AA5D00E25EA4 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		026E46BD2769AD62003E8CF2 /* AWSAPIPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */;
-			productName = AWSAPIPlugin;
-		};
-		026E46BF2769AD62003E8CF2 /* AWSCognitoAuthPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */;
-			productName = AWSCognitoAuthPlugin;
-		};
-		026E46C12769AD62003E8CF2 /* AWSDataStorePlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */;
-			productName = AWSDataStorePlugin;
-		};
-		026E46C32769AD62003E8CF2 /* AWSPluginsCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */;
-			productName = AWSPluginsCore;
-		};
-		026E46C52769AD62003E8CF2 /* AWSS3StoragePlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */;
-			productName = AWSS3StoragePlugin;
-		};
-		026E46C72769AD62003E8CF2 /* Amplify */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 026E46BC2769AD62003E8CF2 /* XCRemoteSwiftPackageReference "amplify-ios" */;
-			productName = Amplify;
-		};
-		02F06252276B090C007ADF50 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
-		};
-		02F06254276B090C007ADF50 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02F06251276B090C007ADF50 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
 		878F14A727704C1100A81059 /* Tono */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 878F14A627704C1100A81059 /* XCRemoteSwiftPackageReference "TonoSwift" */;
 			productName = Tono;
+		};
+		B6615A7D2779AA5D00E25EA4 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6615A7C2779AA5D00E25EA4 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		B6615A7F2779AA5D00E25EA4 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6615A7C2779AA5D00E25EA4 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		B6615A812779AA5D00E25EA4 /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6615A7C2779AA5D00E25EA4 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSS3StoragePlugin;
+		};
+		B6615A832779AA5D00E25EA4 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6615A7C2779AA5D00E25EA4 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

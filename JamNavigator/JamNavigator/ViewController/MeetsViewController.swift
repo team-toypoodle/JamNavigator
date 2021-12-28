@@ -22,6 +22,12 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var wiwiImage: UIImageView!
     @IBOutlet weak var locationAddressTextView: UITextView!
     
+    @IBAction func didTapActionButton(_ sender: Any) {
+        let shareItem = ["test", Date(), Date() + (60 * 60)] as [Any]
+        let VC = UIActivityViewController(activityItems: shareItem, applicationActivities: [CalenderActivity()])
+        present(VC, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         let item = meetsItem!
         dateTimeText.text = "\(item.getValue(key: "DATEFT")!) \(item.getValue(key: "TIMEBOXF")!)〜 \(item.getValue(key: "TIMEBOXS")!) minutes"

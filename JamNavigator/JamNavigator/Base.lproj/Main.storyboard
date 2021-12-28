@@ -377,7 +377,13 @@
                             <constraint firstItem="ehT-1n-0Gg" firstAttribute="leading" secondItem="I9M-Ln-ENd" secondAttribute="leading" constant="120" id="yVn-QV-Lg8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hYT-i5-50L"/>
+                    <navigationItem key="navigationItem" id="hYT-i5-50L">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="86X-vS-AAE">
+                            <connections>
+                                <action selector="didTapActionButton:" destination="qgz-Iq-2zf" id="U68-D3-jmc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateTimeText" destination="uBc-fP-wJP" id="0Aq-69-o4E"/>
                         <outlet property="locationAddressTextView" destination="hGK-h4-InX" id="9ql-SJ-drr"/>
