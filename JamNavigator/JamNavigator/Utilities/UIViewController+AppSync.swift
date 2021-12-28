@@ -118,7 +118,7 @@ extension UIViewController {
                     switch result {
                         case .success(let tapes):
                             print("Successfully retrieved list of todos count=: \(tapes.count)")
-                            var matchingItems = Array<Demotape>()
+                            var matchingItems = [Demotape]()
                             for tape in tapes {
                                 if let uses = tape.instruments {
                                     if uses.contains(targetUseId) {
@@ -129,7 +129,7 @@ extension UIViewController {
                             let grouping = Dictionary(grouping: matchingItems) {
                                 $0.s3StorageKey ?? "nil"
                             }
-                            var ret = Array<Demotape>()
+                            var ret = [Demotape]()
                             for item in matchingItems {
                                 if let tartapes = grouping[item.s3StorageKey ?? "nil"], tartapes.count == 1 {
                                     if tartapes[0].name != "DONE" { // Doneのみのグループは対象外にする（クラウドマッチング時点で削除されたアイテムなので）

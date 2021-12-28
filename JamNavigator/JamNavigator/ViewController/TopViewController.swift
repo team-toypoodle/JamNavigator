@@ -24,7 +24,7 @@ class TopViewController: UIViewController {
             if let usersub = usersub  {
                 self.userSub = usersub
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "segueTopToMenu", sender: self)
+                    self.performSegue(withIdentifier: "segueTopToTab", sender: self)
                     
                 }
             } else {
@@ -44,10 +44,9 @@ class TopViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
-        case "segueTopToMenu":
-            print("Navi: Top --> Menu")
-            let menuView = segue.destination as! MenuViewController
-            menuView.userSub = userSub
+        case "segueTopToTab":
+            let tabVC = segue.destination as! TabBarController
+            tabVC.userSub = userSub
             
         case "segueTopToSignup":
             let signupView = segue.destination as! SignupViewController
@@ -98,7 +97,7 @@ class TopViewController: UIViewController {
                     if let usersub = usersub {
                         self.userSub = usersub
                         DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "segueTopToMenu", sender: self)
+                            self.performSegue(withIdentifier: "segueTopToTab", sender: self)
                         }
                     }
                 }
