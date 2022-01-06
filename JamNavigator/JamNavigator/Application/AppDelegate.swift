@@ -37,7 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Fatal error : Amplify init exception")
             return false
         }
-        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge]){
+            (granted,_) in
+            if granted {
+                UNUserNotificationCenter.current().delegate = self
+            }
+        }
         return true
     }
     
