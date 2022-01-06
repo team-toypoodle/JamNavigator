@@ -12,6 +12,7 @@ class TopViewController: UIViewController {
     
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     
+    
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     
@@ -101,7 +102,6 @@ class TopViewController: UIViewController {
                         }
                     }
                 }
-                
             } else {
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "WARNING", message:  "Login failure!\n\(errMessage ?? "unknown error")", preferredStyle:  UIAlertController.Style.alert)

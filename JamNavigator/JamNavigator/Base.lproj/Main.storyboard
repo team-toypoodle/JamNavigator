@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="84"/>
+            <point key="canvasLocation" x="251" y="1250"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="OhU-Q9-S22">
@@ -275,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4C-Tl-fGt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="251" y="802"/>
+            <point key="canvasLocation" x="251" y="2054"/>
         </scene>
         <!--Meets Table View Controller-->
         <scene sceneID="M90-NH-h0P">
@@ -420,7 +420,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVO-Yh-hXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-604" y="84"/>
+            <point key="canvasLocation" x="-668" y="1250"/>
         </scene>
         <!--Demotape-->
         <scene sceneID="oxZ-QW-nnV">
@@ -594,6 +594,7 @@
                         <segue destination="zjT-Zr-lrU" kind="relationship" relationship="viewControllers" id="AoB-Qq-GKt"/>
                         <segue destination="8E8-Wp-Zg4" kind="relationship" relationship="viewControllers" destinationCreationSelector="reqTab" id="jdI-rv-EiX"/>
                         <segue destination="qnW-S0-lMm" kind="relationship" relationship="viewControllers" id="qwJ-XD-1QJ"/>
+                        <segue destination="7Bp-ST-RPo" kind="relationship" relationship="viewControllers" id="ieF-cw-KjD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dP6-jn-HPG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1105,6 +1106,49 @@
             </objects>
             <point key="canvasLocation" x="2669.5652173913045" y="1572.9910714285713"/>
         </scene>
+        <!--Account-->
+        <scene sceneID="bfp-ao-pK0">
+            <objects>
+                <viewController id="7Bp-ST-RPo" customClass="AccountViewController" customModule="JamNavigator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BQ1-G6-S1X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LD6-Bm-YCb">
+                                <rect key="frame" x="0.0" y="388" width="414" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="logout"/>
+                                <connections>
+                                    <action selector="didTapLogoutButton:" destination="7Bp-ST-RPo" eventType="touchUpInside" id="iB7-QI-EOC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJ9-vH-WNN">
+                                <rect key="frame" x="0.0" y="338" width="414" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ntj-mp-NjE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GJ9-vH-WNN" firstAttribute="top" secondItem="ntj-mp-NjE" secondAttribute="top" constant="250" id="0eu-SF-vEe"/>
+                            <constraint firstItem="GJ9-vH-WNN" firstAttribute="leading" secondItem="ntj-mp-NjE" secondAttribute="leading" id="Fsv-aK-7Jv"/>
+                            <constraint firstItem="LD6-Bm-YCb" firstAttribute="top" secondItem="ntj-mp-NjE" secondAttribute="top" constant="300" id="XEe-PJ-e15"/>
+                            <constraint firstItem="ntj-mp-NjE" firstAttribute="trailing" secondItem="LD6-Bm-YCb" secondAttribute="trailing" id="YSd-Wt-PcE"/>
+                            <constraint firstItem="ntj-mp-NjE" firstAttribute="trailing" secondItem="GJ9-vH-WNN" secondAttribute="trailing" id="ZDs-Nb-e5C"/>
+                            <constraint firstItem="LD6-Bm-YCb" firstAttribute="leading" secondItem="ntj-mp-NjE" secondAttribute="leading" id="ogt-ma-HmJ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="mG3-oQ-iYY"/>
+                    <connections>
+                        <outlet property="userNameLabel" destination="GJ9-vH-WNN" id="F0w-cQ-CEf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gFc-WR-mLS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2653" y="2235"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="o6g-0u-sBL">
             <objects>
@@ -1136,6 +1180,7 @@
         <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="121"/>
         <image name="matchSound" width="200" height="200"/>
         <image name="mic" catalog="system" width="108" height="128"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="play" width="200" height="200"/>
         <image name="play.rectangle.on.rectangle" catalog="system" width="128" height="97"/>

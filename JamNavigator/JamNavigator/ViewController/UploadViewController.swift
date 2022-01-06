@@ -52,13 +52,14 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
 //            guard let fcmtoken = getFcmToken() else {
 //                fatalError("fcmtokenはエラー処理をしていません")
 //            }
-//            let attrs = ["FCMTOKEN=\(fcmtoken)"]
+            guard let userName = UserDefaults.standard.string(forKey: "userName") else {return}
+            let attrs = ["userName=\(userName)"]
             // GraphQL（データベース）にデモテープ情報を新規作成・登録する
             let tape = Demotape(
                 name: titleText.text ?? "(no title)",
                 generatedDateTime: dateTimeStr,
                 userId: userSub,
-//                attributes: attrs,
+                attributes: attrs,
                 s3StorageKey: uploadkey,
                 hashMemo: commentText.text,
                 instruments: instNames,
