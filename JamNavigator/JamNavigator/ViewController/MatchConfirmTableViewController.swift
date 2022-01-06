@@ -4,10 +4,11 @@ import AWSAPIPlugin
 import AVFoundation
 
 class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDelegate {
-    private var matchingFirstItem: Demotape? = nil  // TODO: 複数同時マッチング非対応のため、最初のマッチングレコードだけ処理する
+    private var matchingFirstItem: Demotape? = nil
 
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    var demotapes = Array<Demotape>()
+    var demotapes = [Demotape]()
+    var userNames = [String]()
     var audioPlayer: AVAudioPlayer!
 
     var selectedIndexPath: IndexPath? = nil
@@ -15,29 +16,30 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // 対象ユーザー一覧を生成する
-        listMatchingItems(targetUseId: userSub) {
-            success, matchingItems in
-            if success, let matchingItems = matchingItems {
+        listMatchingItems(targetUseId: userSub) {success, matchingItems in
+            guard success, let matchingItems = matchingItems else { return }
                 
-                let unionUsers = matchingItems
-                    .compactMap{ $0.instruments }
-                    .flatMap{ $0.compactMap{ $0 } }
-                let users = Array(Set(unionUsers))  // 重複を取り除く
-                if users.count >= 2 {   // 自分＋誰かがマッチングレコードある場合は、マッチング要求きている状態
-                    self.matchingFirstItem = matchingItems[0]
-                }
-                
-                // 対象ユーザーに限定したデモテープ一覧を作成する
-                self.listDemotapes(removeUserId: self.userSub, userIds: users) {
-                    (success, list) in
-                    if success {
-                        if let list = list{
-                            self.demotapes = list
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
-                        }
-                    }
+            let unionUsers = matchingItems
+                //nilを取り除く
+                .compactMap{ $0.instruments }
+                //1次元配列にする
+                .flatMap{ $0.compactMap{ $0 } }
+    
+            let users = Array(Set(unionUsers))  // 重複を取り除く
+            if users.count >= 2 {   // 自分＋誰かがマッチングレコードある場合は、マッチング要求きている状態
+                self.matchingFirstItem = matchingItems[0]
+            }
+            
+            // 対象ユーザーに限定したデモテープ一覧を作成する
+            self.listDemotapes(removeUserId: self.userSub, userIds: users) { [weak self] (success, list) in
+                guard success, let list = list else { return }
+                self?.demotapes = list
+                let unionUserNames = list.compactMap{ $0.attributes }.flatMap{ $0.compactMap{ $0 } }.map{ String($0.dropFirst(9)) }
+                print("----------", unionUserNames, type(of: unionUserNames))
+                self?.userNames = Array(Set(unionUserNames))
+//                print("userNames", Array(Set(unionUserNames.dropFirst(9))))
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
                 }
             }
         }
@@ -74,21 +76,19 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return demotapes.count
+        return userNames.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
-        let item = demotapes[indexPath.row]
+        let userName = userNames[indexPath.row]
         
-        cell.textLabel?.text = item.name
-        if indexPath == playingRowIndex{
-            cell.imageView?.image = UIImage(named: "StopButton")
-        }else{
-            cell.imageView?.image = UIImage(named: "PlayButton")
-        }
-        
-        cell.detailTextLabel?.text = Array(item.instruments?.map{$0!} ?? []).joined(separator: ", ") + "   " + Array(item.genres?.map{$0!} ?? []).joined(separator: ", ")
+        cell.textLabel?.text = userName
+//        if indexPath == playingRowIndex{
+//            cell.imageView?.image = UIImage(named: "StopButton")
+//        }else{
+//            cell.imageView?.image = UIImage(named: "PlayButton")
+//        }
         
         return cell
     }
