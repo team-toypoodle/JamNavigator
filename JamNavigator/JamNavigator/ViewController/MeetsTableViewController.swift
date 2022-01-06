@@ -34,7 +34,7 @@ class MeetsTableViewController :UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "meetsCell", for: indexPath)
         let item = meetsItems[indexPath.row]
-        cell.textLabel?.text = item.name
+        cell.textLabel?.text = item.getValue(key: "DATEFT")!
         return cell
     }
 }

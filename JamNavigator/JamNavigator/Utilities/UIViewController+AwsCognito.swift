@@ -109,6 +109,7 @@ extension UIViewController {
                 // Get user sub or identity id
                 if let identityProvider = session as? AuthCognitoIdentityProvider {
                     let usersub = try identityProvider.getUserSub().get()
+
                     print("userSub = \(usersub)")
                     callback(usersub)
                 }
@@ -124,6 +125,7 @@ extension UIViewController {
     // username: signUpでしていしたものと同じ
     // password:     同上
     func signIn(username: String, password: String, callback: @escaping (Bool, String?) -> Void ) {
+        UserDefaults.standard.set(username, forKey: "userName")
         Amplify.Auth.signIn(username: username, password: password) {
             result in
             
