@@ -28,6 +28,7 @@ class CalenderActivity: UIActivity {
         event.title = activityItems[0] as? String
         event.startDate = activityItems[1] as? Date
         event.endDate = activityItems[2] as? Date
+        event.location = activityItems[3] as? String
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.save(event, span: .thisEvent)

@@ -68,7 +68,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sEh-Ed-r7O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="123" id="0pI-gJ-SKp"/>
                             <constraint firstItem="gO3-2v-Nwz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="123" id="4HN-fc-adR"/>
@@ -486,7 +486,7 @@
                             <outlet property="delegate" destination="8E8-Wp-Zg4" id="bLr-2m-w96"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="req" image="heart.text.square" selectedImage="heart.text.square" catalog="system" id="fPP-Zc-rt4"/>
+                    <tabBarItem key="tabBarItem" title="req" image="heart.text.square" catalog="system" selectedImage="heart.text.square" id="fPP-Zc-rt4"/>
                     <navigationItem key="navigationItem" id="c8h-8O-pJ8">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="Match" id="fp1-JM-muW">
@@ -1038,7 +1038,7 @@
         <scene sceneID="gCn-1l-OFs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DkI-95-wJD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Meet" image="person.2" selectedImage="person.2" catalog="system" id="iZM-dZ-R12"/>
+                    <tabBarItem key="tabBarItem" title="Meet" image="person.2" catalog="system" selectedImage="person.2" id="iZM-dZ-R12"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hSw-fH-iXe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1081,13 +1081,11 @@
         <image name="Match" width="73" height="32"/>
         <image name="TitleImage" width="256" height="256"/>
         <image name="UploadFile" width="300" height="90"/>
-        <image name="heart.text.square" width="128" height="128"/>
         <image name="heart.text.square" catalog="system" width="128" height="114"/>
         <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="121"/>
         <image name="matchSound" width="200" height="200"/>
         <image name="mic" catalog="system" width="108" height="128"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
-        <image name="person.2" width="128" height="128"/>
         <image name="play" width="200" height="200"/>
         <image name="play.rectangle.on.rectangle" catalog="system" width="128" height="97"/>
         <image name="rec" width="150" height="150"/>
@@ -1097,6 +1095,9 @@
         <image name="wiwi" width="106" height="68"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
