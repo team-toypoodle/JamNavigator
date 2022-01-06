@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
         let demoVC = demoNavVC?.topViewController as? DemotapesTableViewClass
         let reqVC = self.viewControllers?[2] as? MatchConfirmTableViewController
         let meetNavVC = self.viewControllers?[3] as? UINavigationController
-        let meetVC = meetNavVC?.topViewController as? MeetsViewController
+        let meetTableVC = meetNavVC?.topViewController as? MeetsTableViewController
         recVC?.userSub = userSub
         demoVC?.userSub = userSub
         reqVC?.userSub = userSub
@@ -32,7 +32,7 @@ class TabBarController: UITabBarController {
                 let matchingItems = matchingItems,
                 matchingItems.count > 0
             else { return }
-            meetVC?.meetsItems = matchingItems
+            meetTableVC?.meetsItems = matchingItems
             DispatchQueue.main.async {
                 self?.initBadges(count: matchingItems.count.description, index: 3)
             }

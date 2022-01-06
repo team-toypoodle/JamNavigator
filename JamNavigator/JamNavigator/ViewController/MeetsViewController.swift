@@ -13,7 +13,7 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
 
     var player: AVAudioPlayer? = nil
     var isPlaying = false
-    var meetsItems: [Demotape]?
+    var meetsItem: Demotape?
     var shareItem = [Any]()
     
     @IBOutlet weak var dateTimeText: UILabel!
@@ -27,7 +27,7 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
     }
     
     override func viewDidLoad() {
-        guard let item = meetsItems?[0] else { return }
+        guard let item = meetsItem else { return }
         let dateString = item.getValue(key: "DATEFT")! + "-" + item.getValue(key: "TIMEBOXF")!
         let date = DateUtils.dateFromString(string: dateString, format: "yyyy-MM-dd-hh:mm")
         let adid = item.getValue(key: "LOCID")!
