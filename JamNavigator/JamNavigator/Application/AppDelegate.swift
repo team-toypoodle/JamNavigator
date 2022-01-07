@@ -18,11 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 起動後の初期化処理
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-        // PUSH Notofication w/ Firebase
-//        initPushNotification()
-//        application.registerForRemoteNotifications()
-
-
         // AWS Amplify
         do {
             //Amplify.Logging.logLevel = .verbose
@@ -36,12 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch{
             print("Fatal error : Amplify init exception")
             return false
-        }
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge]){
-            (granted,_) in
-            if granted {
-                UNUserNotificationCenter.current().delegate = self
-            }
         }
         return true
     }
