@@ -17,6 +17,16 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetchMatchingItems), for: UIControl.Event.valueChanged)
+        self.refreshControl = refreshControl
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchMatchingItems()
+    }
+    
+    @objc func fetchMatchingItems() {
         // 対象ユーザー一覧を生成する
         listMatchingItems(targetUseId: userSub) {[weak self] success, matchingItems in
             guard success, let matchingItems = matchingItems else { return }
@@ -44,6 +54,7 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
             }
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                self?.refreshControl?.endRefreshing()
             }
         }
     }
