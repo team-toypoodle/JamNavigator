@@ -11,7 +11,8 @@ class TabBarController: UITabBarController {
         let recVC = self.viewControllers?[0] as? RecordingViewController
         let demoNavVC = self.viewControllers?[1] as? UINavigationController
         let demoVC = demoNavVC?.topViewController as? DemotapesTableViewClass
-        let reqVC = self.viewControllers?[2] as? MatchConfirmTableViewController
+        let reqNavVC = self.viewControllers?[2] as? UINavigationController
+        let reqVC = reqNavVC?.topViewController as? MatchConfirmTableViewController
         let meetNavVC = self.viewControllers?[3] as? UINavigationController
         let meetTableVC = meetNavVC?.topViewController as? MeetsTableViewController
         recVC?.userSub = userSub
