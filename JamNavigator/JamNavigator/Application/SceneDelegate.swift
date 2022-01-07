@@ -6,23 +6,24 @@
 //
 
 import UIKit
+import BackgroundTasks
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    var userSub: String = ""
-    var matchingCount: Int = 0
+//    var userSub: String = ""
+//    var matchingCount: Int = 0
 
-    func notificationOperation() {
-        let content = UNMutableNotificationContent()
-        content.title = "お知らせ"
-        content.body = "local通知"
-        content.sound = UNNotificationSound.default
-        let intervaltrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "Notification", content: content, trigger: intervaltrigger)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
+//    func notificationOperation() {
+//        let content = UNMutableNotificationContent()
+//        content.title = "お知らせ"
+//        content.body = "local通知"
+//        content.sound = UNNotificationSound.default
+//        let intervaltrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+//        let request = UNNotificationRequest(identifier: "Notification", content: content, trigger: intervaltrigger)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//    }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -53,24 +54,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to undo the changes made on entering the background.
     }
 
+    class func scheduleAppRefresh() {
+        // Info.plistで定義したIdentifierを指定
+        let request = BGAppRefreshTaskRequest(identifier: "com.exampleapp.localNotice.apprefresh")
+        // 最低で、どの程度の期間を置いてから実行するか指定
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 5)
+
+        do {
+            // スケジューラーに実行リクエストを登録
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Could not schedule app refresh: \(error)")
+        }
+    }
+
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-        let uivc = UIViewController()
-        uivc.fetchCurrentAuthSession() {   // 自動認証を トライしてみる
-            usersub in
-            guard let usersub = usersub else { return }
-            self.userSub = usersub
-        }
-        uivc.listMatchingItems(targetUseId: userSub) { success, matchingItems in
-            guard
-                let matchingItems = matchingItems,
-                matchingItems.count == self.matchingCount
-            else { return }
-            self.matchingCount = matchingItems.count
-            self.notificationOperation()
-        }
+        SceneDelegate.scheduleAppRefresh()
+//        let uivc = UIViewController()
+//        uivc.fetchCurrentAuthSession() {   // 自動認証を トライしてみる
+//            usersub in
+//            guard let usersub = usersub else { return }
+//            self.userSub = usersub
+//        }
+//        uivc.listMatchingItems(targetUseId: userSub) { success, matchingItems in
+//            guard
+//                let matchingItems = matchingItems,
+//                matchingItems.count == self.matchingCount
+//            else { return }
+//            self.matchingCount = matchingItems.count
+//            self.notificationOperation()
+//        }
         
     }
 

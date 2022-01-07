@@ -10,6 +10,7 @@ import Amplify
 import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
 import AWSAPIPlugin
+import BackgroundTasks
 //import Firebase
 
 @main
@@ -43,6 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UNUserNotificationCenter.current().delegate = self
             }
         }
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.exampleapp.localNotice.apprefresh", using: nil) { task in
+            // バックグラウンド処理したい内容 ※後述します
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
+        BGTaskScheduler.shared.getPendingTaskRequests {
+            requests in print(requests)
+        }
         return true
     }
     
@@ -53,4 +61,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
+    
+    private func handleAppRefresh(task: BGAppRefreshTask) {
+          // 1日の間、何度も実行したい場合は、1回実行するごとに新たにスケジューリングに登録します
+        SceneDelegate.scheduleAppRefresh()
+
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+
+        // 時間内に実行完了しなかった場合は、処理を解放します
+        // バックグラウンドで実行する処理は、次回に回しても問題ない処理のはずなので、これでOK
+        task.expirationHandler = {
+          queue.cancelAllOperations()
+        }
+
+        let operation = MatchingRequestNotificationOperation()
+        operation.completionBlock = {
+          // 最後の処理が完了したら、必ず完了したことを伝える必要があります
+          task.setTaskCompleted(success: operation.isFinished)
+        }
+        queue.addOperation(operation)
+      }
 }

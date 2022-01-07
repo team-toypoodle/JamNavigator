@@ -47,6 +47,7 @@
 		D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C63498A7265B6C1AA8D38F1 /* Demotape+Schema.swift */; };
 		E87A2496E33A7AF871FCDAC4 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 814F437C8FC0014819F5496A /* amplifyconfiguration.json */; };
 		FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02D99827795DD300071BB0 /* FilterTableViewController.swift */; };
+		FE91C97C2787BDDC000FA9E0 /* MatchingRequestNotificationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE91C97B2787BDDC000FA9E0 /* MatchingRequestNotificationOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		B6C9183327745F680083CB82 /* JamNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C9183427745F680083CB82 /* JamNavigatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JamNavigatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE02D99827795DD300071BB0 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
+		FE91C97B2787BDDC000FA9E0 /* MatchingRequestNotificationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingRequestNotificationOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		021E1A1F2771601900E7E1BE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				FE91C97B2787BDDC000FA9E0 /* MatchingRequestNotificationOperation.swift */,
 				02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */,
 				02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */,
 				02D6887227630B2F0060B471 /* UIViewController+AwsCognito.swift */,
@@ -415,6 +418,7 @@
 				B6615B02277ACF6800E25EA4 /* TabBarController.swift in Sources */,
 				02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */,
 				02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */,
+				FE91C97C2787BDDC000FA9E0 /* MatchingRequestNotificationOperation.swift in Sources */,
 				02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */,
 				1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */,
 				D2775C0D3DB6112761D7188D /* Demotape+Schema.swift in Sources */,
