@@ -6,44 +6,44 @@ import AVFoundation
 class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDelegate {
     private var matchingFirstItem: Demotape? = nil
 
+    @IBOutlet var userNameTableView: UITableView!
+    
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    var demotapes = [Demotape]()
     var userNames = [String]()
     var audioPlayer: AVAudioPlayer!
+    var userIDs = [String]()
 
     var selectedIndexPath: IndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 対象ユーザー一覧を生成する
-        listMatchingItems(targetUseId: userSub) {success, matchingItems in
+        listMatchingItems(targetUseId: userSub) {[weak self] success, matchingItems in
             guard success, let matchingItems = matchingItems else { return }
-                
+            
             let unionUsers = matchingItems
-                //nilを取り除く
                 .compactMap{ $0.instruments }
-                //1次元配列にする
                 .flatMap{ $0.compactMap{ $0 } }
-    
-            let users = Array(Set(unionUsers))  // 重複を取り除く
-            if users.count >= 2 {   // 自分＋誰かがマッチングレコードある場合は、マッチング要求きている状態
-                self.matchingFirstItem = matchingItems[0]
+            
+            self?.userNames = matchingItems.compactMap { record -> String in
+                guard
+                    let attributes = record.attributes,
+                    let userNameAttribute = attributes[6]
+                else {
+                    print("else----------")
+                    return ""
+                }
+                print("userNameAttribute------", userNameAttribute)
+                return String(userNameAttribute.dropFirst(9))
             }
             
-            // 対象ユーザーに限定したデモテープ一覧を作成する
-            self.listDemotapes(removeUserId: self.userSub, userIds: users) { [weak self] (success, list) in
-                guard success, let list = list else { return }
-                self?.demotapes = list
-                let unionUserNames = list.compactMap{ $0.attributes }.flatMap{ $0.compactMap{ $0 } }.map{ String($0.dropFirst(9)) }
-                print("----------", unionUserNames, type(of: unionUserNames))
-                self?.userNames = Array(Set(unionUserNames))
-//                print("userNames", Array(Set(unionUserNames.dropFirst(9))))
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+            self?.userIDs = Array(Set(unionUsers))  // 重複を取り除く
+            // 自分＋誰かがマッチングレコードある場合は、マッチング要求きている状態
+            guard let userIDs = self?.userIDs else { return }
+            if userIDs.count >= 2 {
+                self?.matchingFirstItem = matchingItems[0]
             }
         }
-        tableView.allowsSelection = true
     }
     
     // マッチング拒否
@@ -68,11 +68,14 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //segueConfirmToRequest
-        guard let destination = segue.destination as? RequestViewController else {
-            fatalError("\(segue.destination) Error")
-        }
-        destination.demotape = matchingFirstItem
+        print("prepare-----------")
+        guard
+            let destination = segue.destination as? RequestDemotapeTableViewController,
+            let indexPath = userNameTableView.indexPathForSelectedRow
+        else { fatalError("\(segue.destination) Error") }
+        destination.userName = userNames[indexPath.row]
         destination.userSub = userSub
+        destination.userID = userIDs[indexPath.row]
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +83,7 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userNameCell", for: indexPath)
         let userName = userNames[indexPath.row]
         
         cell.textLabel?.text = userName
@@ -96,34 +99,34 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     var playingRowIndex: IndexPath = IndexPath()
     var isPlaying = false
     // 選択したときのイベント
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isPlaying {
-            audioPlayer.stop()
-            isPlaying = false
-            playingRowIndex = IndexPath()
-            tableView.deselectRow(at: indexPath, animated: true)
-            tableView.reloadData()
-        }else{
-            let item = demotapes[indexPath.row]
-            downloadMusic(key: item.s3StorageKey ?? ""){
-                (success, data) in
-                if success {
-                    if let data = data {
-                        DispatchQueue.main.async {
-                            let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
-                            cell.imageView?.image = UIImage(named: "StopButton")
-                            self.isPlaying = true
-                            self.tableView.reloadData()
-                            self.playingRowIndex = indexPath
-                            self.audioPlayer = try! AVAudioPlayer(data: data)
-                            self.audioPlayer.delegate = self
-                            self.audioPlayer.play()
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if isPlaying {
+//            audioPlayer.stop()
+//            isPlaying = false
+//            playingRowIndex = IndexPath()
+//            tableView.deselectRow(at: indexPath, animated: true)
+//            tableView.reloadData()
+//        }else{
+//            let item = demotapes[indexPath.row]
+//            downloadMusic(key: item.s3StorageKey ?? ""){
+//                (success, data) in
+//                if success {
+//                    if let data = data {
+//                        DispatchQueue.main.async {
+//                            let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
+//                            cell.imageView?.image = UIImage(named: "StopButton")
+//                            self.isPlaying = true
+//                            self.tableView.reloadData()
+//                            self.playingRowIndex = indexPath
+//                            self.audioPlayer = try! AVAudioPlayer(data: data)
+//                            self.audioPlayer.delegate = self
+//                            self.audioPlayer.play()
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         playingRowIndex = IndexPath()

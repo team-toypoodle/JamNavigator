@@ -18,6 +18,7 @@
 		02D6EB562771FDFC00C922C7 /* ConstDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D6EB542771FDFC00C922C7 /* ConstDatabase.swift */; };
 		02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */; };
 		02FFCB7D27715C61005FF2D3 /* UIViewController+AppSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */; };
+		0579FA3E2787C37200B23E89 /* RequestDemotapeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0579FA3D2787C37200B23E89 /* RequestDemotapeTableViewController.swift */; };
 		05B41F1D27868A50001E5D55 /* MeetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B41F1C27868A50001E5D55 /* MeetsTableViewController.swift */; };
 		05B41F1F2786B9AA001E5D55 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B41F1E2786B9AA001E5D55 /* AccountViewController.swift */; };
 		1D9E2EF8A9B052E33383182E /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8798E0786DDFCDE6477756 /* AmplifyModels.swift */; };
@@ -79,6 +80,7 @@
 		02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedComplitelyDialogViewController.swift; sourceTree = "<group>"; };
 		02F0625A276B1578007ADF50 /* JamNavigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JamNavigator.entitlements; sourceTree = "<group>"; };
 		02FFCB7C27715C61005FF2D3 /* UIViewController+AppSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppSync.swift"; sourceTree = "<group>"; };
+		0579FA3D2787C37200B23E89 /* RequestDemotapeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDemotapeTableViewController.swift; sourceTree = "<group>"; };
 		05B41F1C27868A50001E5D55 /* MeetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetsTableViewController.swift; sourceTree = "<group>"; };
 		05B41F1E2786B9AA001E5D55 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		646BDF703CEFE693D5D2316F /* Demotape.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Demotape.swift; path = amplify/generated/models/Demotape.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				B6615B01277ACF6800E25EA4 /* TabBarController.swift */,
 				05B41F1C27868A50001E5D55 /* MeetsTableViewController.swift */,
 				05B41F1E2786B9AA001E5D55 /* AccountViewController.swift */,
+				0579FA3D2787C37200B23E89 /* RequestDemotapeTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */,
 				87BCC9462760921A003BB540 /* DemotapesTableController.swift in Sources */,
 				B6615AFE277A993600E25EA4 /* CalenderActivity.swift in Sources */,
+				0579FA3E2787C37200B23E89 /* RequestDemotapeTableViewController.swift in Sources */,
 				02E0935A277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift in Sources */,
 				B6615B02277ACF6800E25EA4 /* TabBarController.swift in Sources */,
 				02D6EB552771FDFC00C922C7 /* ConstDatabase.swift in Sources */,

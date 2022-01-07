@@ -130,14 +130,21 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         }
 //        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
         // GraphQLで マッチングデータを保存する
+        guard let userName = UserDefaults.standard.string(forKey: "userName") else { return }
         switch mode {
         case .Request:
-            saveMatchingData(date: selectedDate, timeBoxFrom: timeBoxFrom, timeBoxTo: timeBoxTo, spanMinutes: span, noOfPeople: nPpl, locationId: selectedLocationId) {
-                success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
-                    }
+            saveMatchingData(
+                date: selectedDate,
+                timeBoxFrom: timeBoxFrom,
+                timeBoxTo: timeBoxTo,
+                spanMinutes: span,
+                noOfPeople: nPpl,
+                locationId: selectedLocationId,
+                userName: userName
+            ){ success in
+                guard success else { return }
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
                 }
             }
         case .Confirm:
@@ -189,21 +196,22 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     }
 
     // はじめての、マッチングリクエスト
-    private func saveMatchingData(date: String, timeBoxFrom: String, timeBoxTo: String, spanMinutes: Int, noOfPeople: Int, locationId: String, callback: ((Bool) -> Void)? = nil) {
+    private func saveMatchingData(
+        date: String,
+        timeBoxFrom: String,
+        timeBoxTo: String,
+        spanMinutes: Int,
+        noOfPeople: Int,
+        locationId: String,
+        userName: String,
+        callback: ((Bool) -> Void)? = nil)
+    {
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "yyyy-MM-dd HH:mm"
         let dateTimeStr = formatter1.string(from: Date())
 
         // マッチングユーザーIDを作る
-        let userIds = [userSub, demotape?.userId]   // 最初の UserIDが、マッチングオーナー（言い出しっぺ）
-
-        // デモテープ作った人の FCMトークン
-//        guard let fcmtoken = demotape?.getValue(key: "FCMTOKEN") else {
-//            print("FCMトークンが見つからなかったため、PUSH通知ができません")
-//            alert(caption: "WARNING", message: "相手のスマホには通知が送れないため、マッチングはキャンセルされました", button1: "Cancel")
-//            callback?(false)
-//            return
-//        }
+        let userIds = [userSub, demotape?.userId]
         
          //GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
         let tape = Demotape(
@@ -217,8 +225,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                 "TIMEBOXS=\(spanMinutes)",
                 "#PEOPLE_=\(noOfPeople)",
                 "LOCID___=\(locationId)",
-                //"FCMTOKEN=\(fcmtoken)",         // デモテープ作った人のFCMトークン
-                "FCMTOKEN=\(getFcmToken() ?? "?")",    // マッチングしたい人のFCMトークン
+                "userName=\(userName)"
             ],
             s3StorageKey: UUID().uuidString, // マッチンググループのID
             instruments: userIds,
