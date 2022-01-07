@@ -30,7 +30,6 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
                     let attributes = record.attributes,
                     let userNameAttribute = attributes[6]
                 else {
-                    print("else----------")
                     return ""
                 }
                 print("userNameAttribute------", userNameAttribute)
@@ -42,6 +41,9 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
             guard let userIDs = self?.userIDs else { return }
             if userIDs.count >= 2 {
                 self?.matchingFirstItem = matchingItems[0]
+            }
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
         }
     }
@@ -68,7 +70,6 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //segueConfirmToRequest
-        print("prepare-----------")
         guard
             let destination = segue.destination as? RequestDemotapeTableViewController,
             let indexPath = userNameTableView.indexPathForSelectedRow
@@ -92,7 +93,7 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
 //        }else{
 //            cell.imageView?.image = UIImage(named: "PlayButton")
 //        }
-        
+        print("userNames--------", userNames)
         return cell
     }
     
