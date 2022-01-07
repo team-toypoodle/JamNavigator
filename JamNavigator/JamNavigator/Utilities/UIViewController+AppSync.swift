@@ -219,6 +219,37 @@ extension UIViewController {
             }
         }
     }
+    
+    // userNameからIDを取得
+    func getIdByUserName(userName: String,callback: @escaping (String?) -> Void) {
+        let demotape = Demotape.keys
+        let predicate = (demotape.userId != "MATCHING")
+        Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) { event in
+            switch event {
+            case .success(let result):
+                switch result {
+                case .success(let tapes):
+                    print("Successfully retrieved list of tapes count=: \(tapes.count)")
+                    let targetTapes = tapes.filter { demotape in
+                        guard
+                            let attributes = demotape.attributes,
+                            let attribute = attributes[0]
+                        else { return false }
+                        print("userName(in filter)----",attribute)
+                        return attribute == "userName=\(userName)"
+                    }
+                    callback(targetTapes[0].userId)
+                    
+                case .failure(let error):
+                    print("Got failed result with \(error.errorDescription)")
+                    callback(nil)
+                }
+            case .failure(let error):
+                print("Got failed event with error \(error)")
+                callback(nil)
+            }
+        }
+    }
 }
 
 extension Demotape {

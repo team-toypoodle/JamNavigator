@@ -9,7 +9,6 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
     @IBOutlet var userNameTableView: UITableView!
     
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
-    var demotapes = [Demotape]()
     var userNames = [String]()
     var audioPlayer: AVAudioPlayer!
     var userIDs = [String]()
@@ -21,32 +20,28 @@ class MatchConfirmTableViewController: UITableViewController, AVAudioPlayerDeleg
         // 対象ユーザー一覧を生成する
         listMatchingItems(targetUseId: userSub) {[weak self] success, matchingItems in
             guard success, let matchingItems = matchingItems else { return }
-                
+            
             let unionUsers = matchingItems
-                //nilを取り除く
                 .compactMap{ $0.instruments }
-                //1次元配列にする
                 .flatMap{ $0.compactMap{ $0 } }
-    
+            
+            self?.userNames = matchingItems.compactMap { record -> String in
+                guard
+                    let attributes = record.attributes,
+                    let userNameAttribute = attributes[6]
+                else {
+                    print("else----------")
+                    return ""
+                }
+                print("userNameAttribute------", userNameAttribute)
+                return String(userNameAttribute.dropFirst(9))
+            }
+            
             self?.userIDs = Array(Set(unionUsers))  // 重複を取り除く
             // 自分＋誰かがマッチングレコードある場合は、マッチング要求きている状態
             guard let userIDs = self?.userIDs else { return }
-            print("userIDs-------", userIDs)
             if userIDs.count >= 2 {
                 self?.matchingFirstItem = matchingItems[0]
-            }
-            
-            // 対象ユーザーに限定したデモテープ一覧を作成する
-            guard let userSub = self?.userSub else { return }
-            self?.listDemotapes(removeUserId: userSub, userIds: userIDs) { [weak self] (success, list) in
-                guard success, let list = list else { return }
-                self?.demotapes = list
-                let unionUserNames = list.compactMap{ $0.attributes }.flatMap{ $0.compactMap{ $0 } }.map{ String($0.dropFirst(9)) }
-                print("----------", unionUserNames, type(of: unionUserNames))
-                self?.userNames = Array(Set(unionUserNames))
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
             }
         }
     }

@@ -4,18 +4,8 @@ import Amplify
 
 extension UIViewController {
     
-     //通知用トークンを取得（アプリ再インストールなどで変更されるが、再起動ぐらいでは変わらない値）
-    func getFcmToken() -> String? {
-        //let token = Messaging.messaging().fcmToken  // [START log_fcm_reg_token]
-        return nil
-    }
-    
      //自分の端末を Fcmのトピックに参加させる（トピックの通知を受けられるようにする）
     func joinToFcmTopic(topic: String ) {
-//        Messaging.messaging().subscribe(toTopic: topic) {   // [START subscribe_topic]
-//            error in
-//            print("Error: Subscribed to 'request-topic' topic : \(error?.localizedDescription ?? "OK")")
-//        }
     }
 
     // トピックに対して、リモート通知を要求する
