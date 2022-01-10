@@ -130,7 +130,7 @@ extension UIViewController {
     // 指定ユーザーに関する、現地集合アイテムの一覧をコールバックで返す
     func listMeetsItems(targetUseId: String, callback: @escaping (Bool, Array<Demotape>?) -> Void) {
         let demotape = Demotape.keys
-        let predicate = (demotape.userId == "MATCHING" && (demotape.name == "WAITING_THE_REAL" || demotape.name == "DONE"))
+        let predicate = (demotape.userId == "MATCHING" && (demotape.name == "WAITING_THE_REAL" || demotape.name == "Rejected"))
         Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) {
             event in
             switch event {
@@ -152,7 +152,7 @@ extension UIViewController {
                             var ret = [Demotape]()
                             for item in matchingItems {
                                 if let tartapes = grouping[item.s3StorageKey ?? "nil"], tartapes.count == 1 {
-                                    if tartapes[0].name != "DONE" { // Doneのみのグループは対象外にする（クラウドマッチング時点で削除されたアイテムなので）
+                                    if tartapes[0].name != "Rejected" { // Rejectedのみのグループは対象外にする（クラウドマッチング時点で削除されたアイテムなので）
                                         ret.append(item)
                                     }
                                 }
@@ -173,7 +173,7 @@ extension UIViewController {
     // 指定ユーザーに関する マッチング（or 候補）の一覧をコールバックで返す
     func listMatchingItems(targetUseId: String, callback: @escaping (Bool, Array<Demotape>?) -> Void) {
         let demotape = Demotape.keys
-        let predicate = (demotape.userId == "MATCHING" && (demotape.name == "WAITING_FIRSTMATCHING" || demotape.name == "WAITING_THE_REAL" || demotape.name == "DONE"))
+        let predicate = (demotape.userId == "MATCHING" && (demotape.name == "WAITING_FIRSTMATCHING" || demotape.name == "WAITING_THE_REAL" || demotape.name == "Rejected"))
         Amplify.API.query(request: .paginatedList(Demotape.self, where: predicate, limit: 1000)) {
             event in
             switch event {
