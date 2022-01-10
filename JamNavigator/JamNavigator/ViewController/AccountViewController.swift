@@ -15,6 +15,7 @@ class AccountViewController: UIViewController {
         signOutGlobally() {(success, errMessage) in
             if success {
                 DispatchQueue.main.async {
+                    print("logout")
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             } else {
