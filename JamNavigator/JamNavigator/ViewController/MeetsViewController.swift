@@ -1,10 +1,3 @@
-//
-//  MeetsViewController.swift
-//  JamNavigator
-//
-//  Created by Manabu Tonosaki on 2021/12/21.
-//
-
 import Foundation
 import UIKit
 import AVFAudio
@@ -33,7 +26,7 @@ class MeetsViewController : UIViewController, AVAudioPlayerDelegate {
         let adid = item.getValue(key: "LOCID")!
         let address = addresses.filter{ $0.id == adid }.first!
         shareItem = ["JamNaviMeeting", date - (9 * 60 * 60), date - (9 * 60 * 60) + (60 * 30), address.address]
-        dateTimeText.text = "\(item.getValue(key: "DATEFT")!) \(item.getValue(key: "TIMEBOXF")!)〜 \(item.getValue(key: "TIMEBOXS")!) minutes"
+        dateTimeText.text = "\(dateString)〜 \(item.getValue(key: "TIMEBOXS")!) minutes"
         locationNameText.text = address.name
         locationAddressTextView.text = address.address
     }

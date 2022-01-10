@@ -5,37 +5,45 @@ import Amplify
 import AWSAPIPlugin
 import AVFoundation
 
-class RequestDemotapeTableViewController: UITableViewController, AVAudioPlayerDelegate {
+class RequestDemotapeTableViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDataSource, UITableViewDelegate {
     
-
+    @IBAction func didTapRejectButton(_ sender: Any) {
+    }
+    @IBAction func didTapConfirmButton(_ sender: Any) {
+    }
+    @IBOutlet weak var whenLabel: UILabel!
+    @IBOutlet weak var whereLabel: UILabel!
+    @IBOutlet weak var demotapesTableView: UITableView!
+    
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     var demotapes = [Demotape]()
     var audioPlayer: AVAudioPlayer!
     
-    var userName:String?
-    var userID:String?
+    var requestData: RequestData?
 
     var selectedIndexPath: IndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // 対象ユーザーに限定したデモテープ一覧を作成する
-        guard let userID = self.userID else { return }
-        self.listDemotapes(removeUserId: self.userSub, userIds: [userID]) { [weak self] (success, list) in
+        guard let reqData = requestData else { return }
+        self.listDemotapes(removeUserId: self.userSub, userIds: [reqData.userId]) { [weak self] (success, list) in
             guard success, let list = list else { return }
             self?.demotapes = list
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.demotapesTableView.reloadData()
             }
         }
-        title = userName
+        title = reqData.userName
+        whenLabel.text = reqData.dateString
+        whereLabel.text = reqData.locatioin
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return demotapes.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "demotapeCell", for: indexPath)
         let demotape = demotapes[indexPath.row]
         cell.textLabel?.text = demotape.name

@@ -130,7 +130,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         }
 //        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
         // GraphQLで マッチングデータを保存する
-        guard let userName = UserDefaults.standard.string(forKey: "userName") else { return }
+        guard let fromUserName = UserDefaults.standard.string(forKey: "userName") else { return }
         switch mode {
         case .Request:
             saveMatchingData(
@@ -140,7 +140,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                 spanMinutes: span,
                 noOfPeople: nPpl,
                 locationId: selectedLocationId,
-                userName: userName
+                fromUserName: fromUserName
             ){ success in
                 guard success else { return }
                 DispatchQueue.main.async {
@@ -203,7 +203,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         spanMinutes: Int,
         noOfPeople: Int,
         locationId: String,
-        userName: String,
+        fromUserName: String,
         callback: ((Bool) -> Void)? = nil)
     {
         let formatter1 = DateFormatter()
@@ -212,6 +212,11 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
 
         // マッチングユーザーIDを作る
         let userIds = [userSub, demotape?.userId]
+        guard
+            let demotapeee = demotape,
+            let attributes = demotapeee.attributes,
+            let toUserName = attributes[0]?.dropFirst(9)
+        else { return }
         
          //GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
         let tape = Demotape(
@@ -225,7 +230,8 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                 "TIMEBOXS=\(spanMinutes)",
                 "#PEOPLE_=\(noOfPeople)",
                 "LOCID___=\(locationId)",
-                "userName=\(userName)"
+                "frmUname=\(fromUserName)",
+                "toUname_=\(toUserName)"
             ],
             s3StorageKey: UUID().uuidString, // マッチンググループのID
             instruments: userIds,
