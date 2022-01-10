@@ -4,6 +4,8 @@ import AWSAPIPlugin
 import AVFoundation
 
 struct RequestData {
+    var isSent: Bool
+    var matchingItem: Demotape
     var userId: String
     var userName: String
     var dateString: String
@@ -57,6 +59,8 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
                 let fromUserName = record.getValue(key: "frmUname")!
                 if fromUserName == UserDefaults.standard.string(forKey: "userName") {
                     let requestData = RequestData(
+                        isSent: true,
+                        matchingItem: record,
                         userId: toUserId,
                         userName: record.getValue(key: "toUname_")!,
                         dateString: "\(record.getValue(key: "DATEFT")!)-\(record.getValue(key: "TIMEBOXF")!) 〜 \(record.getValue(key: "TIMEBOXS")!)minutes",
@@ -65,6 +69,8 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
                     self?.sentRequestDatas.append(requestData)
                 } else {
                     let requestData = RequestData(
+                        isSent: false,
+                        matchingItem: record,
                         userId: fromUserId,
                         userName: fromUserName,
                         dateString: "\(record.getValue(key: "DATEFT")!)-\(record.getValue(key: "TIMEBOXF")!) 〜 \(record.getValue(key: "TIMEBOXS")!)minutes",

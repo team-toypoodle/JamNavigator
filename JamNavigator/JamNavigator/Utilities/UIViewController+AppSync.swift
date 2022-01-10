@@ -52,6 +52,26 @@ extension UIViewController {
         callback(true, newMatchingItem)
     }
     
+    func updateMatchingStatus(from: Demotape, status: String) {
+        
+        // TODO: GraphQLで、delete / update がナゾの理由で使えないので、create（打ち消し）で ステータスを変更（進める）
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let newMatchingItem = Demotape(
+            name: status,
+            generatedDateTime: formatter1.string(from: Date()),
+            userId: from.userId,
+            attributes: from.attributes,
+            s3StorageKey: from.s3StorageKey,
+            hashMemo: from.hashMemo,
+            instruments: from.instruments,
+            genres: from.genres,
+            nStar: from.nStar,
+            comments: from.comments
+        )
+        self.createData(tape: newMatchingItem)
+    }
+    
     // IDを指定して、マッチングインスタンスを取得する（コールバックで）
     func getMatchingItem(idString: String, callback: @escaping (Bool, Demotape?) -> Void) {
         getDemotape(idString: idString, callback: callback)

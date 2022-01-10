@@ -18,23 +18,10 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
     var demotape: Demotape? = nil
 
     var selectedLocationId: String? = nil   // 地図タップで選択したロケーションの Address.idが格納される
-
-    enum Modes {
-        case NA
-        case Request
-        case Confirm
-    }
-    var mode: Modes = .NA
     
     // 初期化処理
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do {
-            if let demotape = demotape {
-                mode = demotape.userId == "MATCHING" ? .Confirm : .Request
-            }
-        }
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -45,9 +32,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         let nagoyaStation = CLLocationCoordinate2DMake(35.170915, 136.8793482)
         let region = MKCoordinateRegion(center: nagoyaStation, span: span)
         mapView.region = region
-        if mode == .Request {
-            addPins()
-        }
+        addPins()
         mapView.delegate = self
         
         // マッチングアイテムモードで開いたときの初期化処理
@@ -131,8 +116,6 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
 //        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
         // GraphQLで マッチングデータを保存する
         guard let fromUserName = UserDefaults.standard.string(forKey: "userName") else { return }
-        switch mode {
-        case .Request:
             saveMatchingData(
                 date: selectedDate,
                 timeBoxFrom: timeBoxFrom,
@@ -144,55 +127,12 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
             ){ success in
                 guard success else { return }
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
-                }
-            }
-        case .Confirm:
-            setMatchingOkState() {
-                success in
-                if success {
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "toRequestedComplitelyDialog", sender: self)
+                    self.alert(caption: "message", message: "Matching request has been sent!", button1: "OK") {
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
+                    
             }
-        default:
-            fatalError("モード識別失敗した状態で保存ボタン押したのは想定外のパス")
-        }
-    }
-
-    // 【２人限定】マッチング成立、レコード保存＋通知
-    private func setMatchingOkState(callback:  ((Bool) -> Void)? = nil ) {
-
-        guard let matchingItem = demotape else {
-            fatalError("demotapeが nilなのに、マッチング成立できるのはおかしいので停止")
-        }
-        if matchingItem.userId != "MATCHING" {
-            callback?(true)
-            return
-        }
-
-        // 自分でリクエストしておいて、自分で確定できないように
-        if let users = matchingItem.instruments {
-            if users.count > 0 {
-                if users[0] == userSub || users.count < 2 {
-                    alert(caption: "INFO", message: "自分でリクエストしたマッチングは自分で確定できません", button1: "OK")
-                    callback?(false)
-                    return
-                }
-            }
-        }
-
-         //GraphQL（データベース）にDemotapeオブジェクトを利用して、マッチング情報を新規作成・登録する
-        updateMatchingStatus(from: matchingItem, status: "WAITING_THE_REAL") {
-            success, data in
-
-            let fcmTokens = matchingItem.getValues(key: "FCMTOKEN")
-            for fcmToken in fcmTokens {
-                self.pushRemote(registrationToken: fcmToken, title: "Requestが確定しました！", message: "\("某月 某日 某:某")に現地集合してください！")
-            }
-            callback?(true)
-        }
     }
 
     // はじめての、マッチングリクエスト
