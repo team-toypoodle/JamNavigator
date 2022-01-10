@@ -43,19 +43,21 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
             matchingItems.forEach { record in
                 guard
                     let attributes = record.attributes,
-                    let userNameAttribute = attributes[6],
+                    let fromUserNameAttribute = attributes[6],
+                    let toUserNameAttribute = attributes[7],
                     let instruments = record.instruments,
                     let fromUserId = instruments[0],
                     let toUserId = instruments[1]
                 else {
                     return
                 }
-                let username = String(userNameAttribute.dropFirst(9))
-                if username == UserDefaults.standard.string(forKey: "userName") {
-                    self?.sentUserNames.append(username)
+                let fromUserName = String(fromUserNameAttribute.dropFirst(13))
+                let toUserName = String(toUserNameAttribute.dropFirst(11))
+                if fromUserName == UserDefaults.standard.string(forKey: "userName") {
+                    self?.sentUserNames.append(toUserName)
                     self?.sentuserIDs.append(toUserId)
                 } else {
-                    self?.inboxUserNames.append(username)
+                    self?.inboxUserNames.append(fromUserName)
                     self?.inboxuserIDs.append(fromUserId)
                 }
             }
