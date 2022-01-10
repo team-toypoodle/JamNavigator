@@ -3,6 +3,13 @@ import Amplify
 import AWSAPIPlugin
 import AVFoundation
 
+struct RequestData {
+    var userId: String
+    var userName: String
+    var dateString: String
+    var locatioin: String
+}
+
 class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var segmentController: UISegmentedControl!
@@ -15,10 +22,8 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
     
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
     var audioPlayer: AVAudioPlayer!
-    var sentuserIDs = [String]()
-    var inboxuserIDs = [String]()
-    var sentUserNames = [String]()
-    var inboxUserNames = [String]()
+    var sentRequestDatas = [RequestData]()
+    var inboxRequestDatas = [RequestData]()
     
     var selectedIndexPath: IndexPath? = nil
     
@@ -35,30 +40,38 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
     
     @objc func fetchMatchingItems() {
         // 対象ユーザー一覧を生成する
-        sentUserNames.removeAll()
-        inboxUserNames.removeAll()
+        sentRequestDatas.removeAll()
+        inboxRequestDatas.removeAll()
         listMatchingItems(targetUseId: userSub) {[weak self] success, matchingItems in
             guard success, let matchingItems = matchingItems else { return }
             
             matchingItems.forEach { record in
                 guard
-                    let attributes = record.attributes,
-                    let fromUserNameAttribute = attributes[6],
-                    let toUserNameAttribute = attributes[7],
                     let instruments = record.instruments,
                     let fromUserId = instruments[0],
                     let toUserId = instruments[1]
                 else {
                     return
                 }
-                let fromUserName = String(fromUserNameAttribute.dropFirst(13))
-                let toUserName = String(toUserNameAttribute.dropFirst(11))
+                let adid = record.getValue(key: "LOCID")!
+                let fromUserName = record.getValue(key: "frmUname")!
                 if fromUserName == UserDefaults.standard.string(forKey: "userName") {
-                    self?.sentUserNames.append(toUserName)
-                    self?.sentuserIDs.append(toUserId)
+                    let requestData = RequestData(
+                        userId: toUserId,
+                        userName: record.getValue(key: "toUname_")!,
+                        dateString: "\(record.getValue(key: "DATEFT")!)-\(record.getValue(key: "TIMEBOXF")!) 〜 \(record.getValue(key: "TIMEBOXS")!)minutes",
+                        locatioin: addresses.filter{ $0.id == adid }.first!.name
+                    )
+                    self?.sentRequestDatas.append(requestData)
                 } else {
-                    self?.inboxUserNames.append(fromUserName)
-                    self?.inboxuserIDs.append(fromUserId)
+                    let requestData = RequestData(
+                        userId: fromUserId,
+                        userName: fromUserName,
+                        dateString: "\(record.getValue(key: "DATEFT")!)-\(record.getValue(key: "TIMEBOXF")!) 〜 \(record.getValue(key: "TIMEBOXS")!)minutes",
+                        locatioin: addresses.filter{ $0.id == adid }.first!.name
+                    )
+                    self?.inboxRequestDatas.append(requestData)
+                    
                 }
             }
             DispatchQueue.main.async {
@@ -77,13 +90,11 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
         else { fatalError("\(segue.destination) Error") }
         switch segmentController.selectedSegmentIndex {
         case 0:
-            destination.userName = sentUserNames[indexPath.row]
-            destination.userID = sentuserIDs[indexPath.row]
+            destination.requestData = sentRequestDatas[indexPath.row]
         case 1:
-            destination.userName = inboxUserNames[indexPath.row]
-            destination.userID = inboxuserIDs[indexPath.row]
+            destination.requestData = inboxRequestDatas[indexPath.row]
         default:
-            destination.userName = ""
+            destination.requestData = nil
         }
         destination.userSub = userSub
     }
@@ -91,9 +102,9 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentController.selectedSegmentIndex {
         case 0:
-            return sentUserNames.count
+            return sentRequestDatas.count
         case 1:
-            return inboxUserNames.count
+            return inboxRequestDatas.count
         default:
             return 0
         }
@@ -104,9 +115,9 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
         var userName: String
         switch segmentController.selectedSegmentIndex {
         case 0:
-            userName = sentUserNames[indexPath.row]
+            userName = sentRequestDatas[indexPath.row].userName
         case 1:
-            userName = inboxUserNames[indexPath.row]
+            userName = inboxRequestDatas[indexPath.row].userName
         default:
             userName = ""
         }

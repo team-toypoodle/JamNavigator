@@ -230,8 +230,8 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
                 "TIMEBOXS=\(spanMinutes)",
                 "#PEOPLE_=\(noOfPeople)",
                 "LOCID___=\(locationId)",
-                "fromUserName=\(fromUserName)",
-                "toUserName=\(toUserName)"
+                "frmUname=\(fromUserName)",
+                "toUname_=\(toUserName)"
             ],
             s3StorageKey: UUID().uuidString, // マッチンググループのID
             instruments: userIds,
