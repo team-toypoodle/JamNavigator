@@ -28,7 +28,10 @@ class AccountViewController: UIViewController {
         listDemotapes() {
             mayBeList in
             guard let list = mayBeList else { return }
-            self.demotapes = list
+            self.demotapes = list.filter{ tape in
+                guard let username = tape.getValue(key: "userName") else { return false }
+                return username == UserDefaults.standard.string(forKey: "userName")
+            }
             DispatchQueue.main.async {
                 self.tableview.reloadData()
                 self.tableview.allowsSelection = true

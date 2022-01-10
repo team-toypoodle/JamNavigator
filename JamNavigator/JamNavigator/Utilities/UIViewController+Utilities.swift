@@ -17,6 +17,8 @@ extension UIViewController {
             handler: {
                 (action: UIAlertAction!) -> Void in
                 print("tapped cancelled on login error dialog.")
+                guard let callback = callback else { return }
+                callback()
             }))
             self.present(alert, animated: true, completion: callback)
         }
