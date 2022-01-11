@@ -31,7 +31,7 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     var demotapes = Array<Demotape>()
     var activeDemotapes = Array<Demotape>()
     var audioPlayer: AVAudioPlayer!
-    var selectedIndexPath: IndexPath? = nil
+    var selectedIndexPath: Int? = nil
     var activeFilter = FilterContents()
     var playingRowIndex: IndexPath = IndexPath()
     var isPlaying = false
@@ -59,7 +59,7 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
         case "toRequest":
             guard let destination = segue.destination as? RequestViewController else { return }
             guard let selectedIndexPath = selectedIndexPath else { return }
-            destination.demotape = demotapes[selectedIndexPath.row]
+            destination.demotape = demotapes[selectedIndexPath]
             destination.userSub = userSub
         case "toFilter":
             guard
@@ -72,17 +72,6 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
             return
         }
     }
-
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let request = UIContextualAction(style: .normal, title: "Match", handler: {
-            (action: UIContextualAction, view: UIView, success:(Bool) -> Void) in
-            self.selectedIndexPath = indexPath
-            self.performSegue(withIdentifier: "toRequest", sender: self)
-            
-        })
-        request.backgroundColor = .darkGray
-        return UISwipeActionsConfiguration(actions: [request])
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return activeDemotapes.count
@@ -90,7 +79,19 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DemotapeCell", for: indexPath)
+        cell.subviews.forEach { subview in
+            if type(of: subview) == type(of: UIButton()) {
+                subview.removeFromSuperview()
+            }
+        }
+        
         let item = activeDemotapes[indexPath.row]
+    
+        let reqestButton = UIButton(frame: CGRect(x: cell.frame.width - 50, y: 0, width: 50, height: cell.frame.height))
+        reqestButton.tag = indexPath.row
+        reqestButton.addTarget(self, action: #selector(didTapRequestButton(_:)), for: .touchUpInside)
+        reqestButton.setImage(UIImage(systemName: "heart.text.square"), for: .normal)
+        cell.addSubview(reqestButton)
         
         cell.textLabel?.text = item.name
         if indexPath == playingRowIndex{
@@ -134,6 +135,12 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
         playingRowIndex = IndexPath()
         tableView.reloadData()
         isPlaying = false
+    }
+    
+    @objc func didTapRequestButton(_ sender: UIButton) {
+        print("didTapRequestButton-------------------", sender.tag)
+        self.selectedIndexPath = sender.tag
+        self.performSegue(withIdentifier: "toRequest", sender: self)
     }
 }
 
