@@ -65,9 +65,7 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
             let genreNames = [(checkClassical, "Classical"),(checkJazz, "Jazz"),(checkRock, "Rock"),(checkGenreOther,"Other")].filter { $0.0.isOn }.map {
                 $0.1
             }
-//            guard let fcmtoken = getFcmToken() else {
-//                fatalError("fcmtokenはエラー処理をしていません")
-//            }
+
             guard let userName = UserDefaults.standard.string(forKey: "userName") else {return}
             let attrs = ["userName=\(userName)"]
             // GraphQL（データベース）にデモテープ情報を新規作成・登録する

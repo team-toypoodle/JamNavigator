@@ -6,14 +6,14 @@ class CalenderActivity: UIActivity {
     let eventStore = EKEventStore()
    
     override var activityTitle: String? {
-        return "Calender"
+        return "Add Event to Calendar"
     }
     override var activityImage: UIImage? {
-        return UIImage(named: "calender")
+        return UIImage(systemName: "calendar.badge.plus")
     }
     
     override class var activityCategory: UIActivity.Category {
-        return .share
+        return .action
     }
     override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
         return true

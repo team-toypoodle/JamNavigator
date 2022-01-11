@@ -128,6 +128,8 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
             userName = ""
         }
         cell.textLabel?.text = userName
+        cell.imageView?.image = UIImage(systemName: "person.crop.circle")
+        cell.imageView?.tintColor = UIColor.systemGray
         return cell
     }
 }

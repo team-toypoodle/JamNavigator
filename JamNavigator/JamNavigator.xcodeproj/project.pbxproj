@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		026A5A802763233500C09469 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A7F2763233500C09469 /* SignupViewController.swift */; };
 		026A5A8227632B6900C09469 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */; };
-		0275BAB92771E390004F9614 /* MeetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275BAB82771E390004F9614 /* MeetsViewController.swift */; };
 		02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */; };
 		02B92A4E2770675900116D26 /* MatchConfirmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */; };
 		02C0650E276B224800FBA95B /* FirebaseCloudMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C0650D276B224800FBA95B /* FirebaseCloudMessaging.swift */; };
@@ -70,7 +69,6 @@
 /* Begin PBXFileReference section */
 		026A5A7F2763233500C09469 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		026A5A8127632B6900C09469 /* UIViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utilities.swift"; sourceTree = "<group>"; };
-		0275BAB82771E390004F9614 /* MeetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetsViewController.swift; sourceTree = "<group>"; };
 		02B92A4A27705E4100116D26 /* README.DataDesign.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.DataDesign.md; sourceTree = "<group>"; };
 		02B92A4B277061AF00116D26 /* UIViewController+AwsS3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AwsS3.swift"; sourceTree = "<group>"; };
 		02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchConfirmTableViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 				8781C300276B15CB005AF5BB /* RequestViewController.swift */,
 				02E09359277052CF005BA9BF /* RequestedComplitelyDialogViewController.swift */,
 				02B92A4D2770675900116D26 /* MatchConfirmTableViewController.swift */,
-				0275BAB82771E390004F9614 /* MeetsViewController.swift */,
 				FE02D99827795DD300071BB0 /* FilterTableViewController.swift */,
 				B6615AFD277A993600E25EA4 /* CalenderActivity.swift */,
 				B6615B01277ACF6800E25EA4 /* TabBarController.swift */,
@@ -408,7 +405,6 @@
 				026A5A8227632B6900C09469 /* UIViewController+Utilities.swift in Sources */,
 				02B92A4C277061AF00116D26 /* UIViewController+AwsS3.swift in Sources */,
 				FE02D99927795DD300071BB0 /* FilterTableViewController.swift in Sources */,
-				0275BAB92771E390004F9614 /* MeetsViewController.swift in Sources */,
 				874F5FE427606B8E0072107F /* AppDelegate.swift in Sources */,
 				874F5FE627606B8E0072107F /* SceneDelegate.swift in Sources */,
 				02D6887327630B2F0060B471 /* UIViewController+AwsCognito.swift in Sources */,

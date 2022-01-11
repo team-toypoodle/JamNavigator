@@ -138,7 +138,6 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     }
     
     @objc func didTapRequestButton(_ sender: UIButton) {
-        print("didTapRequestButton-------------------", sender.tag)
         self.selectedIndexPath = sender.tag
         self.performSegue(withIdentifier: "toRequest", sender: self)
     }
