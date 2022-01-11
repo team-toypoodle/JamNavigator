@@ -1,10 +1,3 @@
-//
-//  RecordingViewController.swift
-//  JamNavigator
-//
-//  Created by Tasuku Furuki on 2021/12/09.
-//
-
 import UIKit
 import AVFoundation
 
@@ -14,6 +7,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
 
     @IBOutlet weak var recordingButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopLabel: UILabel!
@@ -29,6 +23,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         // Do any additional setup after loading the view.
         applyEnableDisableDesign(control: playButton, sw: false)
         applyEnableDisableDesign(control: stopButton, sw: false)
+        applyEnableDisableDesign(control: uploadButton, sw: false)
     }
 
     // 画面遷移時に、次のViewControllerに 情報を渡す（Reactの props みたいな）
@@ -68,10 +63,16 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         applyEnableDisableDesign(control: playButton, sw: false)
         applyEnableDisableDesign(control: stopButton, sw: true)
         applyEnableDisableDesign(control: recordingButton, sw: false)
+        applyEnableDisableDesign(control: uploadButton, sw: false)
     }
     
     @IBAction func touchUpInsideStopButton(_ sender: Any) {
         audioRecorder.stop()
+        audioPlayer = try! AVAudioPlayer(contentsOf: getLocalAudioUrl())
+        audioPlayer.delegate = self
+        audioPlayer.stop()
+        PlayLabel.text = "Play"
+        isPlaying = false
         isRecording = false
 
 //        label.text = "待機中"
@@ -79,6 +80,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         applyEnableDisableDesign(control: playButton, sw: true)
         applyEnableDisableDesign(control: stopButton, sw: false)
         applyEnableDisableDesign(control: recordingButton, sw: true)
+        applyEnableDisableDesign(control: uploadButton, sw: true)
         recordingLabel.text = "Rec"
     }
     

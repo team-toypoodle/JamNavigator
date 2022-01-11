@@ -830,6 +830,7 @@
                         <outlet property="recordingLabel" destination="TO9-gZ-H6v" id="2dY-x6-DbQ"/>
                         <outlet property="stopButton" destination="AZm-s7-6VB" id="ETl-Zc-kli"/>
                         <outlet property="stopLabel" destination="VRz-8b-kX5" id="HTF-Zh-Hei"/>
+                        <outlet property="uploadButton" destination="RXy-QO-N4Z" id="nni-Cm-8f3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wY7-Mg-qJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1004,6 +1005,7 @@
                         <outlet property="checkViolin" destination="2lI-Ni-ykb" id="14f-GF-tLh"/>
                         <outlet property="commentText" destination="x5Z-cR-bba" id="oO9-sT-twt"/>
                         <outlet property="titleText" destination="lH5-5q-wV5" id="04H-al-3Er"/>
+                        <outlet property="uploadButton" destination="tEa-GM-fsL" id="n9y-ya-FJg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPY-zF-8v9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

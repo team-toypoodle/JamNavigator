@@ -13,16 +13,27 @@ import NaturalLanguage
 class UploadViewController: UIViewController,UITextFieldDelegate {
     
     var userSub: String = ""    // ユーザー認証した時に収集した、ユーザーを識別するID
+    var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.]
         titleText.delegate = self
         commentText.delegate = self
+        titleText.addTarget(self, action: #selector(titleTextDidEditingEnd(_:)), for: .editingDidEnd)
+        applyEnableDisableDesign(control: uploadButton, sw: false)
+        
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        self.view.addSubview(activityIndicator)
     }
     
     // アップロードボタン押下時の処理（クラウドに保存したい）
     @IBAction func uploadButton(_ sender: Any) {
+        activityIndicator.startAnimating()
         
         do {
             // ローカルに保存されている音声ファイルを取得する/
@@ -35,7 +46,12 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
             print("New upload key = \(uploadkey)")
             
             // AWS S3にアップロード
-            uploadMusic(key: uploadkey, data: music)
+            uploadMusic(key: uploadkey, data: music) {
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.dismiss(animated: true)
+                }
+            }
             
             // 作成日の文字列を作成する
             let formatter1 = DateFormatter()
@@ -84,10 +100,16 @@ class UploadViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var checkJazz: UISwitch!
     @IBOutlet weak var checkRock: UISwitch!
     @IBOutlet weak var checkGenreOther: UISwitch!
+    @IBOutlet weak var uploadButton: UIButton!
     
     
     @IBAction func tapwhitespace(_ sender: UITapGestureRecognizer) {
         titleText.resignFirstResponder()
         commentText.resignFirstResponder()
+    }
+    
+    @objc func titleTextDidEditingEnd(_ sender: UITextField) {
+        guard titleText.text != nil else { return }
+        applyEnableDisableDesign(control: uploadButton, sw: true)
     }
 }

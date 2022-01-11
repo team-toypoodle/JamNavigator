@@ -32,7 +32,7 @@ extension UIViewController {
     }
 
     // 音楽のデータファイルをAWSクラウドにアップロードする
-    func uploadMusic(key: String, data: Data) {
+    func uploadMusic(key: String, data: Data, callback: @escaping () -> Void) {
         _ = Amplify.Storage.uploadData(
             key: key,
             data: data,
@@ -45,9 +45,7 @@ extension UIViewController {
                 switch event {
                 case .success(let data):
                     print("Completed: \(data)")
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true)
-                    }
+                    callback()
                     
                 case .failure(let storageError):
                     let mes = "Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)"
