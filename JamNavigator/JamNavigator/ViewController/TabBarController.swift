@@ -7,6 +7,10 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedIndex = 0
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         let recVC = self.viewControllers?[0] as? RecordingViewController
         let demoNavVC = self.viewControllers?[1] as? UINavigationController
@@ -18,6 +22,8 @@ class TabBarController: UITabBarController {
         recVC?.userSub = userSub
         demoVC?.userSub = userSub
         reqVC?.userSub = userSub
+        meetTableVC?.userSub = userSub
+        
         listMatchingItems(targetUseId: userSub) {success, matchingItems in
             guard
                 let matchingItems = matchingItems,
