@@ -38,6 +38,9 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetchDemotapes), for: UIControl.Event.valueChanged)
+        self.tableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,6 +143,20 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     @objc func didTapRequestButton(_ sender: UIButton) {
         self.selectedIndexPath = sender.tag
         self.performSegue(withIdentifier: "toRequest", sender: self)
+    }
+    
+    @objc func fetchDemotapes() {
+        listDemotapes() {[weak self] mayBeList in
+            guard let list = mayBeList else { return }
+            self?.demotapes = list
+            guard let demotapes = self?.demotapes else { return }
+            self?.activeDemotapes = demotapes
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.tableView.allowsSelection = true
+                self?.tableView.refreshControl?.endRefreshing()
+            }
+        }
     }
 }
 

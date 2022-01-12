@@ -15,10 +15,20 @@ class MeetsTableViewController :UITableViewController, AVAudioPlayerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetchMeetItems), for: UIControl.Event.valueChanged)
+        self.meetsTableView.refreshControl = refreshControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        listMeetsItems(targetUseId: userSub) {[weak self] success, matchingItems in
+            guard
+                let matchingItems = matchingItems,
+                matchingItems.count > 0
+            else { return }
+            self?.meetsItems = matchingItems
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,5 +104,18 @@ class MeetsTableViewController :UITableViewController, AVAudioPlayerDelegate{
         let shareItem: [Any] = [eventTitle, date - (9 * 60 * 60), date - (9 * 60 * 60) + (60 * 30), address.address]
         let VC = UIActivityViewController(activityItems: shareItem, applicationActivities: [CalenderActivity()])
         present(VC, animated: true, completion: nil)
+    }
+    
+    @objc func fetchMeetItems() {
+        print(userSub, "usersub-------------")
+        listMeetsItems(targetUseId: userSub) {[weak self] success, meetItems in
+            guard let meetItems = meetItems else { return }
+            print(meetItems, meetItems.count, "---------------")
+            self?.meetsItems = meetItems
+            DispatchQueue.main.async {
+                self?.meetsTableView.reloadData()
+                self?.meetsTableView.refreshControl?.endRefreshing()
+            }
+        }
     }
 }
