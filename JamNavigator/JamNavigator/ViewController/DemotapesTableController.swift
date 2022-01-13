@@ -35,6 +35,7 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
     var activeFilter = FilterContents()
     var playingRowIndex: IndexPath = IndexPath()
     var isPlaying = false
+    weak var delegate: BadgeControlDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,7 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.allowsSelection = true
+                self.delegate?.updateBadge()
             }
         }
     }
@@ -155,6 +157,7 @@ class DemotapesTableViewClass :UITableViewController,AVAudioPlayerDelegate{
                 self?.tableView.reloadData()
                 self?.tableView.allowsSelection = true
                 self?.tableView.refreshControl?.endRefreshing()
+                self?.delegate?.updateBadge()
             }
         }
     }

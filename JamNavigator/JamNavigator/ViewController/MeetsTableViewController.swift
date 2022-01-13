@@ -12,6 +12,7 @@ class MeetsTableViewController :UITableViewController, AVAudioPlayerDelegate{
     var playingRowIndex: IndexPath = IndexPath()
     var isPlaying = false
     var player: AVAudioPlayer? = nil
+    weak var delegate: BadgeControlDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +23,7 @@ class MeetsTableViewController :UITableViewController, AVAudioPlayerDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        listMeetsItems(targetUseId: userSub) {[weak self] success, matchingItems in
-            guard
-                let matchingItems = matchingItems,
-                matchingItems.count > 0
-            else { return }
-            self?.meetsItems = matchingItems
-        }
+        fetchMeetItems()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,6 +110,7 @@ class MeetsTableViewController :UITableViewController, AVAudioPlayerDelegate{
             DispatchQueue.main.async {
                 self?.meetsTableView.reloadData()
                 self?.meetsTableView.refreshControl?.endRefreshing()
+                self?.delegate?.updateBadge()
             }
         }
     }

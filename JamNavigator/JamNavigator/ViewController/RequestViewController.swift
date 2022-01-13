@@ -28,7 +28,7 @@ class RequestViewController: UIViewController,CLLocationManagerDelegate,MKMapVie
         locationManager!.requestWhenInUseAuthorization()
         
         // マップの初期設定
-        let span = MKCoordinateSpan(latitudeDelta:0.01, longitudeDelta: 0.01)
+        let span = MKCoordinateSpan(latitudeDelta:0.02, longitudeDelta: 0.02)
         let nagoyaStation = CLLocationCoordinate2DMake(35.170915, 136.8793482)
         let region = MKCoordinateRegion(center: nagoyaStation, span: span)
         mapView.region = region
