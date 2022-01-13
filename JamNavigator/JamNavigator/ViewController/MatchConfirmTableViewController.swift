@@ -28,6 +28,7 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
     var inboxRequestDatas = [RequestData]()
     
     var selectedIndexPath: IndexPath? = nil
+    weak var delegate: BadgeControlDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +84,7 @@ class MatchConfirmTableViewController: UIViewController, AVAudioPlayerDelegate, 
             DispatchQueue.main.async {
                 self?.userNameTableView.reloadData()
                 self?.userNameTableView.refreshControl?.endRefreshing()
+                self?.delegate?.updateBadge()
             }
         }
     }
